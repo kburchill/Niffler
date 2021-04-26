@@ -1,6 +1,8 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from sqlalchemy.orm import relationship
+from .group_membership import group_membership
 
 
 class User(db.Model, UserMixin):
@@ -12,9 +14,11 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     first_name = db.Column(db.String(255), nullable=False)
     last_name = db.Column(db.String(255), nullable=False)
-    total_owed = db.Column(db.Integer, nullable=False)
-    total_debt = db.Column(db.Integer, nullable=False)
     profile_pic_url = db.Column(db.String(255), nullable=False)
+
+    groups = relationship("Group",
+                            secondary=group_membership,
+                            back_populates="users")
 
     @property
     def password(self):
@@ -34,7 +38,5 @@ class User(db.Model, UserMixin):
             "email": self.email,
             "first_name": self.first_name,
             "last_name": self.last_name,
-            "total_owed": self.total_owed,
-            "total_debt": self.total_debt,
             "profile_pic_url": self.profile_pic_url
         }

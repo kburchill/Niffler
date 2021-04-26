@@ -11,8 +11,6 @@ def seed_users():
         password='password',
         first_name='Demolition',
         last_name='Magician',
-        total_owed=0,
-        total_debt=0,
         profile_pic_url="https://avatarfiles.alphacoders.com/121/thumb-1920-121391.jpg"
         )
     db.session.add(demo)
@@ -23,8 +21,6 @@ def seed_users():
         password='lightning',
         first_name='Harry',
         last_name='Potter',
-        total_owed=0,
-        total_debt=0,
         profile_pic_url="https://avatarfiles.alphacoders.com/121/thumb-1920-121391.jpg"
     )
     
@@ -36,8 +32,6 @@ def seed_users():
         password='Slytherin',
         first_name='Severus',
         last_name='Snape',
-        total_owed=0,
-        total_debt=0,
         profile_pic_url="https://avatarfiles.alphacoders.com/121/thumb-1920-121391.jpg"
         )
     
@@ -49,8 +43,6 @@ def seed_users():
         password='gryffindor',
         first_name='Hermione',
         last_name='Granger',
-        total_owed=0,
-        total_debt=0,
         profile_pic_url="https://avatarfiles.alphacoders.com/121/thumb-1920-121391.jpg"
         )
     
