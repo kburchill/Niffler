@@ -15,7 +15,7 @@ def dashboard_data():
 
     if current_user.is_authenticated:
         my_transactions = TransactionExpense.query.filter(or_(
-            TransactionExpense.lender_id == current_user.id, TransactionExpense.borrower_id == current_user.id)).all()
+            TransactionExpense.lender_id == current_user.id, TransactionExpense.borrower_id == current_user.id)).all()  # noqa
         print(my_transactions, "here ==========")
         users_amounts = {}
         totals = {}
