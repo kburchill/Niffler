@@ -1,6 +1,7 @@
 from flask import Blueprint, session
-from app.models import User, db
+from app.models import User, db, TransactionExpense
 from flask_login import current_user
+from sqlalchemy import or_
 
 
 dashboard_routes = Blueprint("dashboard", __name__)
@@ -12,6 +13,9 @@ def dashboard_data():
     Provides transactions current user
     """
 
-    print(session.user.username)
-    # return current_user.to_dict()
-    return "3"
+    if current_user.is_authenticated:
+        my_transactions = TransactionExpense.query.filter(or_(TransactionExpense.lender_id == current_user.id, TransactionExpense.borrower_id == current_user.id)).all()
+        print(my_transactions[0].amount, "here ==========")
+        return 'my_transactions'
+
+    return {'errors': ['Unauthorized']}
