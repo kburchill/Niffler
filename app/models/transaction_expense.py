@@ -9,6 +9,5 @@ class TransactionExpense(db.Model):
     lender_id = db.Column(db.Integer, db.ForeignKey("user.id"))
     borrower_id = db.Column(db.Integer, db.ForeignKey("user.id"))
     amount = db.Column(db.Integer, nullable=False)
-    expense_date = db.Column(db.Date, nullable=False)
     completed = db.Column(db.Boolean)
-    created_at = db.Column(db.Date, nullable=False)
+    updated_at = db.Column(db.Date, nullable=False)
