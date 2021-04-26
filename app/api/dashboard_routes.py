@@ -15,7 +15,15 @@ def dashboard_data():
 
     if current_user.is_authenticated:
         my_transactions = TransactionExpense.query.filter(or_(TransactionExpense.lender_id == current_user.id, TransactionExpense.borrower_id == current_user.id)).all()
-        print(my_transactions[0].amount, "here ==========")
+        print(my_transactions, "here ==========")
+        trans1amount = my_transactions[0].amount
+        users_amounts = {}
+        totals = {}
+        owed = 0
+        owe = 0
+        total = 0
+        
+
         return 'my_transactions'
 
     return {'errors': ['Unauthorized']}
