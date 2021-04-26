@@ -13,7 +13,7 @@ def seed_users():
         last_name='Magician',
         total_owed=0,
         total_debt=0,
-        profile_pic_url="https://avatarfiles.alphacoders.com/121/thumb-1920-121391.jpg"
+        profile_pic_url="https://avatarfiles.alphacoders.com/121/thumb-1920-121391.jpg"  # noqa
         )
     db.session.add(demo)
 
@@ -25,9 +25,9 @@ def seed_users():
         last_name='Potter',
         total_owed=0,
         total_debt=0,
-        profile_pic_url="https://avatarfiles.alphacoders.com/121/thumb-1920-121391.jpg"
+        profile_pic_url="https://avatarfiles.alphacoders.com/121/thumb-1920-121391.jpg"  # noqa
     )
-    
+
     db.session.add(harry)
 
     snape = User(
@@ -38,9 +38,9 @@ def seed_users():
         last_name='Snape',
         total_owed=0,
         total_debt=0,
-        profile_pic_url="https://avatarfiles.alphacoders.com/121/thumb-1920-121391.jpg"
+        profile_pic_url="https://avatarfiles.alphacoders.com/121/thumb-1920-121391.jpg"  # noqa
         )
-    
+
     db.session.add(snape)
 
     hermione = User(
@@ -51,9 +51,9 @@ def seed_users():
         last_name='Granger',
         total_owed=0,
         total_debt=0,
-        profile_pic_url="https://avatarfiles.alphacoders.com/121/thumb-1920-121391.jpg"
+        profile_pic_url="https://avatarfiles.alphacoders.com/121/thumb-1920-121391.jpg"  # noqa
         )
-    
+
     db.session.add(hermione)
 
     db.session.commit()
