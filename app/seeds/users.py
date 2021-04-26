@@ -11,7 +11,7 @@ def seed_users():
         password='password',
         first_name='Demolition',
         last_name='Magician',
-        profile_pic_url="https://avatarfiles.alphacoders.com/121/thumb-1920-121391.jpg"
+        profile_pic_url="https://avatarfiles.alphacoders.com/121/thumb-1920-121391.jpg"  # noqa
         )
     db.session.add(demo)
 
@@ -21,9 +21,9 @@ def seed_users():
         password='lightning',
         first_name='Harry',
         last_name='Potter',
-        profile_pic_url="https://avatarfiles.alphacoders.com/121/thumb-1920-121391.jpg"
+        profile_pic_url="https://avatarfiles.alphacoders.com/121/thumb-1920-121391.jpg"  # noqa
     )
-    
+
     db.session.add(harry)
 
     snape = User(
@@ -32,9 +32,9 @@ def seed_users():
         password='Slytherin',
         first_name='Severus',
         last_name='Snape',
-        profile_pic_url="https://avatarfiles.alphacoders.com/121/thumb-1920-121391.jpg"
+        profile_pic_url="https://avatarfiles.alphacoders.com/121/thumb-1920-121391.jpg"  # noqa
         )
-    
+
     db.session.add(snape)
 
     hermione = User(
@@ -43,9 +43,9 @@ def seed_users():
         password='gryffindor',
         first_name='Hermione',
         last_name='Granger',
-        profile_pic_url="https://avatarfiles.alphacoders.com/121/thumb-1920-121391.jpg"
+        profile_pic_url="https://avatarfiles.alphacoders.com/121/thumb-1920-121391.jpg"  # noqa
         )
-    
+
     db.session.add(hermione)
 
     db.session.commit()
