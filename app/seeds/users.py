@@ -5,10 +5,56 @@ from app.models import db, User
 # Adds a demo user, you can add other users here if you want
 def seed_users():
 
-    demo = User(username='Demo', email='demo@aa.io',
-                password='password')
-
+    demo = User(
+        username='Demo',
+        email='demo@aa.io',
+        password='password',
+        first_name='Demolition',
+        last_name='Magician',
+        total_owed=0,
+        total_debt=0,
+        profile_pic_url="https://avatarfiles.alphacoders.com/121/thumb-1920-121391.jpg"
+        )
     db.session.add(demo)
+
+    harry = User(
+        username='chosenone',
+        email='harry@potter.com',
+        password='lightning',
+        first_name='Harry',
+        last_name='Potter',
+        total_owed=0,
+        total_debt=0,
+        profile_pic_url="https://avatarfiles.alphacoders.com/121/thumb-1920-121391.jpg"
+    )
+    
+    db.session.add(harry)
+
+    snape = User(
+        username='severous',
+        email='severus@snape.com',
+        password='Slytherin',
+        first_name='Severus',
+        last_name='Snape',
+        total_owed=0,
+        total_debt=0,
+        profile_pic_url="https://avatarfiles.alphacoders.com/121/thumb-1920-121391.jpg"
+        )
+    
+    db.session.add(snape)
+
+    hermione = User(
+        username='granger',
+        email='hermione@granger.com',
+        password='gryffindor',
+        first_name='Hermione',
+        last_name='Granger',
+        total_owed=0,
+        total_debt=0,
+        profile_pic_url="https://avatarfiles.alphacoders.com/121/thumb-1920-121391.jpg"
+        )
+    
+    db.session.add(hermione)
 
     db.session.commit()
 
