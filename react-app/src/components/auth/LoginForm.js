@@ -27,11 +27,11 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to="/" />;
+    return <Redirect to="/dashboard" />;
   }
 
   return (
-    <form onSubmit={onLogin}>
+    <form onSubmit={onLogin} id='login-form'>
       <div>
         {errors.map((error) => (
           <div>{error}</div>
