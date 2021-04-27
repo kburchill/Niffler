@@ -1,0 +1,17 @@
+.left-sidebar {
+    border: 1px solid black;
+    padding: 10px;
+    width: 200px;
+}
+
+.left-sidebar__main {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;   
+}
+
+.left-sidebar__groups {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}

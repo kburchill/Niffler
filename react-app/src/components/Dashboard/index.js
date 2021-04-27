@@ -1,15 +1,19 @@
 import React from 'react';
 import HeaderBar from "../HeaderBar"
+import LeftSideBar from "../LeftSideBar"
+import DashboardRight from "../RightSideBar/DashboardRight"
 
 import './Dashboard.css'
 
 const Dashboard = () => {
     return (
-        <div id='dashboard-body'>
+        <div className='main-body'>
             <HeaderBar />
-            <div>
+            <LeftSideBar />
+            <div className='main-bar'>
                 This will be the body of the main dashboard page.
             </div>
+            <DashboardRight />
         </div>
     )
 }

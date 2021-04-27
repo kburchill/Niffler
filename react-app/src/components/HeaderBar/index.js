@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
-import UserButton from './UserButton'
+import UserButton from './UserButton';
 
 import './HeaderBar.css';
 

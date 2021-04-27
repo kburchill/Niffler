@@ -10,6 +10,7 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import Dashboard from "./components/Dashboard"
 import IntroductoryPage from "./components/IntroductoryPage"
+import GroupPage from "./components/GroupPage"
 // import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
 
@@ -52,6 +53,10 @@ function App() {
         <ProtectedRoute path="/dashboard" exact={true}>
           <Dashboard />
         </ProtectedRoute>
+        <ProtectedRoute path="/groups/:groupId" exact={true}>
+          <GroupPage />
+        </ProtectedRoute>
+        
       </Switch>
     </BrowserRouter>
   );
