@@ -3,7 +3,7 @@ from app.models import db, Comment, transaction
 
 def seed_comments():
     comment1 = Comment(
-        user_id=2,
+        user_id=1,
         transaction_id=2,
         content="Wizarding Worlds, here I come!"
     )
@@ -11,7 +11,7 @@ def seed_comments():
     db.session.add(comment1)
 
     comment2 = Comment(
-        user_id=2,
+        user_id=3,
         transaction_id=1,
         content="Wizarding Worlds, maybe someday!"
     )
@@ -19,12 +19,20 @@ def seed_comments():
     db.session.add(comment2)
 
     comment3 = Comment(
-        user_id=3,
+        user_id=2,
         transaction_id=1,
         content="Take me with you!"
     )
 
     db.session.add(comment3)
+
+    comment4 = Comment(
+        user_id=4,
+        transaction_id=1,
+        content="Me Three!"
+    )
+
+    db.session.add(comment4)
 
     db.session.commit()
 
