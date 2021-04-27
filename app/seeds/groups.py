@@ -1,7 +1,8 @@
-from app.models import db, Group
+from app.models import db, Group, User
 
 
 def seed_groups():
+    user1 = User.query.get(1)
 
     group1 = Group(
         name="Gryffindor"
@@ -27,8 +28,9 @@ def seed_groups():
 
     db.session.add(group4)
 
+    # user1.groups.append(group1)
 
-db.session.commit()
+    db.session.commit()
 
 
 def undo_groups():

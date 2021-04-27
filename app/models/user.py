@@ -12,8 +12,6 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     first_name = db.Column(db.String(255), nullable=False)
     last_name = db.Column(db.String(255), nullable=False)
-    total_owed = db.Column(db.Integer, nullable=False)
-    total_debt = db.Column(db.Integer, nullable=False)
     profile_pic_url = db.Column(db.String(255), nullable=False)
 
     @property
@@ -34,7 +32,5 @@ class User(db.Model, UserMixin):
             "email": self.email,
             "first_name": self.first_name,
             "last_name": self.last_name,
-            "total_owed": self.total_owed,
-            "total_debt": self.total_debt,
             "profile_pic_url": self.profile_pic_url
         }
