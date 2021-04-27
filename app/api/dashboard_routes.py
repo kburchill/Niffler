@@ -1,15 +1,10 @@
 from flask import Blueprint
 from app.models import User, TransactionExpense, group_membership, Group
 from flask_login import current_user
-from sqlalchemy import or_, create_engine
-from sqlalchemy.orm import sessionmaker, joinedload
+from sqlalchemy import or_
+# from sqlalchemy.orm import sessionmaker, joinedload
 import os
-
 dashboard_routes = Blueprint("dashboard", __name__)
-db_url = os.environ.get("DATABASE_URL")
-engine = create_engine(db_url)
-SessionFactory = sessionmaker(bind=engine)
-session = SessionFactory()
 
 
 @dashboard_routes.route("/")
@@ -17,7 +12,6 @@ def dashboard_data():
     """
     Provides transactions current user
     """
-
     if current_user.is_authenticated:
         my_transactions = TransactionExpense.query.filter(or_(TransactionExpense.lender_id == current_user.id, 
                                                               TransactionExpense.borrower_id == current_user.id)).all()
@@ -40,7 +34,6 @@ def dashboard_data():
                     associated_users_data[transaction.borrower_id] += amount
                 else:
                     associated_users_data[transaction.borrower_id] = amount
-
         for user_id, user_amount in associated_users_data.items():
             if user_amount > 0:
                 owed += user_amount
