@@ -10,3 +10,5 @@ class Transaction(db.Model):
     expense_date = db.Column(db.Date, nullable=False)
     completed = db.Column(db.Boolean)
     created_at = db.Column(db.Date, nullable=False)
+
+    expenses = db.relationship("TransactionExpense", back_populates="transaction")
