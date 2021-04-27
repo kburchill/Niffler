@@ -7,8 +7,8 @@ const NavBar = () => {
     <nav>
       <ul>
         <li>
-          <NavLink to="/" exact={true} activeClassName="active">
-            Home
+          <NavLink to="/dashboard" exact={true} activeClassName="active">
+            Dashboard
           </NavLink>
         </li>
         <li>

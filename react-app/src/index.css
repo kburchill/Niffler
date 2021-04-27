@@ -1,1 +1,7 @@
-/* TODO Add site wide styles */
+body {
+    /* background-color: whitesmoke; */
+}
+
+#login-form {
+    margin-top: 30px;
+}
