@@ -28,7 +28,7 @@ def seed_groups():
 
     db.session.add(group4)
 
-    # user1.groups.append(group1)
+    user1.groups.append(group1)
 
     db.session.commit()
 
