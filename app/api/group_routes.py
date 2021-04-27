@@ -15,14 +15,13 @@ def group_data(group_id):
     """
     # How do we authenticate user is apart of group id
 
-    if current_user.is_authenticated:
-        group_transactions = Transaction.query.filter(Transaction.group_id == group_id).all()
+    if (current_user.is_authenticated):
+        for group in current_user.groups:
+            if group.id == int(group_id):
+                group_transactions = Transaction.query.filter(Transaction.group_id == group_id).all()
+                defined_transactions = {}
+                for each_transaction in group_transactions:
+                    defined_transactions[each_transaction.id] = each_transaction.expenses
+                print(defined_transactions)
 
-        # apart_group = group_membership.query.filter(and_(group_membership.group_id == group_id, group_membership.user_id == current_user.id)).all()
-        defined_transactions = {}
-        for each_transaction in group_transactions:
-            details = TransactionExpense.query.filter(TransactionExpense.transaction_id == each_transaction.id).all()
-            defined_transactions[each_transaction.id] = details
-
-        print(defined_transactions, "here =======")
     return "5"

@@ -11,3 +11,4 @@ class TransactionExpense(db.Model):
     amount = db.Column(db.Integer, nullable=False)
     completed = db.Column(db.Boolean)
     updated_at = db.Column(db.Date, nullable=False)
+    transaction = db.relationship("Transaction", back_populates="expenses")
