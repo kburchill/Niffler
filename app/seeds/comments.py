@@ -26,6 +26,14 @@ def seed_comments():
 
     db.session.add(comment3)
 
+    comment4 = Comment(
+        user_id=2,
+        transaction_id=1,
+        content="Me Three!"
+    )
+
+    db.session.add(comment4)
+
     db.session.commit()
 
 
