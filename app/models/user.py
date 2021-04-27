@@ -1,6 +1,8 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from sqlalchemy.orm import relationship
+from .group_membership import group_membership
 
 
 class User(db.Model, UserMixin):
@@ -13,6 +15,10 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(255), nullable=False)
     last_name = db.Column(db.String(255), nullable=False)
     profile_pic_url = db.Column(db.String(255), nullable=False)
+
+    groups = relationship("Group",
+                            secondary=group_membership,
+                            back_populates="users")
 
     @property
     def password(self):

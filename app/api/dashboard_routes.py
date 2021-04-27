@@ -13,12 +13,13 @@ def dashboard_data():
     Provides transactions current user
     """
     if current_user.is_authenticated:
-        my_transactions = TransactionExpense.query.filter(or_(TransactionExpense.lender_id == current_user.id,
-        TransactionExpense.borrower_id == current_user.id)).all()
+        my_transactions = TransactionExpense.query.filter(or_(TransactionExpense.lender_id == current_user.id, 
+                                                              TransactionExpense.borrower_id == current_user.id)).all()
         associated_users_data = {}
         owed = 0
         owe = 0
         total = 0
+
         for transaction in my_transactions:
             amount = transaction.amount
             if transaction.borrower_id == current_user.id:
@@ -26,8 +27,7 @@ def dashboard_data():
                 if transaction.lender_id in associated_users_data:
                     associated_users_data[transaction.lender_id] -= amount
                 else:
-                    associated_users_data[transaction.lender_id] = (
-                        amount * -1)
+                    associated_users_data[transaction.lender_id] = (amount * -1)
             else:
                 total += amount
                 if transaction.borrower_id in associated_users_data:
@@ -39,20 +39,25 @@ def dashboard_data():
                 owed += user_amount
             else:
                 owe += user_amount
+
         user_groups = {}
         for group in current_user.groups:
             user_groups[group.id] = group.name
+
         # list of user(model) objects
-        other_users = User.query.filter(
-            User.id.in_(associated_users_data)).all()
+        other_users = User.query.filter(User.id.in_(associated_users_data)).all()
+
         for user in associated_users_data:
             # find the corresponding user(model) instance
             user_instance = next(u for u in other_users if u.id == user)
+
             user_amount = associated_users_data[user]
-            associated_users_data[user] = {"amount": user_amount, "username": user_instance.username,
-            "first_name": user_instance.first_name, "last_name": user_instance.last_name,
-            "profile_pic_url": user_instance.profile_pic_url}
-        current_user_data = {"owed": owed, "owe": owe, "total": total,
-        "associated_users_data": associated_users_data, "user_groups": user_groups}
+            associated_users_data[user] = { "amount": user_amount, "username": user_instance.username, 
+                "first_name": user_instance.first_name, "last_name": user_instance.last_name, 
+                "profile_pic_url":user_instance.profile_pic_url }
+
+
+        current_user_data = {"owed": owed, "owe": owe, "total": total, "associated_users_data": associated_users_data, "user_groups": user_groups}
         return current_user_data
+
     return {'errors': ['Unauthorized']}
