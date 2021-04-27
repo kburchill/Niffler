@@ -1,1 +1,26 @@
-/* TODO Add site wide styles */
+body {
+    /* background-color: whitesmoke; */
+}
+
+/* Container div for elements underneath header bar. */
+.main-body {
+    margin-top: 30px;
+    border: 1px solid blue;
+    display: flex;
+    justify-content: center;
+}
+
+/* Div for center column in main body. */
+.main-bar {
+    width: 500px;
+    padding: 10px;
+}
+
+#login-form {
+    margin-top: 30px;
+}
+
+/* Styling for active NavLinks. */
+.active {
+    color: green;
+}
