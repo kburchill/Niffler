@@ -10,39 +10,18 @@ const CreateGroupForm = () => {
   // const [username, setUsername] = useState("");
     const [groupName, setGroupName] = useState('');
 
-  // Do we need what's below?
-    const onGroupCreation = async (e) => {
-        e.preventDefault();
-        if (groupName === repeatGroupName) {
-            await dispatch(onGroupCreation(groupName));
-            }
-        };
+  // // Placeholder
+  //   const onGroupCreation = async (e) => {
+  //       e.preventDefault();
+  //       if (groupName === repeatGroupName) {
+  //           await dispatch(groupCreation(groupName));
+  //           }
+  //       };
 
     const createGroupName = (e) => {
     setGroupName(e.target.value);
-    // };
+    };
 
-    // const updateEmail = (e) => {
-    //   setEmail(e.target.value);
-    // };
-    // const updateFirstname = (e) => {
-    //   setFirstname(e.target.value);
-    // };
-    // const updateLastname = (e) => {
-    //   setLastname(e.target.value);
-    // };
-
-    // const updatePassword = (e) => {
-    //   setPassword(e.target.value);
-    // };
-
-    // const updateRepeatPassword = (e) => {
-    //   setRepeatPassword(e.target.value);
-    // };
-
-    // if (user) {
-    //   return <Redirect to="/" />;
-    // }
 
     return (
         <form onSubmit={createGroupForm}>
@@ -60,6 +39,5 @@ const CreateGroupForm = () => {
         </form>
         );
     };
-};
 
 export default CreateGroupForm;
