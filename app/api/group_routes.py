@@ -17,16 +17,14 @@ def group_data(group_id):
     """
     Provides transactions for current group id
     """
+    print("I happened ==========")
     if (current_user.is_authenticated):
-        # print("user====is====authenticated")
         if any(group.id == int(group_id) for group in current_user.groups):
             #queries
             group_transactions = Transaction.query.filter(Transaction.group_id == group_id).all()
             group_data = Group.query.get(int(group_id))
             #create variables to organize data
             return_me_to_frontend = {}
-
-
 
             #Create list of expenses associated with transaction
             for transaction in group_transactions:
@@ -40,21 +38,7 @@ def group_data(group_id):
                     "Payer": transaction.payer_id, "Amount": transaction.paid_amount, "Date": transaction.expense_date,
                     "Debtors": Debtor_info
                 }
-            print(return_me_to_frontend)
-# # What do we want to display?
-# # Transaction description, paid amount, lent amount, User and their expense amount
-
-# # What do we have access to?
-# # Transaction description (group_transaction[0].description)
-# # Paid amount >> add onto database
-# # lent amount >> total up from each transactions
-# {
-# (transaction)1: {Payer: Kent, Amount: 100, Date: 5/5/2020 Debtors: {user_id(1): {name: Min Ki, amount: 25}, user_id(2): { name: Steve, amount: 25}}
-# }
-
-
-# #
-    return "5"
+        return return_me_to_frontend
 
 # Create Group POST Route
 @group_routes.route("/create", methods=['POST'])
@@ -73,9 +57,9 @@ def create_group():
         )
         db.session.add(group)
         group.users.append(user) # this gets replaced by what's underneath
-        # users = form.data 
+        # users = form.data
         # query loop (will fill in more detailed notes later)
-        # groups.user.append(user) # append each user separately 
+        # groups.user.append(user) # append each user separately
         db.session.commit()
         return 'Group Created!'
     # return {'errors': validation_errors_to_error_messages(form.errors)}, 401
