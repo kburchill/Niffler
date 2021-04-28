@@ -1,4 +1,7 @@
+# pylint: disable=too-many-lines
+
 from flask import Blueprint
+# @kent @Min Ki do we need what we don't use here?
 from app.models import User, TransactionExpense, group_membership, Group, Transaction
 from flask_login import current_user
 from sqlalchemy import or_, and_
@@ -58,7 +61,8 @@ def group_data(group_id):
 ##
     return "5"
 
-@group_routes.route("/create", methods = ['POST'])
+# Create Group POST Route
+@group_routes.route("/create", methods=['POST'])
 def create_group():
     """
     Creates a new group
@@ -77,4 +81,5 @@ def create_group():
         db.session.commit()
         # login_user(user)
         # return user.to_dict()
+        return 'Group Created!'
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
