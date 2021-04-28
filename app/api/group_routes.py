@@ -2,7 +2,6 @@ from flask import Blueprint
 from app.models import User, TransactionExpense, group_membership, Group, Transaction
 from flask_login import current_user
 from sqlalchemy import or_, and_
-import os
 
 
 group_routes = Blueprint("groups", __name__)
