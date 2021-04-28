@@ -28,7 +28,7 @@ def create_expense():
 
         # For each debtor, create a new transaction expense.
         payed_amount = form.data["amount"]
-        split_by = len(form.data["debtors"])
+        split_by = len(form.data["debtors"]) + 1
         remainder = payed_amount % split_by
         debtor_pays = (payed_amount - remainder) / split_by
         for debtor in form.data["debtors"]:
