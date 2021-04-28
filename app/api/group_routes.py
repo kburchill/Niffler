@@ -7,6 +7,7 @@ from flask_login import current_user
 from sqlalchemy import or_, and_
 import os
 from app.forms import CreateGroupForm
+from app.api.auth_routes import validation_errors_to_error_messages
 
 
 group_routes = Blueprint("groups", __name__)
@@ -38,7 +39,11 @@ def group_data(group_id):
                     "Payer": transaction.payer_id, "Amount": transaction.paid_amount, "Date": transaction.expense_date,
                     "Debtors": Debtor_info
                 }
-        return return_me_to_frontend
+            # print(return_me_to_frontend)
+            return return_me_to_frontend
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
 
 # Create Group POST Route
 @group_routes.route("/create", methods=['POST'])
@@ -48,19 +53,19 @@ def create_group():
     """
     form = CreateGroupForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print("=====", request.get_json())
+    # print(request.get_json(), "<======= JSON response here")
+
     if form.validate_on_submit():
-        print("Form validated correctly")
-        user = User.query.get(1)
         group = Group(
-            name=form.data['name']
+            name=form.data['name'],
         )
         db.session.add(group)
-        group.users.append(user) # this gets replaced by what's underneath
-        # users = form.data
-        # query loop (will fill in more detailed notes later)
-        # groups.user.append(user) # append each user separately
+
+        # print(form.data["users"], "here =========")
+
+        for user_id in form.data["users"]:
+            user_in_group = User.query.get(user_id)
+            group.users.append(user_in_group)
         db.session.commit()
-        return 'Group Created!'
-    # return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-    return "4"
+        return {'message': 'Group Created!'}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
