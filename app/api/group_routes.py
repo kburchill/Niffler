@@ -57,3 +57,24 @@ def group_data(group_id):
 
 ##
     return "5"
+
+@group_routes.route("/create", methods = ['POST'])
+def create_group():
+    """
+    Creates a new group
+    """
+    form = CreateGroupForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        group = Group(
+            # username=form.data['username'],
+            # first_name=form.data['firstname'],
+            # last_name=form.data['lastname'],
+            # email=form.data['email'],
+            # password=form.data['password']
+        )
+        db.session.add(group)
+        db.session.commit()
+        # login_user(user)
+        # return user.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
