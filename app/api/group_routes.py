@@ -1,7 +1,12 @@
-from flask import Blueprint
-from app.models import User, TransactionExpense, group_membership, Group, Transaction
+# pylint: disable=too-many-lines
+
+from flask import Blueprint, request
+# @kent @Min Ki do we need what we don't use here?
+from app.models import User, TransactionExpense, group_membership, Group, Transaction, db
 from flask_login import current_user
 from sqlalchemy import or_, and_
+import os
+from app.forms import CreateGroupForm
 
 
 group_routes = Blueprint("groups", __name__)
@@ -12,16 +17,66 @@ def group_data(group_id):
     """
     Provides transactions for current group id
     """
-    # How do we authenticate user is apart of group id
+    if (current_user.is_authenticated):
+        # print("user====is====authenticated")
+        if any(group.id == int(group_id) for group in current_user.groups):
+            #queries
+            group_transactions = Transaction.query.filter(Transaction.group_id == group_id).all()
+            group_data = Group.query.get(int(group_id))
+            #create variables to organize data
+            return_me_to_frontend = {}
 
-    if current_user.is_authenticated:
-        group_transactions = Transaction.query.filter(Transaction.group_id == group_id).all()
 
-        # apart_group = group_membership.query.filter(and_(group_membership.group_id == group_id, group_membership.user_id == current_user.id)).all()
-        defined_transactions = {}
-        for each_transaction in group_transactions:
-            details = TransactionExpense.query.filter(TransactionExpense.transaction_id == each_transaction.id).all()
-            defined_transactions[each_transaction.id] = details
 
-        print(defined_transactions, "here =======")
+            #Create list of expenses associated with transaction
+            for transaction in group_transactions:
+                all_expenses = [*transaction.expenses]
+                Debtor_info = []
+                for expense in all_expenses:
+                    a_user = next(user for user in group_data.users if expense.borrower_id == user.id)
+                    Debtor_info.append({a_user.id: {"name": a_user.first_name, "Amount": expense.amount}})
+                    # print(Debtor_info)
+                return_me_to_frontend[transaction.id] = {
+                    "Payer": transaction.payer_id, "Amount": transaction.paid_amount, "Date": transaction.expense_date,
+                    "Debtors": Debtor_info
+                }
+            print(return_me_to_frontend)
+# # What do we want to display?
+# # Transaction description, paid amount, lent amount, User and their expense amount
+
+# # What do we have access to?
+# # Transaction description (group_transaction[0].description)
+# # Paid amount >> add onto database
+# # lent amount >> total up from each transactions
+# {
+# (transaction)1: {Payer: Kent, Amount: 100, Date: 5/5/2020 Debtors: {user_id(1): {name: Min Ki, amount: 25}, user_id(2): { name: Steve, amount: 25}}
+# }
+
+
+# #
     return "5"
+
+# Create Group POST Route
+@group_routes.route("/create", methods=['POST'])
+def create_group():
+    """
+    Creates a new group
+    """
+    form = CreateGroupForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    print("=====", request.get_json())
+    if form.validate_on_submit():
+        print("Form validated correctly")
+        user = User.query.get(1)
+        group = Group(
+            name=form.data['name']
+        )
+        db.session.add(group)
+        group.users.append(user) # this gets replaced by what's underneath
+        # users = form.data 
+        # query loop (will fill in more detailed notes later)
+        # groups.user.append(user) # append each user separately 
+        db.session.commit()
+        return 'Group Created!'
+    # return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    return "4"
