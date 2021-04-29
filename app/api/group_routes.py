@@ -19,7 +19,6 @@ def group_data(group_id):
     Provides transactions for current group id
     """
     if (current_user.is_authenticated):
-        # print("user====is====authenticated")
         if any(group.id == int(group_id) for group in current_user.groups):
             #queries
             group_transactions = Transaction.query.filter(Transaction.group_id == group_id).all()
@@ -27,37 +26,21 @@ def group_data(group_id):
             #create variables to organize data
             return_me_to_frontend = {}
 
-
-
             #Create list of expenses associated with transaction
             for transaction in group_transactions:
                 all_expenses = [*transaction.expenses]
                 Debtor_info = []
                 for expense in all_expenses:
                     a_user = next(user for user in group_data.users if expense.borrower_id == user.id)
-                    Debtor_info.append({a_user.id: {"name": a_user.first_name, "Amount": expense.amount}})
-                    # print(Debtor_info)
-                return_me_to_frontend[transaction.id] = {
-                    "Payer": transaction.payer_id, "Amount": transaction.paid_amount, "Date": transaction.expense_date,
-                    "Debtors": Debtor_info
-                }
-            # print(return_me_to_frontend)
+                    Debtor_info.append({"payer_id": transaction.payer_id, "paid_amount": transaction.paid_amount, "expense_date": transaction.expense_date, "borrower_id": a_user.id, "first_name": a_user.first_name, "amount": expense.amount})
+                    print(Debtor_info, "++++DEBTOR INFO +++++")
+                return_me_to_frontend[transaction.id] = Debtor_info
+            print("START HERE =======")
+            print(return_me_to_frontend, "END HERE =========")
             return return_me_to_frontend
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-# # What do we want to display?
-# # Transaction description, paid amount, lent amount, User and their expense amount
 
-# # What do we have access to?
-# # Transaction description (group_transaction[0].description)
-# # Paid amount >> add onto database
-# # lent amount >> total up from each transactions
-# {
-# (transaction)1: {Payer: Kent, Amount: 100, Date: 5/5/2020 Debtors: {user_id(1): {name: Min Ki, amount: 25}, user_id(2): { name: Steve, amount: 25}}
-# }
-
-
-# #
 
 # Create Group POST Route
 @group_routes.route("/create", methods=['POST'])
@@ -83,3 +66,17 @@ def create_group():
         db.session.commit()
         return {'message': 'Group Created!'}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+
+# Delete Group DELETE Route
+
+@group_routes.route("/<group_id>", methods=["DELETE"])
+# Is this correct?
+def delete_group(group_id):
+    """
+    Deletes a group
+    """
+    group_to_delete = Group.query.get(group_id)
+    db.session.delete(group_id)
+    db.session.commit()
+    return {'message': 'Group Created!'}
