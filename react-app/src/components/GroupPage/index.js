@@ -15,6 +15,7 @@ const GroupPage = () => {
     useEffect(() => {
         dispatch(groupData(groupId.groupId))
     }, [dispatch])
+
     const renderGroupData = () => {
         return Object.values(groups).map(transaction => {
             if (transaction.length > 1) {
