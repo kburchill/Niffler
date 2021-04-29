@@ -3,7 +3,7 @@ from wtforms import StringField, SelectMultipleField
 from wtforms.validators import DataRequired, ValidationError
 from app.models import Group
 
-class CreateGroupForm(FlaskForm):
+class GroupForm(FlaskForm):
     name = StringField('name', validators=[DataRequired()])
     
     # Will eventually have to dynamically generate choices.

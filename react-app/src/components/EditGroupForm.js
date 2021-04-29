@@ -1,11 +1,9 @@
-// Still working on this. Checkin at 10:00
-
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { Redirect } from 'react-router-dom';
 // import { signUp } from '../../store/session';
 
-const EditGroupForm = () => {
+const GroupForm = () => {
     const dispatch = useDispatch();
   // Do we need what's below?
     const group = useSelector((state) => state.session.user);
@@ -76,4 +74,4 @@ const EditGroupForm = () => {
         );
     };
 
-export default EditGroupForm;
+export default GroupForm;
