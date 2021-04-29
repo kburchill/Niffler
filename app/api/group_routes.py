@@ -18,7 +18,6 @@ def group_data(group_id):
     """
     Provides transactions for current group id
     """
-    print("I happened ==========")
     if (current_user.is_authenticated):
         if any(group.id == int(group_id) for group in current_user.groups):
             #queries
@@ -69,4 +68,3 @@ def create_group():
         db.session.commit()
         return {'message': 'Group Created!'}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
- 

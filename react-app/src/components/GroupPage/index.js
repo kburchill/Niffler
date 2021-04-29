@@ -3,18 +3,25 @@ import { useDispatch, useSelector} from "react-redux";
 import LeftSideBar from "../LeftSideBar";
 import HeaderBar from "../HeaderBar";
 import GroupPageRight from "../RightSideBar/GroupPageRight";
-import groupData from "../../store/groups"
+import { groupData } from "../../store/groups"
 
 import { useParams } from "react-router-dom";
 
 const GroupPage = () => {
-    const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
+    const groups = useSelector(state => state.groups);
+    const dispatch = useDispatch();
     const groupId = useParams()
-
     useEffect(() => {
-        let groups = dispatch(groupData(1))
+        dispatch(groupData(groupId.groupId))
     }, [dispatch])
+    const renderGroupData = () => {
+        return Object.values(groups).map(transaction => {
+            return (
+                <li>{transaction.Amount} Amount here </li>
+            )
+        })
+    }
 
     return (
         <>
@@ -22,7 +29,7 @@ const GroupPage = () => {
             <div className="main-body">
                 <LeftSideBar />
                 <div className='main-bar'>Group Page Content for group ID: </div>
-                {/* <div>{groups[1]}</div> */}
+                <div>{renderGroupData()}</div>
                 <GroupPageRight />
             </div>
         </>

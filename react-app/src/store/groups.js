@@ -3,16 +3,22 @@ const LOAD = "groups/LOAD";
 
 const load = group => ({
     type: LOAD,
-    group
+    payload: group
 })
 
 
 export const groupData = (groupId) => async (dispatch) => {
-    const response = await fetch(`api/groups/${groupId}`);
+    const response = await fetch(`/api/groups/${groupId}`, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    console.log("group here but didnt go in", response)
     if (response.ok) {
-    const group = await response.json();
-    dispatch(load(group))
-    return group;
+        const group = await response.json();
+        dispatch(load(group))
+        console.log("group here did go in", group)
+        return group;
     }
 }
 
