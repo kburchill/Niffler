@@ -17,7 +17,6 @@ export const groupData = (groupId) => async (dispatch) => {
     if (response.ok) {
         const group = await response.json();
         dispatch(load(group))
-        console.log("group here did go in", group)
         return group;
     }
 }
