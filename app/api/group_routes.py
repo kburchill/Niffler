@@ -32,13 +32,11 @@ def group_data(group_id):
                 Debtor_info = []
                 for expense in all_expenses:
                     a_user = next(user for user in group_data.users if expense.borrower_id == user.id)
-                    Debtor_info.append({a_user.id: {"name": a_user.first_name, "Amount": expense.amount}})
-                    # print(Debtor_info)
-                return_me_to_frontend[transaction.id] = {
-                    "Payer": transaction.payer_id, "Amount": transaction.paid_amount, "Date": transaction.expense_date,
-                    "Debtors": Debtor_info
-                }
-            # print(return_me_to_frontend)
+                    Debtor_info.append({"payer_id": transaction.payer_id, "paid_amount": transaction.paid_amount, "expense_date": transaction.expense_date, "borrower_id": a_user.id, "first_name": a_user.first_name, "amount": expense.amount})
+                    print(Debtor_info, "++++DEBTOR INFO +++++")
+                return_me_to_frontend[transaction.id] = Debtor_info
+            print("START HERE =======")
+            print(return_me_to_frontend, "END HERE =========")
             return return_me_to_frontend
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
