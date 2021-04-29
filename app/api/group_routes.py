@@ -28,12 +28,21 @@ def group_data(group_id):
 
             #Create list of expenses associated with transaction
             for transaction in group_transactions:
+                current_user_lender = ""
+
                 all_expenses = [*transaction.expenses]
                 Debtor_info = []
                 for expense in all_expenses:
                     a_user = next(user for user in group_data.users if expense.borrower_id == user.id)
-                    Debtor_info.append({"payer_id": transaction.payer_id, "paid_amount": transaction.paid_amount, "expense_date": transaction.expense_date, "borrower_id": a_user.id, "first_name": a_user.first_name, "amount": expense.amount})
-                    print(Debtor_info, "++++DEBTOR INFO +++++")
+                    print(transaction.payer_id, "this is the payer_id")
+                    print(a_user.id, "the current user id is here")
+                    if transaction.payer_id == current_user.id:
+                        current_user_lender = "You"
+                    elif transaction.payer_id == a_user.id:
+                        current_user_lender = a_user.first_name
+                    else:
+                        current_user_lender = "Mismatch database info"
+                    Debtor_info.append({"payer_id": transaction.payer_id, "paid_amount": transaction.paid_amount, "expense_date": transaction.expense_date, "borrower_id": a_user.id, "first_name": a_user.first_name, "amount": expense.amount, "description": transaction.description, "transaction_id": transaction.id, "current_user_lender": current_user_lender})
                 return_me_to_frontend[transaction.id] = Debtor_info
             print("START HERE =======")
             print(return_me_to_frontend, "END HERE =========")
