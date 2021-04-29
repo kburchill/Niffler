@@ -10,6 +10,7 @@ const EditTransactionForm = () => {
     const [payerId, setPayerId] = useState(1);
     const [amount, setAmount] = useState(0);
     const [date, setDate] = useState();
+    const [completed, setCompleted] = useState(false)
 
     const { transactionId } = useParams();
 
@@ -28,6 +29,7 @@ const EditTransactionForm = () => {
                 description,
                 debtors,
                 amount,
+                completed
             })
         });
     }
@@ -59,6 +61,10 @@ const EditTransactionForm = () => {
 
     const updateDate = (e) => {
         setDate(e.target.value);
+    }
+    
+    const updateCompleted = (e) => {
+        setCompleted(e.target.checked);
     }
 
     return (
@@ -122,6 +128,15 @@ const EditTransactionForm = () => {
                     type="date"
                     value={date}
                     onChange={updateDate}
+                />
+            </div>
+            <div>
+                <label htmlFor="completed">Is this transaction settled?</label>
+                <input
+                    name="completed"
+                    type="checkbox"
+                    checked={completed}
+                    onChange={updateCompleted}
                 />
             </div>
             <button type="submit">Submit</button>

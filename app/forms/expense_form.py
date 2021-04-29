@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import TextAreaField, StringField, IntegerField, DateField, SelectMultipleField
+from wtforms import TextAreaField, StringField, IntegerField, DateField, SelectMultipleField, BooleanField
 from wtforms.validators import DataRequired, ValidationError
 
 def amount_correct(form, field):
@@ -16,4 +16,5 @@ class ExpenseForm(FlaskForm):
     expense_date = DateField("expense_date", validators=[DataRequired()])
     # Will eventually have to dynamically generate choices.
     debtors = SelectMultipleField("debtors", coerce=int, choices=[(1, "Demolition"), (2, "Harry"), (3, "Hermione"), (4, "Ronald")])
+    completed = BooleanField("completed")
 
