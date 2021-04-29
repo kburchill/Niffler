@@ -68,6 +68,32 @@ def create_group():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
+# PUT Group Route
+@group_routes.route("/<group_id>", methods=["PUT"])
+def update_group(group_id):
+    """
+    Updates a group
+    """
+    group_to_update = Group.query.get(group_id)
+    # form = EditGroupForm()
+    # form['csrf_token'].data = request.cookies['csrf_token']
+    # if form.validate_on_submit():
+    group.name = name
+        group = Group(
+            name=form.data['name'],
+        )
+        db.session.add(group)
+
+    #     # print(form.data["users"], "here =========")
+
+    #     for user_id in form.data["users"]:
+    #         user_in_group = User.query.get(user_id)
+    #         group.users.append(user_in_group)
+    #     db.session.commit()
+        return {'message': 'Group Updated!'}
+    
+
+
 # Delete Group DELETE Route
 
 @group_routes.route("/<group_id>", methods=["DELETE"])
@@ -77,6 +103,6 @@ def delete_group(group_id):
     Deletes a group
     """
     group_to_delete = Group.query.get(group_id)
-    db.session.delete(group_id)
+    db.session.delete(group_to_delete)
     db.session.commit()
     return {'message': 'Group Created!'}
