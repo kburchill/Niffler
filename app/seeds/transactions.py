@@ -10,7 +10,7 @@ def seed_transactions():
         description="The changing of monies",
         expense_date="2020-09-05 09:45:28",
         completed=False,
-        created_at="2020-09-05 09:45:28",
+        updated_at="2020-09-05 09:45:28",
     )
 
     db.session.add(x1)
@@ -22,7 +22,7 @@ def seed_transactions():
         description="The changing of other things",
         expense_date="2020-09-05 09:45:28",
         completed=False,
-        created_at="2020-09-05 09:45:28",
+        updated_at="2020-09-05 09:45:28",
     )
 
     db.session.add(x2)
@@ -34,7 +34,7 @@ def seed_transactions():
         description="The changing of MORE things",
         expense_date="2020-09-05 09:45:28",
         completed=False,
-        created_at="2020-09-05 09:45:28",
+        updated_at="2020-09-05 09:45:28",
     )
 
     db.session.add(x3)
@@ -46,7 +46,7 @@ def seed_transactions():
         description="The changing of lesser things",
         expense_date="2020-09-05 09:45:28",
         completed=False,
-        created_at="2020-09-05 09:45:28",
+        updated_at="2020-09-05 09:45:28",
     )
 
     db.session.add(x4)
