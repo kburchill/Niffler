@@ -1,12 +1,10 @@
-# pylint: disable=too-many-lines
-
 from flask import Blueprint, request
 # @kent @Min Ki do we need what we don't use here?
 from app.models import User, TransactionExpense, group_membership, Group, Transaction, db
 from flask_login import current_user
 from sqlalchemy import or_, and_
 import os
-from app.forms import CreateGroupForm
+from app.forms import GroupForm
 from app.api.auth_routes import validation_errors_to_error_messages
 
 
@@ -48,7 +46,7 @@ def create_group():
     """
     Creates a new group
     """
-    form = CreateGroupForm()
+    form = GroupForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     # print(request.get_json(), "<======= JSON response here")
 
@@ -75,22 +73,25 @@ def update_group(group_id):
     Updates a group
     """
     group_to_update = Group.query.get(group_id)
-    # form = EditGroupForm()
-    # form['csrf_token'].data = request.cookies['csrf_token']
-    # if form.validate_on_submit():
-    group.name = name
-        group = Group(
-            name=form.data['name'],
-        )
-        db.session.add(group)
+    form = GroupForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        # print('Check==============')
+        name = form.data['name']
+        group_to_update.name = name
+        # name = group_to_update.name
+        # group = Group(
+        # name=form.data[name],
+        # )
 
     #     # print(form.data["users"], "here =========")
 
     #     for user_id in form.data["users"]:
     #         user_in_group = User.query.get(user_id)
     #         group.users.append(user_in_group)
-    #     db.session.commit()
+        db.session.commit()
         return {'message': 'Group Updated!'}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
     
 
 
@@ -105,4 +106,4 @@ def delete_group(group_id):
     group_to_delete = Group.query.get(group_id)
     db.session.delete(group_to_delete)
     db.session.commit()
-    return {'message': 'Group Created!'}
+    return {'message': 'Group Deleted!'}
