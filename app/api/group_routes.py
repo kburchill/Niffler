@@ -1,5 +1,4 @@
 from flask import Blueprint, request
-# @kent @Min Ki do we need what we don't use here?
 from app.models import User, TransactionExpense, group_membership, Group, Transaction, db
 from flask_login import current_user
 from sqlalchemy import or_, and_
@@ -57,7 +56,6 @@ def create_group():
     """
     form = GroupForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    # print(request.get_json(), "<======= JSON response here")
 
     if form.validate_on_submit():
         group = Group(
@@ -65,13 +63,12 @@ def create_group():
         )
         db.session.add(group)
 
-        # print(form.data["users"], "here =========")
-
         for user_id in form.data["users"]:
             user_in_group = User.query.get(user_id)
             group.users.append(user_in_group)
         db.session.commit()
         return {'message': 'Group Created!'}
+
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
@@ -105,7 +102,6 @@ def update_group(group_id):
 
 
 # Delete Group DELETE Route
-
 @group_routes.route("/<group_id>", methods=["DELETE"])
 # Is this correct?
 def delete_group(group_id):

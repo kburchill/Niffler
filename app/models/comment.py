@@ -7,3 +7,5 @@ class Comment(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     transaction_id = db.Column(db.Integer, db.ForeignKey("transactions.id"))
     content = db.Column(db.String(500), nullable=False)
+
+    transaction = db.relationship("Transaction", back_populates="comments")
