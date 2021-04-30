@@ -16,8 +16,8 @@ const NewTransactionForm = () => {
 
     const dispatch = useDispatch();
 
-    const group = useSelector(state => state.groups[0]);
-    const userGroups = useSelector(state => state.userData.user_groups);
+    const groupUsers = useSelector(state => state.groups.users);
+    const userGroups = useSelector(state => state.userData.groups);
 
     useEffect(() => {
         dispatch(groupData(groupId));
@@ -98,15 +98,10 @@ const NewTransactionForm = () => {
             </div>
             <div>
                 <label htmlFor="payer">Which group member paid?</label>
-                {/* These are temporary users. Finished version will dynamically get users belonging to group from store. */}
                 <select onChange={updatePayerId} value={payerId}>
-                    <option value="1">Demolition</option>
-                    <option value="2">Harry</option>
-                    <option value="3">Hermione</option>
-                    <option value="4">Ronald</option>
-                    {group && Object.entries(group).map(([group_id, group_name]) => (
-                        <option key={group_id} to={`/groups/${group_id}`} exact={true} activeClassName="active">
-                            {group_name}
+                    {groupUsers && Object.values(groupUsers).map(user => (
+                        <option key={user.user_id} value={user.user_id}>
+                            {user.first_name + " " + user.last_name}
                         </option>
                     ))}
                 </select>

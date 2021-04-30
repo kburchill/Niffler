@@ -68,7 +68,7 @@ def dashboard_data():
                     "profile_pic_url":user_instance.profile_pic_url })
 
 
-        current_user_data = {"owed": owed, "owe": owe, "total": total, "lenders": lenders, "debtors": debtors, "user_groups": user_groups}
+        current_user_data = {"owed": owed, "owe": owe, "total": total, "lenders": lenders, "debtors": debtors, "groups": user_groups}
         return current_user_data
 
     return {'errors': ['Unauthorized']}

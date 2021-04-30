@@ -22,27 +22,32 @@ def group_data(group_id):
                 Transaction.group_id == group_id).all()
             group_data = Group.query.get(int(group_id))
             # create variables to organize data
-            return_me_to_frontend = {}
+            transaction_info = {}
 
             # Create list of expenses associated with transaction
             for transaction in group_transactions:
                 current_user_lender = "You"
-
                 all_expenses = [*transaction.expenses]
                 Debtor_info = []
+                total_debt_owed = 0
+                # Go through each expense and organize database info
                 for expense in all_expenses:
                     a_user = next(
                         user for user in group_data.users if expense.borrower_id == user.id)
+                    #Get the name of person that paid
                     users = group_data.users
                     for user in users:
                         if (user.id == transaction.payer_id) and not (current_user.id == transaction.payer_id):
                             current_user_lender = user.first_name
+                    #Append data onto debtor info
+                    total_debt_owed += expense.amount
 
                     Debtor_info.append({"payer_id": transaction.payer_id, "paid_amount": transaction.paid_amount, "expense_date": transaction.expense_date, "borrower_id": a_user.id,
-                                       "first_name": a_user.first_name, "amount": expense.amount, "description": transaction.description, "transaction_id": transaction.id, "current_user_lender": current_user_lender})
-                return_me_to_frontend[transaction.id] = Debtor_info
+                                       "first_name": a_user.first_name, "amount": expense.amount, "description": transaction.description, "transaction_id": transaction.id, "current_user_lender": current_user_lender, "total_debt_owed": total_debt_owed })
+                #Create dict entry in {transaction.id: info} form
+                transaction_info[transaction.id] = Debtor_info
             print("START HERE =======")
-            print(return_me_to_frontend, "END HERE =========")
+            print(transaction_info, "END HERE =========")
 
             # Create list of users in the group not including the current user.
             group_users = []
@@ -51,9 +56,9 @@ def group_data(group_id):
                     group_users.append({"user_id": user.id, "username": user.username, 
                         "first_name": user.first_name, "last_name": user.last_name, 
                         "profile_pic_url": user.profile_pic_url})
-            return_me_to_frontend[0] = group_users
 
-            return return_me_to_frontend
+            full_frontend_data = {"transactions": transaction_info, "users": group_users}
+            return full_frontend_data
         return {'errors': ['Unauthorized']}, 401
     return {'errors': ['Unauthorized']}, 401
 
