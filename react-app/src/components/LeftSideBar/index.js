@@ -1,9 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 
 import "./LeftSideBar.css"
 
 const LeftSideBar = () => {
+    const userGroups = useSelector(state => state.userData.user_groups);
+
     return (
         <div className="left-sidebar">
             <div className="left-sidebar__main">
@@ -13,13 +17,12 @@ const LeftSideBar = () => {
             </div>
                 
             <div className="left-sidebar__groups">
-                <NavLink to="/groups/1" exact={true} activeClassName="active">
-                    Group1
-                </NavLink>
-            
-                <NavLink to="/groups/2" exact={true} activeClassName="active">
-                    Group2
-                </NavLink>
+                {/* { typeof userGroups} */}
+                {userGroups && Object.entries(userGroups).map(([group_id, group_name]) => (
+                    <NavLink key={group_id} to={`/groups/${group_id}`} exact={true} activeClassName="active">
+                        {group_name}
+                    </NavLink>
+                ))}
             </div>
         </div>
     )
