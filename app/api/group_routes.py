@@ -22,41 +22,38 @@ def group_data(group_id):
                 Transaction.group_id == group_id).all()
             group_data = Group.query.get(int(group_id))
             # create variables to organize data
-            transaction_info = {}
+            all_transactions_for_group = {}
 
             # Create list of expenses associated with transaction
             for transaction in group_transactions:
                 current_user_lender = "You"
                 all_expenses = [*transaction.expenses]
-                Debtor_info = []
+                transaction_info = []
                 total_debt_owed = 0
                 # Go through each expense and organize database info
                 for expense in all_expenses:
                     a_user = next(
                         user for user in group_data.users if expense.borrower_id == user.id)
-                    #Get the name of person that paid
+                    # Get the name of person that paid
                     users = group_data.users
+                    group_users = []
                     for user in users:
                         if (user.id == transaction.payer_id) and not (current_user.id == transaction.payer_id):
                             current_user_lender = user.first_name
-                    #Append data onto debtor info
+                        # Create list of users in the group not including the current user.
+                        
+                        group_users.append({"user_id": user.id, "username": user.username,
+                                            "first_name": user.first_name, "last_name": user.last_name,
+                                            "profile_pic_url": user.profile_pic_url})
                     total_debt_owed += expense.amount
 
-                    Debtor_info.append({"payer_id": transaction.payer_id, "paid_amount": transaction.paid_amount, "expense_date": transaction.expense_date, "borrower_id": a_user.id,
-                                       "first_name": a_user.first_name, "amount": expense.amount, "description": transaction.description, "transaction_id": transaction.id, "current_user_lender": current_user_lender, "total_debt_owed": total_debt_owed })
-                #Create dict entry in {transaction.id: info} form
-                transaction_info[transaction.id] = Debtor_info
-            print("START HERE =======")
-            print(transaction_info, "END HERE =========")
+                    # Append data onto transacition info
+                    transaction_info.append({"payer_id": transaction.payer_id, "paid_amount": transaction.paid_amount, "expense_date": transaction.expense_date, "borrower_id": a_user.id,
+                                             "first_name": a_user.first_name, "amount": expense.amount, "description": transaction.description, "transaction_id": transaction.id, "current_user_lender": current_user_lender, "total_debt_owed": total_debt_owed})
+                # Create dict entry in {transaction.id: info} form
+                all_transactions_for_group[transaction.id] = transaction_info
+            full_frontend_data = {"transaction_info": all_transactions_for_group, "users": group_users}
 
-            # Create list of users in the group not including the current user.
-            group_users = []
-            for user in group_data.users:
-                group_users.append({"user_id": user.id, "username": user.username, 
-                    "first_name": user.first_name, "last_name": user.last_name, 
-                    "profile_pic_url": user.profile_pic_url})
-
-            full_frontend_data = {"transaction_info": transaction_info, "users": group_users}
             return full_frontend_data
         return {'errors': ['Unauthorized']}, 401
     return {'errors': ['Unauthorized']}, 401
@@ -105,7 +102,7 @@ def update_group(group_id):
         for user_id in form.data["users"]:
             user_in_group = User.query.get(user_id)
             group_users.append(user_in_group)
-    
+
         group_to_update.users = group_users
 
         db.session.commit()

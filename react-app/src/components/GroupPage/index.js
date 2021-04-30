@@ -9,9 +9,9 @@ import './GroupPage.css';
 import { useParams } from "react-router-dom";
 
 const GroupPage = () => {
-    // const user = useSelector(state => state.session.user);
-    const groups = useSelector(state => state.groups.transaction_info);
-
+    const user = useSelector(state => state.session.user);
+    const transaction_info = useSelector(state => state.groups.transaction_info);
+    const group_info = useSelector(state => state.groups.users)
     const dispatch = useDispatch();
 
     const groupId = useParams();
@@ -21,10 +21,10 @@ const GroupPage = () => {
     // }, [groupId, dispatch]);
 
         dispatch(groupData(groupId.groupId))
-    }, [dispatch, groupId])
-    
+    }, [dispatch])
+
     const renderGroupData = () => {
-        return groups && Object.values(groups).map(transaction => {
+        return transaction_info && Object.values(transaction_info).map(transaction => {
             // Map through each expense if multiple
             /*
             What data do we need to display?
