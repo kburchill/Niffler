@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 // import { Redirect } from 'react-router-dom';
 // import { signUp } from '../../store/session';
 
@@ -11,6 +12,7 @@ const GroupForm = () => {
     const [groupName, setGroupName] = useState('');
     const [groupUsers, setGroupUsers] = useState([]);
 
+    const { groupId } = useParams();
   // // Placeholder
   //   const onGroupCreation = async (e) => {
   //       e.preventDefault();
@@ -26,8 +28,8 @@ const GroupForm = () => {
     const onGroupSubmit = async (e) => {
         e.preventDefault();
         // Temporary fetch - use session thunk in finished version.
-        const response = await fetch('/api/groups/<group_id>', {
-            method: 'PATCH',
+        const response = await fetch(`/api/groups/${groupId}`, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },

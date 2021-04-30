@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LeftSideBar from "../LeftSideBar";
 import HeaderBar from "../HeaderBar";
@@ -11,10 +11,15 @@ import { useParams } from "react-router-dom";
 const GroupPage = () => {
     const user = useSelector(state => state.session.user);
     const transaction_info = useSelector(state => state.groups.transaction_info);
-    const group_info = useSelector(state => state.groups.minkidata)
+    const group_info = useSelector(state => state.groups.users)
     const dispatch = useDispatch();
-    const groupId = useParams()
+
+    const groupId = useParams();
+
     useEffect(() => {
+    //     dispatch(groupData(groupId.groupId));
+    // }, [groupId, dispatch]);
+
         dispatch(groupData(groupId.groupId))
     }, [dispatch])
 

@@ -27,7 +27,7 @@ const groupReducer = (state = initialState, action) =>
 {
     switch (action.type) {
         case LOAD:
-            return { transaction_info: action.payload.transaction_info, minkidata: action.payload.minkidata }
+            return { transaction_info: action.payload.transaction_info, users: action.payload.users }
         default:
             return state;
     }
