@@ -40,10 +40,10 @@ def group_data(group_id):
                         if (user.id == transaction.payer_id) and not (current_user.id == transaction.payer_id):
                             current_user_lender = user.first_name
                         # Create list of users in the group not including the current user.
-                        if current_user.id != user.id:
-                            group_users.append({"user_id": user.id, "username": user.username,
-                                                "first_name": user.first_name, "last_name": user.last_name,
-                                                "profile_pic_url": user.profile_pic_url})
+
+                        group_users.append({"user_id": user.id, "username": user.username,
+                                            "first_name": user.first_name, "last_name": user.last_name,
+                                            "profile_pic_url": user.profile_pic_url})
                     total_debt_owed += expense.amount
 
                     # Append data onto transacition info
