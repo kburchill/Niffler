@@ -11,6 +11,7 @@ class Transaction(db.Model):
     description = db.Column(db.String(100))
     expense_date = db.Column(db.Date, nullable=False)
     completed = db.Column(db.Boolean)
-    created_at = db.Column(db.Date, nullable=False)
+    updated_at = db.Column(db.Date, nullable=False)
 
-    expenses = db.relationship("TransactionExpense", back_populates="transaction")
+    expenses = db.relationship("TransactionExpense", back_populates="transaction", cascade="all, delete-orphan")
+    comments = db.relationship("Comment", back_populates="transaction", cascade="all, delete-orphan")

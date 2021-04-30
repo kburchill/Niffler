@@ -4,6 +4,8 @@ from flask_login import current_user
 from sqlalchemy import or_
 # from sqlalchemy.orm import sessionmaker, joinedload
 import os
+
+
 dashboard_routes = Blueprint("dashboard", __name__)
 
 
@@ -12,6 +14,7 @@ def dashboard_data():
     """
     Provides transactions current user
     """
+    print(current_user.is_authenticated)
     if current_user.is_authenticated:
         my_transactions = TransactionExpense.query.filter(or_(TransactionExpense.lender_id == current_user.id, 
                                                               TransactionExpense.borrower_id == current_user.id)).all()
@@ -47,17 +50,25 @@ def dashboard_data():
         # list of user(model) objects
         other_users = User.query.filter(User.id.in_(associated_users_data)).all()
 
+        debtors = []
+        lenders = []
+
         for user in associated_users_data:
             # find the corresponding user(model) instance
             user_instance = next(u for u in other_users if u.id == user)
 
             user_amount = associated_users_data[user]
-            associated_users_data[user] = { "amount": user_amount, "username": user_instance.username, 
-                "first_name": user_instance.first_name, "last_name": user_instance.last_name, 
-                "profile_pic_url":user_instance.profile_pic_url }
+            if user_amount > 0:
+                debtors.append({"user_id": user, "amount": user_amount, "username": user_instance.username, 
+                    "first_name": user_instance.first_name, "last_name": user_instance.last_name, 
+                    "profile_pic_url":user_instance.profile_pic_url })
+            else:
+                lenders.append({"user_id": user, "amount": user_amount, "username": user_instance.username, 
+                    "first_name": user_instance.first_name, "last_name": user_instance.last_name, 
+                    "profile_pic_url":user_instance.profile_pic_url })
 
 
-        current_user_data = {"owed": owed, "owe": owe, "total": total, "associated_users_data": associated_users_data, "user_groups": user_groups}
+        current_user_data = {"owed": owed, "owe": owe, "total": total, "lenders": lenders, "debtors": debtors, "user_groups": user_groups}
         return current_user_data
 
     return {'errors': ['Unauthorized']}
