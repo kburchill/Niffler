@@ -18,6 +18,7 @@ const NewTransactionForm = () => {
 
     const groupUsers = useSelector(state => state.groups.users);
     const userGroups = useSelector(state => state.userData.groups);
+    const currentUser = useSelector(state => state.session);
 
     useEffect(() => {
         dispatch(groupData(groupId));
@@ -119,10 +120,11 @@ const NewTransactionForm = () => {
                 <label htmlFor="users">Which group members owe money?</label>
                 {/* These are temporary users. Finished version will dynamically get users belonging to group from store. */}
                 <select multiple={true} onChange={updateDebtors}>
-                    <option value="1">Demolition</option>
-                    <option value="2">Harry</option>
-                    <option value="3">Hermione</option>
-                    <option value="4">Ronald</option>
+                    {groupUsers && Object.values(groupUsers).map(user => (
+                        (user.user_id !== payerId) && <option key={user.user_id} value={user.user_id}>
+                            {user.first_name + " " + user.last_name}
+                        </option>
+                    ))}
                 </select>
             </div>
             <div>

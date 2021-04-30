@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import "./LeftSideBar.css"
 
 const LeftSideBar = () => {
-    const userGroups = useSelector(state => state.userData.user_groups);
+    const userGroups = useSelector(state => state.userData.groups);
 
     return (
         <div className="left-sidebar">

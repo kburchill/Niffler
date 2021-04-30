@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 
 const GroupPage = () => {
     // const user = useSelector(state => state.session.user);
-    const groups = useSelector(state => state.groups.transactions);
+    const groups = useSelector(state => state.groups.transaction_info);
 
     const dispatch = useDispatch();
 

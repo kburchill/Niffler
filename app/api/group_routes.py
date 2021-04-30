@@ -52,12 +52,11 @@ def group_data(group_id):
             # Create list of users in the group not including the current user.
             group_users = []
             for user in group_data.users:
-                if current_user.id != user.id:
-                    group_users.append({"user_id": user.id, "username": user.username, 
-                        "first_name": user.first_name, "last_name": user.last_name, 
-                        "profile_pic_url": user.profile_pic_url})
+                group_users.append({"user_id": user.id, "username": user.username, 
+                    "first_name": user.first_name, "last_name": user.last_name, 
+                    "profile_pic_url": user.profile_pic_url})
 
-            full_frontend_data = {"transactions": transaction_info, "users": group_users}
+            full_frontend_data = {"transaction_info": transaction_info, "users": group_users}
             return full_frontend_data
         return {'errors': ['Unauthorized']}, 401
     return {'errors': ['Unauthorized']}, 401
