@@ -36,9 +36,8 @@ const GroupPage = () => {
                                 <div class="info-block">
                                     <div class="date">{transaction[0].expense_date}</div>
                                     <div class="description">{transaction[0].description}</div>
-                                    <div class="lender">LOOK HERE==== {transaction[0].current_user_lender}</div>
+                                    <div class="lent">{transaction[0].current_user_lender} Paid: {transaction[0].paid_amount}</div>
                                 </div>
-                                <div class="cost">You Paid:{transaction[0].paid_amount}</div>
                             </div>
                             {
                                 transaction.map(each_transaction => {
@@ -59,9 +58,8 @@ const GroupPage = () => {
                             <div class="info-block">
                                 <div class="date">{transaction[0].expense_date}</div>
                                 <div class="description">{transaction[0].description}</div>
+                                <div class="lent">{transaction[0].current_user_lender} Paid: {transaction[0].paid_amount}</div>
                             </div>
-                            <div class="cost">You Paid:{transaction[0].paid_amount}</div>
-                            <div class="lent">You Lent: need to get this</div>
                         </div>
                         <li className="detailed-info">{transaction[0].first_name} Owes me {transaction[0].amount}</li>
                     </div>)
