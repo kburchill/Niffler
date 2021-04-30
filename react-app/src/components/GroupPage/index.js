@@ -28,6 +28,7 @@ const GroupPage = () => {
             AFTER HOVER:
             [Lender name and transaction amount], for each borrower, borrower name and amount
             */
+            console.log(transaction, "here ============")
             if (transaction.length > 1) {
                 return (
                         <div className="transaction-div">
