@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_login import current_user
 from app.forms import ExpenseForm
-from app.models import Transaction, TransactionExpense, db
+from app.models import Transaction, TransactionExpense, Group, db
 from datetime import date
 from app.api.auth_routes import validation_errors_to_error_messages
 
@@ -11,6 +11,9 @@ expense_routes = Blueprint("expenses", __name__)
 def create_expense():
     form = ExpenseForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+
+    form.debtors.choices = [(user.id, user.first_name) for user in Group.query.get(form.data["group_id"]).users if user.id != form.data["payer_id"]]
+
     if form.validate_on_submit():
         # Create the new transaction.
         new_transaction = Transaction(
@@ -48,7 +51,9 @@ def create_expense():
 def edit_expense(transaction_id):
     form = ExpenseForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    # print(request.get_json(), "<===== JSON object here")
+
+    form.debtors.choices = [(user.id, user.first_name) for user in Group.query.get(form.data["group_id"]).users if user.id != form.data["payer_id"]]
+
     if form.validate_on_submit():
         # Edit the transaction.
         transaction_to_edit = Transaction.query.get(transaction_id)

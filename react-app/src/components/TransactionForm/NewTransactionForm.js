@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from 'react-router-dom';
 
 import { groupData } from "../../store/groups"
 
@@ -14,6 +15,8 @@ const NewTransactionForm = () => {
     const [amount, setAmount] = useState(0);
     const [date, setDate] = useState();
 
+    const history = useHistory();
+
     const dispatch = useDispatch();
 
     const groupUsers = useSelector(state => state.groups.users);
@@ -25,7 +28,7 @@ const NewTransactionForm = () => {
     }, [groupId]);
 
     const onSubmit = async (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         // Temporary fetch - use session thunk in finished version.
         const response = await fetch('/api/expenses/', {
             method: 'POST',
@@ -41,6 +44,7 @@ const NewTransactionForm = () => {
                 amount,
             })
         });
+        // history.push(`/dashboard/`);
     }
 
     const updateGroup = (e) => {
@@ -82,7 +86,6 @@ const NewTransactionForm = () => {
             <div id="close-new-transaction-form">X</div>
             <div>
                 <label htmlFor="groups">Select a group.</label>
-                {/* These are temporary groups. Finished version will dynamically get current user's groups from store. */}
                 <select onChange={updateGroup} value={groupId}>
                     {userGroups && Object.entries(userGroups).map(([group_id, group_name]) => (
                         <option key={group_id} value={group_id}>{group_name}</option>
@@ -118,7 +121,6 @@ const NewTransactionForm = () => {
             </div>
             <div>
                 <label htmlFor="users">Which group members owe money?</label>
-                {/* These are temporary users. Finished version will dynamically get users belonging to group from store. */}
                 <select multiple={true} onChange={updateDebtors}>
                     {groupUsers && Object.values(groupUsers).map(user => (
                         (user.user_id !== payerId) && <option key={user.user_id} value={user.user_id}>

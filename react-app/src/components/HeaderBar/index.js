@@ -9,9 +9,12 @@ const HeaderBar = () => {
     const user = useSelector(state => state.session.user);
     return (
         <div id='header-bar'>
-            <a href="/dashboard">
+            {/* <a href="/dashboard">
                 <div class="niffler-logo"></div>
-            </a>
+            </a> */}
+            <Link to="/dashboard" exact={true}>
+                <div class="niffler-logo"></div>
+            </Link>
             <div class="header-bar-options">
             <a href="/sign-up">
                 <div>Sign Up</div>

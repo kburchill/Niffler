@@ -15,6 +15,6 @@ class ExpenseForm(FlaskForm):
     group_id = IntegerField("group_id")
     expense_date = DateField("expense_date", validators=[DataRequired()])
     # Will eventually have to dynamically generate choices.
-    debtors = SelectMultipleField("debtors", coerce=int, choices=[(1, "Demolition"), (2, "Harry"), (3, "Hermione"), (4, "Ronald")])
+    debtors = SelectMultipleField("debtors", coerce=int)
     completed = BooleanField("completed")
 

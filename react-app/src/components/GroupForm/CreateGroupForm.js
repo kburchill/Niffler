@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 // import { Redirect } from 'react-router-dom';
 // import { signUp } from '../../store/session';
 
+import "./GroupForm.css"
+
 const CreateGroupForm = () => {
     const dispatch = useDispatch();
   // Do we need what's below?
@@ -49,7 +51,8 @@ const CreateGroupForm = () => {
 
 
     return (
-        <form onSubmit={onGroupSubmit}>
+        <form onSubmit={onGroupSubmit} id="create-group-form">
+            <div id="close-new-group-form">X</div>
             <div>
                 <label>Group Name</label>
                 <input

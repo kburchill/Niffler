@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+import CreateGroupButton from "../GroupForm/CreateGroupButton"
 
 import "./LeftSideBar.css"
 
@@ -14,10 +15,12 @@ const LeftSideBar = () => {
                 <NavLink to="/dashboard" exact={true} activeClassName="active">
                     Dashboard
                 </NavLink>
+                <CreateGroupButton />
             </div>
                 
             <div className="left-sidebar__groups">
                 {/* { typeof userGroups} */}
+                
                 {userGroups && Object.entries(userGroups).map(([group_id, group_name]) => (
                     <NavLink key={group_id} to={`/groups/${group_id}`} exact={true} activeClassName="active">
                         {group_name}
