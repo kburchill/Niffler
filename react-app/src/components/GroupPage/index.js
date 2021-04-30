@@ -4,6 +4,7 @@ import LeftSideBar from "../LeftSideBar";
 import HeaderBar from "../HeaderBar";
 import GroupPageRight from "../RightSideBar/GroupPageRight";
 import { groupData } from "../../store/groups"
+import NewTransactionButton from "../TransactionForm/NewTransactionButton"
 import './GroupPage.css';
 
 import { useParams } from "react-router-dom";
@@ -21,7 +22,8 @@ const GroupPage = () => {
     // }, [groupId, dispatch]);
 
         dispatch(groupData(groupId.groupId))
-    }, [dispatch])
+    }, [dispatch, groupId])
+
     const renderGroupData = () => {
         return transaction_info && Object.values(transaction_info).map(transaction => {
             // Map through each expense if multiple
@@ -86,6 +88,7 @@ const GroupPage = () => {
                 <LeftSideBar />
                 <div className="center-block-main">
                     <h1 className='main-bar'>{group_name}</h1>
+                    <NewTransactionButton />
                     <div className="current-group-transactions">{renderGroupData()}</div>
                 </div>
                 <GroupPageRight />

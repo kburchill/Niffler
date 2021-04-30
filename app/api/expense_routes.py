@@ -22,14 +22,17 @@ def create_expense():
             completed=False,
             updated_at=date.today()
         )
-        db.session.add(new_transaction) 
+        db.session.add(new_transaction)
         db.session.commit()
-
+        print("LOOK BELOW ME =======")
+        requestinfo = request.json
+        print(requestinfo["debtors"], "debtors", requestinfo['groupUsers'], "groupusers")
         # For each debtor, create a new transaction expense.
         payed_amount = form.data["amount"]
         split_by = len(form.data["debtors"]) + 1
         remainder = payed_amount % split_by
         debtor_pays = (payed_amount - remainder) / split_by
+        all_associated_transaction = []
         for debtor in form.data["debtors"]:
             new_expense = TransactionExpense(
                 transaction_id=new_transaction.id,
@@ -39,9 +42,34 @@ def create_expense():
                 completed=False,
                 updated_at=date.today()
             )
-            db.session.add(new_expense) 
+            users = requestinfo['groupUsers']
+            payer_id = requestinfo["payer_id"]
+            debtor_firstname = ""
+            if payer_id == current_user.id:
+                current_user_lender = 'You'
+            else:
+                current_user_lender = users[payer_id].first_name
+            for user in users:
+                print(user, "here are our users")
+                if user['user_id'] == debtor:
+                    debtor_firstname = user['first_name']
+
+            all_associated_transaction.append({
+                'payer_id': payer_id,
+                'paid_amount': payed_amount,
+                'expense_date': requestinfo["expense_date"],
+                'borrower_id': debtor,
+                'first_name': debtor_firstname,
+                'amount': debtor_pays,
+                'description': requestinfo['description'],
+                'current_user_lender': current_user_lender
+            })
+            db.session.add(new_expense)
         db.session.commit()
-        return {'message': 'Transaction Created!'}
+
+        response_transaction = {new_transaction.id: all_associated_transaction}
+        print(response_transaction, "HERE IS THE RESPONE FROM BACKEND")
+        return {'message': 'Transaction Created!', 'transaction': response_transaction}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 @expense_routes.route("/<int:transaction_id>", methods=["PATCH"])
@@ -80,7 +108,7 @@ def edit_expense(transaction_id):
                 new_debtors.remove(previous_debtor)
             else:
                 db.session.delete(previous_expense)
-        
+
         for new_debtor in new_debtors:
             new_expense = TransactionExpense(
                 transaction_id=transaction_to_edit.id,
@@ -90,8 +118,8 @@ def edit_expense(transaction_id):
                 completed=form.data["completed"],
                 updated_at=date.today()
             )
-            db.session.add(new_expense) 
-    
+            db.session.add(new_expense)
+
         db.session.commit()
         return {'message': 'Transaction Updated!'}
 

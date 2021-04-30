@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 
-import { groupData } from "../../store/groups"
+import { addGroupTransaction, groupData } from "../../store/groups"
 
 import "./TransactionForm.css"
 
@@ -39,8 +39,12 @@ const NewTransactionForm = () => {
                 description,
                 debtors,
                 amount,
+                groupUsers
             })
         });
+        if (response.ok) {
+            dispatch(addGroupTransaction(response));
+        }
     }
 
     const updateGroup = (e) => {
@@ -58,8 +62,9 @@ const NewTransactionForm = () => {
             if (options.item(i).selected) values.push(options.item(i).value);
         }
         setDebtors(values);
+        console.log(values, groupUsers, "DEBTOR INFO HERE")
     }
-    
+
     const updatePayerId = (e) => {
         setPayerId(parseInt(e.target.value));
     }
