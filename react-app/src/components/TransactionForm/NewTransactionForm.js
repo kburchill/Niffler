@@ -1,4 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+
+import { groupData } from "../../store/groups"
+
+import "./TransactionForm.css"
 
 const NewTransactionForm = () => {
     const [errors, setErrors] = useState([]);
@@ -8,6 +13,15 @@ const NewTransactionForm = () => {
     const [payerId, setPayerId] = useState(1);
     const [amount, setAmount] = useState(0);
     const [date, setDate] = useState();
+
+    const dispatch = useDispatch();
+
+    const group = useSelector(state => state.groups[0]);
+    const userGroups = useSelector(state => state.userData.user_groups);
+
+    useEffect(() => {
+        dispatch(groupData(groupId));
+    }, [groupId]);
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -64,14 +78,14 @@ const NewTransactionForm = () => {
                     <div>{error}</div>
                 ))}
             </div>
+            <div id="close-new-transaction-form">X</div>
             <div>
                 <label htmlFor="groups">Select a group.</label>
                 {/* These are temporary groups. Finished version will dynamically get current user's groups from store. */}
                 <select onChange={updateGroup} value={groupId}>
-                    <option value="1">Gryffindor</option>
-                    <option value="2">Ravenclaw</option>
-                    <option value="3">Hufflepuff</option>
-                    <option value="4">Slytherin</option>
+                    {userGroups && Object.entries(userGroups).map(([group_id, group_name]) => (
+                        <option key={group_id} value={group_id}>{group_name}</option>
+                    ))}
                 </select>
             </div>
             <div>
@@ -90,6 +104,11 @@ const NewTransactionForm = () => {
                     <option value="2">Harry</option>
                     <option value="3">Hermione</option>
                     <option value="4">Ronald</option>
+                    {group && Object.entries(group).map(([group_id, group_name]) => (
+                        <option key={group_id} to={`/groups/${group_id}`} exact={true} activeClassName="active">
+                            {group_name}
+                        </option>
+                    ))}
                 </select>
             </div>
             <div>

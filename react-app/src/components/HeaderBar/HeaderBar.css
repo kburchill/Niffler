@@ -22,10 +22,10 @@
     position: fixed;
     background-color: white;
     border: 1px solid rgb(189, 189, 189);
-    padding: 10px 10px 10px 10px;
+    padding: 10px;
     font-family: 'Open Sans', sans-serif;
 }
 
 .profile-dropdown__item {
-    padding: 10px 10px 10px 10px;
+    padding: 10px;
 }

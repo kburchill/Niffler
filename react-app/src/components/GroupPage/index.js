@@ -9,7 +9,7 @@ import './GroupPage.css';
 import { useParams } from "react-router-dom";
 
 const GroupPage = () => {
-    const user = useSelector(state => state.session.user);
+    // const user = useSelector(state => state.session.user);
     const groups = useSelector(state => state.groups);
 
     const dispatch = useDispatch();

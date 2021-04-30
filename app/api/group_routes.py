@@ -43,9 +43,19 @@ def group_data(group_id):
                 return_me_to_frontend[transaction.id] = Debtor_info
             print("START HERE =======")
             print(return_me_to_frontend, "END HERE =========")
+
+            # Create list of users in the group not including the current user.
+            group_users = []
+            for user in group_data.users:
+                if current_user.id != user.id:
+                    group_users.append({"user_id": user.id, "username": user.username, 
+                        "first_name": user.first_name, "last_name": user.last_name, 
+                        "profile_pic_url": user.profile_pic_url})
+            return_me_to_frontend[0] = group_users
+
             return return_me_to_frontend
-        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+        return {'errors': ['Unauthorized']}, 401
+    return {'errors': ['Unauthorized']}, 401
 
 
 # Create Group POST Route

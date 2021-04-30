@@ -5,6 +5,7 @@ import HeaderBar from "../HeaderBar"
 import LeftSideBar from "../LeftSideBar"
 import DashboardRight from "../RightSideBar/DashboardRight"
 import { getUserData } from "../../store/user"
+import NewTransactionButton from "../TransactionForm/NewTransactionButton"
 
 import './Dashboard.css'
 
@@ -12,7 +13,9 @@ const Dashboard = () => {
     const userData = useSelector(state => state.userData);
     const lenders = useSelector(state => state.userData["lenders"]);
     const debtors = useSelector(state => state.userData["debtors"]);
+
     const dispatch = useDispatch();
+    
 
     useEffect(() => {
         dispatch(getUserData())
@@ -26,7 +29,7 @@ const Dashboard = () => {
                 <div className='dashboard__header'>
                     <div>Dashboard</div>
                     <div className="dashboard__header-right">
-                        <button>Add an Expense</button>
+                        <NewTransactionButton />
                         <button>Settle Up</button>
                     </div>
                 </div>
