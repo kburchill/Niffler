@@ -15,6 +15,7 @@ def group_data(group_id):
     """
     Provides transactions for current group id
     """
+    # Check if user is logged in and user belongs to the group.
     if (current_user.is_authenticated):
         if any(group.id == int(group_id) for group in current_user.groups):
             # queries
@@ -23,6 +24,7 @@ def group_data(group_id):
             group_data = Group.query.get(int(group_id))
             # create variables to organize data
             all_transactions_for_group = {}
+            group_users = []
 
             # Create list of expenses associated with transaction
             for transaction in group_transactions:
@@ -36,15 +38,12 @@ def group_data(group_id):
                         user for user in group_data.users if expense.borrower_id == user.id)
                     # Get the name of person that paid
                     users = group_data.users
-                    group_users = []
                     for user in users:
                         if (user.id == transaction.payer_id) and not (current_user.id == transaction.payer_id):
                             current_user_lender = user.first_name
                         # Create list of users in the group not including the current user.
                         
-                        group_users.append({"user_id": user.id, "username": user.username,
-                                            "first_name": user.first_name, "last_name": user.last_name,
-                                            "profile_pic_url": user.profile_pic_url})
+                        
                     total_debt_owed += expense.amount
 
                     # Append data onto transacition info
@@ -52,6 +51,11 @@ def group_data(group_id):
                                              "first_name": a_user.first_name, "amount": expense.amount, "description": transaction.description, "transaction_id": transaction.id, "current_user_lender": current_user_lender, "total_debt_owed": total_debt_owed})
                 # Create dict entry in {transaction.id: info} form
                 all_transactions_for_group[transaction.id] = transaction_info
+
+            for user in group_data.users:
+                group_users.append({"user_id": user.id, "username": user.username,
+                                                "first_name": user.first_name, "last_name": user.last_name,
+                                                "profile_pic_url": user.profile_pic_url})
             full_frontend_data = {"transaction_info": all_transactions_for_group, "users": group_users}
 
             return full_frontend_data

@@ -21,7 +21,7 @@ const GroupPage = () => {
     // }, [groupId, dispatch]);
 
         dispatch(groupData(groupId.groupId))
-    }, [dispatch])
+    }, [dispatch, groupId])
 
     const renderGroupData = () => {
         return transaction_info && Object.values(transaction_info).map(transaction => {
