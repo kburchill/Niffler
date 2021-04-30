@@ -23,7 +23,6 @@ def group_data(group_id):
             group_data = Group.query.get(int(group_id))
             # create variables to organize data
             all_transactions_for_group = {}
-
             # Create list of expenses associated with transaction
             for transaction in group_transactions:
                 current_user_lender = "You"
@@ -52,7 +51,7 @@ def group_data(group_id):
                                              "first_name": a_user.first_name, "amount": expense.amount, "description": transaction.description, "transaction_id": transaction.id, "current_user_lender": current_user_lender, "total_debt_owed": total_debt_owed})
                 # Create dict entry in {transaction.id: info} form
                 all_transactions_for_group[transaction.id] = transaction_info
-                full_frontend_data = {"transaction_info": all_transactions_for_group, "users": group_users}
+                full_frontend_data = {"transaction_info": all_transactions_for_group, "users": group_users, "group_name": group_data.name}
 
             return full_frontend_data
         return {'errors': ['Unauthorized']}, 401

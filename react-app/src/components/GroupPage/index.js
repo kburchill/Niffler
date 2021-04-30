@@ -9,9 +9,9 @@ import './GroupPage.css';
 import { useParams } from "react-router-dom";
 
 const GroupPage = () => {
-    const user = useSelector(state => state.session.user);
+    const user = useSelector(state => state.user);
     const transaction_info = useSelector(state => state.groups.transaction_info);
-    const group_info = useSelector(state => state.groups.users)
+    const group_name = useSelector(state => state.groups.group_name)
     const dispatch = useDispatch();
 
     const groupId = useParams();
@@ -22,7 +22,6 @@ const GroupPage = () => {
 
         dispatch(groupData(groupId.groupId))
     }, [dispatch])
-
     const renderGroupData = () => {
         return transaction_info && Object.values(transaction_info).map(transaction => {
             // Map through each expense if multiple
@@ -86,7 +85,7 @@ const GroupPage = () => {
             <div className="main-body">
                 <LeftSideBar />
                 <div className="center-block-main">
-                    <h1 className='main-bar'>Group Page Content for group ID: </h1>
+                    <h1 className='main-bar'>{group_name}</h1>
                     <div className="current-group-transactions">{renderGroupData()}</div>
                 </div>
                 <GroupPageRight />
