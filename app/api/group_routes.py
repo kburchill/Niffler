@@ -63,6 +63,7 @@ def create_group():
         )
         db.session.add(group)
 
+        # get user id's to add, get user objects, and add user to group object.
         for user_id in form.data["users"]:
             user_in_group = User.query.get(user_id)
             group.users.append(user_in_group)
@@ -82,19 +83,17 @@ def update_group(group_id):
     form = GroupForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        # print('Check==============')
         name = form.data['name']
         group_to_update.name = name
-        # name = group_to_update.name
-        # group = Group(
-        # name=form.data[name],
-        # )
 
-    #     # print(form.data["users"], "here =========")
+        # reset group's users array.
+        group_users = []
+        for user_id in form.data["users"]:
+            user_in_group = User.query.get(user_id)
+            group_users.append(user_in_group)
+    
+        group_to_update.users = group_users
 
-    #     for user_id in form.data["users"]:
-    #         user_in_group = User.query.get(user_id)
-    #         group.users.append(user_in_group)
         db.session.commit()
         return {'message': 'Group Updated!'}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400

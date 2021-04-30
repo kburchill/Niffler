@@ -13,7 +13,8 @@ import IntroductoryPage from "./components/IntroductoryPage"
 import GroupPage from "./components/GroupPage"
 import NewTransactionForm from "./components/TransactionForm/NewTransactionForm"
 import EditTransactionForm from "./components/TransactionForm/EditTransactionForm"
-import CreateGroupForm from "./components/CreateGroupForm"
+import CreateGroupForm from "./components/GroupForm/CreateGroupForm"
+import EditGroupForm from "./components/GroupForm/EditGroupForm"
 // import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
 
@@ -67,6 +68,9 @@ function App() {
         </Route>
         <Route path="/test-new-group" exact={true}>
           <CreateGroupForm />
+        </Route>
+        <Route path="/test-edit-group/:groupId" exact={true}>
+          <EditGroupForm />
         </Route>
       </Switch>
     </BrowserRouter>
