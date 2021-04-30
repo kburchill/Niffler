@@ -6,8 +6,8 @@ def seed_transactions():
     x1 = Transaction(
         group_id=1,
         payer_id=1,
-        paid_amount=100,
-        description="The changing of monies",
+        paid_amount=111,
+        description="Butterbeer round one",
         expense_date="2020-09-05 09:45:28",
         completed=False,
         updated_at="2020-09-05 09:45:28",
@@ -17,9 +17,9 @@ def seed_transactions():
 
     x2 = Transaction(
         group_id=2,
-        payer_id=1,
-        paid_amount=100,
-        description="The changing of other things",
+        payer_id=2,
+        paid_amount=222,
+        description="Butterbeer",
         expense_date="2020-09-05 09:45:28",
         completed=False,
         updated_at="2020-09-05 09:45:28",
@@ -29,9 +29,9 @@ def seed_transactions():
 
     x3 = Transaction(
         group_id=1,
-        payer_id=1,
-        paid_amount=100,
-        description="The changing of MORE things",
+        payer_id=3,
+        paid_amount=333,
+        description="New Owl",
         expense_date="2020-09-05 09:45:28",
         completed=False,
         updated_at="2020-09-05 09:45:28",
@@ -40,10 +40,10 @@ def seed_transactions():
     db.session.add(x3)
 
     x4 = Transaction(
-        group_id=1,
+        group_id=2,
         payer_id=1,
-        paid_amount=100,
-        description="The changing of lesser things",
+        paid_amount=444,
+        description="Broomstick",
         expense_date="2020-09-05 09:45:28",
         completed=False,
         updated_at="2020-09-05 09:45:28",
