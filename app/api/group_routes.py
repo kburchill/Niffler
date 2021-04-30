@@ -35,7 +35,7 @@ def group_data(group_id):
                         user for user in group_data.users if expense.borrower_id == user.id)
                     users = group_data.users
                     for user in users:
-                        if user.id == expense.lender_id:
+                        if (user.id == transaction.payer_id) and not (current_user.id == transaction.payer_id):
                             current_user_lender = user.first_name
 
                     Debtor_info.append({"payer_id": transaction.payer_id, "paid_amount": transaction.paid_amount, "expense_date": transaction.expense_date, "borrower_id": a_user.id,
