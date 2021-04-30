@@ -22,13 +22,13 @@ def group_data(group_id):
                 Transaction.group_id == group_id).all()
             group_data = Group.query.get(int(group_id))
             # create variables to organize data
-            return_me_to_frontend = {}
+            all_transactions_for_group = {}
 
             # Create list of expenses associated with transaction
             for transaction in group_transactions:
                 current_user_lender = "You"
                 all_expenses = [*transaction.expenses]
-                Debtor_info = []
+                transaction_info = []
                 total_debt_owed = 0
                 # Go through each expense and organize database info
                 for expense in all_expenses:
@@ -42,13 +42,13 @@ def group_data(group_id):
                     #Append data onto debtor info
                     total_debt_owed += expense.amount
 
-                    Debtor_info.append({"payer_id": transaction.payer_id, "paid_amount": transaction.paid_amount, "expense_date": transaction.expense_date, "borrower_id": a_user.id,
+                    transaction_info.append({"payer_id": transaction.payer_id, "paid_amount": transaction.paid_amount, "expense_date": transaction.expense_date, "borrower_id": a_user.id,
                                        "first_name": a_user.first_name, "amount": expense.amount, "description": transaction.description, "transaction_id": transaction.id, "current_user_lender": current_user_lender, "total_debt_owed": total_debt_owed })
                 #Create dict entry in {transaction.id: info} form
-                return_me_to_frontend[transaction.id] = Debtor_info
+                all_transactions_for_group[transaction.id] = transaction_info
             print("START HERE =======")
-            print(return_me_to_frontend, "END HERE =========")
-            full_frontend_data = {"debtors": return_me_to_frontend, "minkidata": "minkidata"}
+            print(all_transactions_for_group, "END HERE =========")
+            full_frontend_data = {"transaction_info": all_transactions_for_group, "minkidata": "minkidata"}
             return full_frontend_data
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

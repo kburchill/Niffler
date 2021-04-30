@@ -10,15 +10,16 @@ import { useParams } from "react-router-dom";
 
 const GroupPage = () => {
     const user = useSelector(state => state.session.user);
-    const groups = useSelector(state => state.groups);
+    const transaction_info = useSelector(state => state.groups.transaction_info);
+    const group_info = useSelector(state => state.groups.minkidata)
     const dispatch = useDispatch();
     const groupId = useParams()
     useEffect(() => {
         dispatch(groupData(groupId.groupId))
     }, [dispatch])
-    
+
     const renderGroupData = () => {
-        return Object.values(groups).map(transaction => {
+        return transaction_info && Object.values(transaction_info).map(transaction => {
             // Map through each expense if multiple
             /*
             What data do we need to display?
