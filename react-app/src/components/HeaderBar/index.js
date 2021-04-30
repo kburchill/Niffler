@@ -9,10 +9,18 @@ const HeaderBar = () => {
     const user = useSelector(state => state.session.user);
     return (
         <div id='header-bar'>
-            <Link to='/dashboard'>
-                Niffler
-            </Link>
+            <a href="/dashboard">
+                <div class="niffler-logo"></div>
+            </a>
+            <div class="header-bar-options">
+            <a href="/sign-up">
+                <div>Sign Up</div>
+            </a>
+            <a href="/">
+                <div>About</div>
+            </a>
             {user && <UserButton user={user}/>}
+            </div>
         </div>
     )
 }

@@ -16,7 +16,7 @@ const GroupPage = () => {
     useEffect(() => {
         dispatch(groupData(groupId.groupId))
     }, [dispatch])
-
+    
     const renderGroupData = () => {
         return Object.values(groups).map(transaction => {
             // Map through each expense if multiple
@@ -28,28 +28,34 @@ const GroupPage = () => {
             AFTER HOVER:
             [Lender name and transaction amount], for each borrower, borrower name and amount
             */
-            console.log(transaction, "here ============")
             if (transaction.length > 1) {
                 return (
-                        <div className="transaction-div">
-                            <div className="summary">
-                                <div class="info-block">
-                                    <div class="date">{transaction[0].expense_date}</div>
-                                    <div class="description">{transaction[0].description}</div>
-                                    <div class="lent">{transaction[0].current_user_lender} Paid: {transaction[0].paid_amount}</div>
+                    <div className="transaction-div">
+                        <div className="summary">
+                            <div class="info-block">
+                                <div class="date">{transaction[0].expense_date}</div>
+                                <div class="description">{transaction[0].description}</div>
+                                <div class="paid">
+                                    <div>{transaction[0].current_user_lender} Paid:
+                                            <div>{transaction[0].paid_amount}</div>
+                                    </div>
+                                </div>
+                                <div class="lent">
+                                    <div>{transaction[0].current_user_lender} lent </div>
+                                    <div>{transaction[transaction.length - 1].total_debt_owed}</div>
                                 </div>
                             </div>
-                            {
-                                transaction.map(each_transaction => {
-                                    return (
-                                        <li className="detailed-info">
-                                            {each_transaction.first_name} Owes me {each_transaction.amount}
-                                        </li>
-                                    )
-                                })
-                            }
-                        </div>)
-                    //return dynamic div and li based on transaction/expenses
+                        </div>
+                        {
+                            transaction.map(each_transaction => {
+                                return (
+                                    <li className="detailed-info">
+                                        {each_transaction.first_name} Owes {each_transaction.current_user_lender} {each_transaction.amount}
+                                    </li>
+                                )
+                            })
+                        }
+                    </div>)
             }
             else {
                 return (
@@ -58,7 +64,8 @@ const GroupPage = () => {
                             <div class="info-block">
                                 <div class="date">{transaction[0].expense_date}</div>
                                 <div class="description">{transaction[0].description}</div>
-                                <div class="lent">{transaction[0].current_user_lender} Paid: {transaction[0].paid_amount}</div>
+                                <div class="paid">{transaction[0].current_user_lender} paid <div>{transaction[0].paid_amount}</div></div>
+                                <div class="lent">{transaction[0].current_user_lender} lent <div>{transaction[0].first_name}</div></div>
                             </div>
                         </div>
                         <li className="detailed-info">{transaction[0].first_name} Owes me {transaction[0].amount}</li>

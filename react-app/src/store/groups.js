@@ -27,10 +27,9 @@ const groupReducer = (state = initialState, action) =>
 {
     switch (action.type) {
         case LOAD:
-            return action.payload;
+            return action.payload.debtors;
         default:
             return state;
     }
 }
-
 export default groupReducer;

@@ -27,23 +27,29 @@ def group_data(group_id):
             # Create list of expenses associated with transaction
             for transaction in group_transactions:
                 current_user_lender = "You"
-
                 all_expenses = [*transaction.expenses]
                 Debtor_info = []
+                total_debt_owed = 0
+                # Go through each expense and organize database info
                 for expense in all_expenses:
                     a_user = next(
                         user for user in group_data.users if expense.borrower_id == user.id)
+                    #Get the name of person that paid
                     users = group_data.users
                     for user in users:
                         if (user.id == transaction.payer_id) and not (current_user.id == transaction.payer_id):
                             current_user_lender = user.first_name
+                    #Append data onto debtor info
+                    total_debt_owed += expense.amount
 
                     Debtor_info.append({"payer_id": transaction.payer_id, "paid_amount": transaction.paid_amount, "expense_date": transaction.expense_date, "borrower_id": a_user.id,
-                                       "first_name": a_user.first_name, "amount": expense.amount, "description": transaction.description, "transaction_id": transaction.id, "current_user_lender": current_user_lender})
+                                       "first_name": a_user.first_name, "amount": expense.amount, "description": transaction.description, "transaction_id": transaction.id, "current_user_lender": current_user_lender, "total_debt_owed": total_debt_owed })
+                #Create dict entry in {transaction.id: info} form
                 return_me_to_frontend[transaction.id] = Debtor_info
             print("START HERE =======")
             print(return_me_to_frontend, "END HERE =========")
-            return return_me_to_frontend
+            full_frontend_data = {"debtors": return_me_to_frontend, "minkidata": "minkidata"}
+            return full_frontend_data
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 

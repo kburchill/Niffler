@@ -5,11 +5,34 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 30px;
+    height: 50px;
     border: 1px solid red;
-    justify-content: space-around;
+    justify-content: space-between;
+    background-image: url('../images/NavBarStars.jpg');
 }
 
+.niffler-logo{
+    background-image: url('../images/NIfflerLogo.png');
+    align-self: flex-end;
+    height: 50px;
+    width: 200px;
+    margin-left: 5%;
+}
+.header-bar-options{
+    width: 250px;
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+.header-bar-options > a {
+    font-size: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 #navbar__profile-button {
     /* border: none; */
     /* background: none; */
