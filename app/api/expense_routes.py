@@ -24,9 +24,8 @@ def create_expense():
         )
         db.session.add(new_transaction)
         db.session.commit()
-        print("LOOK BELOW ME =======")
         requestinfo = request.json
-        print(requestinfo["debtors"], "debtors", requestinfo['groupUsers'], "groupusers")
+
         # For each debtor, create a new transaction expense.
         payed_amount = form.data["amount"]
         split_by = len(form.data["debtors"]) + 1
@@ -68,7 +67,6 @@ def create_expense():
         db.session.commit()
 
         response_transaction = {new_transaction.id: all_associated_transaction}
-        print(response_transaction, "HERE IS THE RESPONE FROM BACKEND")
         return {'message': 'Transaction Created!', 'transaction': response_transaction}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
