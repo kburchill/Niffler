@@ -87,7 +87,6 @@ const NewTransactionForm = () => {
             <div id="close-new-transaction-form">X</div>
             <div>
                 <label htmlFor="groups">Select a group.</label>
-                {/* These are temporary groups. Finished version will dynamically get current user's groups from store. */}
                 <select onChange={updateGroup} value={groupId}>
                     {userGroups && Object.entries(userGroups).map(([group_id, group_name]) => (
                         <option key={group_id} value={group_id}>{group_name}</option>

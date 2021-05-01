@@ -4,6 +4,8 @@ import LeftSideBar from "../LeftSideBar";
 import HeaderBar from "../HeaderBar";
 import GroupPageRight from "../RightSideBar/GroupPageRight";
 import { groupData } from "../../store/groups"
+import { getUserData } from "../../store/user"
+import EditTransactionButton from "../TransactionForm/EditTransactionButton"
 import NewTransactionButton from "../TransactionForm/NewTransactionButton"
 import './GroupPage.css';
 
@@ -22,6 +24,7 @@ const GroupPage = () => {
     // }, [groupId, dispatch]);
 
         dispatch(groupData(groupId.groupId))
+        dispatch(getUserData())
     }, [dispatch, groupId])
 
     const renderGroupData = () => {
@@ -52,6 +55,7 @@ const GroupPage = () => {
                                     <div>{transaction[transaction.length - 1].total_debt_owed}</div>
                                 </div>
                             </div>
+                            
                         </div>
                         {
                             transaction.map(each_transaction => {
@@ -85,13 +89,24 @@ const GroupPage = () => {
         <>
             <HeaderBar />
             <div className="main-body">
+                <div>
                 <LeftSideBar />
-                <div className="center-block-main">
-                    <h1 className='main-bar'>{group_name}</h1>
-                    <NewTransactionButton />
-                    <div className="current-group-transactions">{renderGroupData()}</div>
                 </div>
-                <GroupPageRight />
+                <div className="center-block-main">
+                    <div className="group-header">
+                    <h1 className="group-name">{group_name}</h1>
+
+                    </div>
+                    <div className="current-group-transactions">
+                        <NewTransactionButton />
+                        {renderGroupData()}
+                    </div>
+
+                </div>
+                <div>
+                    <GroupPageRight />
+                </div>
+
             </div>
         </>
     )

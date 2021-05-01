@@ -16,7 +16,7 @@ const NewTransactionButton = () => {
             setShowNewTransactionForm(false);
         };
 
-        
+
         // document.addEventListener('click', closeNewTransactionForm);
         document.getElementById("close-new-transaction-form").addEventListener('click', closeNewTransactionForm);
 
@@ -25,7 +25,7 @@ const NewTransactionButton = () => {
 
     return (
         <>
-            <button onClick={openNewTransactionForm}>
+            <button className="newtransaction-button" onClick={openNewTransactionForm}>
                 Add Expense
             </button>
             {showNewTransactionForm && <NewTransactionForm />}

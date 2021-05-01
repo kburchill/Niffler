@@ -57,7 +57,6 @@ def group_data(group_id):
                                                 "first_name": user.first_name, "last_name": user.last_name,
                                                 "profile_pic_url": user.profile_pic_url})
             full_frontend_data = {"transaction_info": all_transactions_for_group, "users": group_users, "group_name": group_data.name}
-            print(full_frontend_data["transaction_info"])
             return full_frontend_data
         return {'errors': ['Unauthorized']}, 401
     return {'errors': ['Unauthorized']}, 401

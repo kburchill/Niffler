@@ -1,5 +1,9 @@
 body {
-    /* background-color: whitesmoke; */
+    background: url("./components/images/background_niffler.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 /* Container div for elements underneath header bar. */
@@ -9,6 +13,7 @@ body {
     display: flex;
     justify-content: center;
     font-family: 'Lato', sans-serif;
+    height: 100vh;
 }
 
 h1 {

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
-
+import { groupData } from "../../store/groups"
 
 const EditTransactionForm = () => {
     const [errors, setErrors] = useState([]);
-    const [groupId, setGroupId] = useState(1);
+    const [groupId, setGroupId] = useState(useParams());
     const [description, setDescription] = useState("");
     const [debtors, setDebtors] = useState([]);
     const [payerId, setPayerId] = useState(1);
@@ -13,6 +14,16 @@ const EditTransactionForm = () => {
     const [completed, setCompleted] = useState(false)
 
     const { transactionId } = useParams();
+    const dispatch = useDispatch();
+
+
+    const groupUsers = useSelector(state => state.groups.users);
+    const userGroups = useSelector(state => state.userData.groups);
+
+    useEffect(() => {
+        dispatch(groupData(groupId));
+        setGroupId(transactionId)
+    }, [groupId]);
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -62,26 +73,25 @@ const EditTransactionForm = () => {
     const updateDate = (e) => {
         setDate(e.target.value);
     }
-    
+
     const updateCompleted = (e) => {
         setCompleted(e.target.checked);
     }
 
     return (
-        <form onSubmit={onSubmit} id='new-transaction-form'>
+        <form onSubmit={onSubmit} id='edit-transaction-form'>
             <div>
                 {errors.map((error) => (
                     <div>{error}</div>
                 ))}
             </div>
+            <div id="close-Edit-transaction-form">X</div>
             <div>
                 <label htmlFor="groups">Select a group.</label>
-                {/* These are temporary groups. Finished version will dynamically get current user's groups from store. */}
-                <select onChange={updateGroup} value={groupId}>
-                    <option value="1">Gryffindor</option>
-                    <option value="2">Ravenclaw</option>
-                    <option value="3">Hufflepuff</option>
-                    <option value="4">Slytherin</option>
+                <select onChange={updateGroup} value={groupId} selected>
+                    {userGroups && Object.entries(userGroups).map(([group_id, group_name]) => (
+                        <option key={group_id} value={group_id} selected>{group_name}</option>
+                    ))}
                 </select>
             </div>
             <div>
@@ -96,10 +106,11 @@ const EditTransactionForm = () => {
                 <label htmlFor="payer">Which group member paid?</label>
                 {/* These are temporary users. Finished version will dynamically get users belonging to group from store. */}
                 <select onChange={updatePayerId} value={payerId}>
-                    <option value="1">Demolition</option>
-                    <option value="2">Harry</option>
-                    <option value="3">Hermione</option>
-                    <option value="4">Ronald</option>
+                    {groupUsers && Object.values(groupUsers).map(user => (
+                        <option key={user.user_id} value={user.user_id}>
+                            {user.first_name + " " + user.last_name}
+                        </option>
+                    ))}
                 </select>
             </div>
             <div>
