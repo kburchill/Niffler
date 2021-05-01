@@ -1,6 +1,6 @@
 
 .center-block-main {
-  background-color: rgb(146, 146, 213);
+  background-color: whitesmoke;
   display:flex;
   flex-direction: column;
   align-items: center;
@@ -8,10 +8,6 @@
 }
 
 
-.current-group-transactions {
-  background-color: rgb(204, 234, 175);
-  width: 100%
-}
 .group-header {
   background-image: url('../images/HeaderBackground.png');
   width: 100%;
@@ -21,6 +17,12 @@
 .current-group-transactions {
   background: whitesmoke;
   height: 90%;
+  width: 100%;
+}
+
+.info-block {
+  margin-left: 10%;
+  margin-top: 1%;
 }
 .group-name {
   margin-left: 25%;
@@ -28,11 +30,30 @@
   color: whitesmoke;
   font-size: 55px;
 }
+.info-block {
+  margin-right: 20%;
+  padding: 15px
+}
+
+.transaction-div:hover > .summary > {
+  margin-left: 5%;
+  transition: all 0.4s ease 0s;
+}
+.transaction-div:hover > .summary > .info-block {
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 5px;
+  transition: all 0.4s ease 0s;
+}
 .transaction-div:hover > .detailed-info {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  border: 1px solid black;
+  margin-right: 20%;
+  margin-left: 15%;
+  margin-top: 5%;
+  border-top: 1px solid rgb(214, 196, 196);
+  transition: all 0.4s ease 0s;
 }
 
 .newtransaction-button {
@@ -48,7 +69,6 @@
 
 }
 .detailed-info {
-
   display: none;
 }
 
