@@ -1,18 +1,19 @@
 .left-sidebar__container {
-    background-color: rgba(0, 0, 0, 0.774);
-    border: 1px solid black;
-    /* min-width: 200px; */
-    padding: 10px;
-    padding-top: 30px;
-    width: 200px;
-    
+  background-color: rgba(0, 0, 0, 0.774);
+  /* border: 1px solid black; */
+  /* min-width: 200px; */
+  padding: 10px;
+  padding-top: 30px;
+  width: 200px;
+  text-align: center;
 }
 
-.left-sidebar__main > *, .left-sidebar__groups > * {
-    align-self: center;
-    color: whitesmoke;
-    padding: 10px;
-    text-decoration: none;
+.left-sidebar__main > *,
+.left-sidebar__groups > * {
+  align-self: center;
+  color: whitesmoke;
+  padding: 10px;
+  text-decoration: none;
 }
 /* 
 .left-sidebar__group-title {
@@ -35,37 +36,58 @@
 } */
 
 .left-sidebar__groups {
-    display: flex;
-    flex-direction: column;
-    padding: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
 }
 
 .left-sidebar-titles {
-    color: grey;
-    font-family: 'Harry Potter';
-    font-size: 2em;
-    letter-spacing: 1.4px;
-    font-family: 'Harry Potter';
-    text-align: center;
+  color: grey;
+  font-family: 'Harry Potter';
+  font-size: 2em;
+  letter-spacing: 1.4px;
+  font-family: 'Harry Potter';
+  text-align: center;
 }
 .sidebar-link-dashboard-title:active {
-    color: white;
-    /* font-size: 1.5em; */
-    /* letter-spacing: 1.4px; */
-    font-family: 'Harry Potter';
-    letter-spacing: 1.4px;
+  color: white;
+  /* font-size: 1.5em; */
+  /* letter-spacing: 1.4px; */
+  font-family: 'Harry Potter';
+  letter-spacing: 1.4px;
 }
 .sidebar-link {
-    color: grey;
-    /* font-family: 'Lato'; */
-    /* font-size: 1.5em; */
+  color: grey;
+  /* font-family: 'Lato'; */
+  /* font-size: 1.5em; */
 }
 .sidebar-link:visited {
-    color: white;
-    /* font-family: 'Harry Potter'; */
+  color: white;
+  /* font-family: 'Harry Potter'; */
 }
 .sidebar-link:active {
-    color: white;
-    letter-spacing: 1.4px;
-    /* font-family: 'Harry Potter'; */
+  color: white;
+  letter-spacing: 1.4px;
+  /* font-family: 'Harry Potter'; */
+}
+
+.left-sidebar__top-group-button {
+  margin-top: 20px;
+  background: #4b4b4b;
+  justify-content: center;
+  border-radius: 6px;
+  font-family: 'Lato';
+  font-weight: 900;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #ffffff;
+  letter-spacing: 1.6px;
+  text-align: center;
+  padding: 8px 14px;
+  border: none;
+  width: 80%;
+  align-self: center;
+  cursor: pointer;
+  transition-property: background;
+  transition-duration: 0.2s;
 }
