@@ -2,6 +2,7 @@
     position: absolute;
     margin-left: 35%;
     margin-right: 15%;
+    margin-top: 25%;
     display: flex;
     flex-direction: column;
     padding: 15px;
@@ -42,4 +43,13 @@
     color: #FFFFFF;
     letter-spacing: 1.6px;
     text-align: center;
+}
+
+.black_as_night {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0,0,0,0.91);
+    top: 0;
+    left:0;
 }

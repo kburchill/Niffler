@@ -79,7 +79,9 @@ const NewTransactionForm = () => {
     }
 
     return (
+        <div className="black_as_night">
         <form onSubmit={onSubmit} id='new-transaction-form'>
+
             <div>
                 {errors.map((error) => (
                     <div>{error}</div>
@@ -142,7 +144,9 @@ const NewTransactionForm = () => {
                 />
             </div>
             <button className="new-transaction-submit"type="submit">Submit</button>
+
         </form>
+        </div>
     );
 }
 export default NewTransactionForm;
