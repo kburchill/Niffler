@@ -20,12 +20,12 @@ const unload = transaction => ({
 
 export const group_transaction_delete = (transaction) => async (dispatch) => {
     const response = await fetch(`/api/expenses/${transaction}`,
-    {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
+        {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
     if (response.ok) {
         dispatch(unload(transaction))
     }
@@ -45,13 +45,14 @@ export const groupData = (groupId) => async (dispatch) => {
 }
 
 export const addGroupTransaction = (response) => async (dispatch) => {
-    const transaction = await response.json();
-    dispatch(add(transaction))
+    if (response.ok) {
+        const transaction = await response.json();
+        dispatch(add(transaction))
+    }
 }
 const initialState = {}
 
-const groupReducer = (state = initialState, action) =>
-{
+const groupReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD:
             return { transaction_info: action.payload.transaction_info, users: action.payload.users, group_name: action.payload.group_name }

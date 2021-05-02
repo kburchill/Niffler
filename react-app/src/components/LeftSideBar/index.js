@@ -9,16 +9,23 @@ const LeftSideBar = () => {
     const userGroups = useSelector(state => state.userData.groups);
 
     return (
-      <div className="left-sidebar">
-        <div className="left-sidebar__main sidebar-link">
+      <div className="left-sidebar__container">
+        <div className="left-sidebar__main left-sidebar-titles sidebar-link">
           <NavLink
             to="/dashboard"
             exact={true}
-            activeClassName="sidebar-link"
+            activeClassName="sidebar-link-titles"
           >
             Dashboard
           </NavLink>
         </div>
+        {/* I think we need to link to Groups here? */}
+        <div className="left-sidebar-titles">
+          groups
+          </div>
+        <div className="left-sidebar-titles">
+          BUTTON FPO
+          </div>
 
         <div className="left-sidebar__groups sidebar-link">
           {/* { typeof userGroups} */}

@@ -14,18 +14,19 @@ body {
 /* Container div for elements underneath header bar. */
 .main-body {
     /* margin-top: 50px; */
-    border: 1px solid blue;
+    /* border: 1px solid whitesmoke; */
     display: flex;
     justify-content: center;
     font-family: 'Lato', sans-serif;
     height: 100vh;
     width: 1024px;
     margin: auto;
-    padding-top: 40px;
+    padding-top: 38px;
     /* max-width: 1366px; */
     position: relative;
+    cursor: url("/images/WandCursor.png"), auto;}
     /* text-align: center; */
-    
+  /* cursor: src="images/BoltCursor.svg", auto;   
 }
 
 h1 {
@@ -34,11 +35,13 @@ h1 {
 
 /* Div for center column in main body. */
 .main-bar {
-    width: 608px;
+    max-width: 608px;
+    min-width: 608px;
     /* padding: 10px; */
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: rgb(205, 205, 205);
+    border: 1px solid whitesmoke;
 }
 
 #login-form {
@@ -47,10 +50,14 @@ h1 {
 
 /* Styling for active NavLinks. */
 .active {
-    color: white;
+    /* color: white; */
 }
 
 a:visited { 
  text-decoration: none; 
- color: grey; 
+ /* color: grey;  */
+}
+
+a{
+cursor: url("/images/WandCursorClick.png"), auto;
 }
