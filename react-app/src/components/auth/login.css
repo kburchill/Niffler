@@ -1,25 +1,66 @@
-.login-form-div > #login-form {
-  position: absolute;
+.login-form-div {
+  display: flex;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 10%;
+  justify-content: center;
+}
+
+.login-form-div > * > div {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+
+
+.login-form-div > * > * > input:focus {
+  outline: none;
+}
+
+.login-form-div * > * > input {
+  min-width: 50%;
+  max-height: 10px;
+  background: #FFFFFF;
+  border: 1px solid #514A92;
+  border-radius: 20.5px;
+  padding: 10px;
+  justify-self: center;
+
+}
+
+.login-form-div * > * > label{
+  font-family: "Harry Potter";
+  color: white;
+  font-size: 20px;
+  padding: 5px;
+  min-width: 50%;
+  justify-self: flex-end;
+}
+.login-button-submit {
+  background: #d0b16c;
+  border-radius: 6px;
+  font-family: 'Lato';
+  font-weight: 900;
+  font-size: 15px;
+  text-transform: uppercase;
+  color: #ffffff;
+  letter-spacing: 1.6px;
+  text-align: center;
+  padding: 8px 14px;
+  border: none;
+  cursor: pointer;
+  transition-property: background ;
+  transition-duration: .2s;
+  justify-content: center;
+}
+.buttonDiv {
   margin-left: 35%;
-  margin-right: 15%;
-  margin-top: 25%;
-  display: flex;
-  flex-direction: column;
-  padding: 15px;
-  background: rgba(0,0,0,0.83);
-  border: 1px solid #FFFFFF;
-  border-radius: 8px;
-  align-content: flex-start;
-  color: whitesmoke;
-  font-family: Lato
 }
 
-.login-form-div > #login-form > * {
-  display: flex;
-  padding: 5px;
-  justify-content: flex-start;
-}
-
-.login-form-div > #login-form > * > * {
-  padding: 5px;
+.login-logo > * {
+  object-fit: cover;
+  width: 160px;
+  margin-left: 20%;
+  margin-bottom: 5%;
 }
