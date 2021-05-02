@@ -24,6 +24,12 @@ const HeaderBar = () => {
                 </div>
             </a>
             <div class="header-bar-options">
+                <a href="/login">
+                    <div hidden={user}>Login</div>
+                </a>
+                <a href="/sign-up" >
+                    <div hidden={user}>Sign-Up</div>
+                </a>
                 <a href="/">
                     <div>About</div>
                 </a>

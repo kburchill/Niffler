@@ -43,7 +43,8 @@
 .new-transaction-submit {
     background: #6B63B5;
     border-radius: 6px;
-    font-family: Lato-Black;
+    font-family: "Lato";
+    font-weight: 900;
     font-size: 15px;
     color: #FFFFFF;
     letter-spacing: 1.6px;

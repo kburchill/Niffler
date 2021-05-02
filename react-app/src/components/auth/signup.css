@@ -1,0 +1,69 @@
+.signup_form {
+  display: flex;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 10%;
+  justify-content: center;
+}
+
+.signup_form > * > div {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.signup_form > * > * > input:focus {
+  outline: none;
+}
+.signup_form * > * > input {
+  min-width: 50%;
+  max-height: 10px;
+  background: #FFFFFF;
+  border: 1px solid #514A92;
+  border-radius: 20.5px;
+  padding: 10px;
+  justify-self: center;
+  
+}
+
+.signup_form * > * > label{
+  font-family: "Harry Potter";
+  color: white;
+  font-size: 20px;
+  padding: 5px;
+  min-width: 50%;
+  justify-self: flex-end;
+}
+.signup-button-submit {
+  background: #d0b16c;
+  border-radius: 6px;
+  font-family: 'Lato';
+  font-weight: 900;
+  font-size: 15px;
+  text-transform: uppercase;
+  color: #ffffff;
+  letter-spacing: 1.6px;
+  text-align: center;
+  padding: 8px 14px;
+  border: none;
+  width: 50%;
+  cursor: pointer;
+  transition-property: background ;
+  transition-duration: .2s;
+  justify-content: center;
+}
+
+
+.sign-up-logo > * {
+  object-fit: cover;
+  width: 160px;
+  margin-left: 20%;
+  margin-bottom: 5%;
+}
+
+.buttonDiv {
+  margin-left: 35%;
+}
+
+.form-input:focus {
+
+}
