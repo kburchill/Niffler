@@ -9,10 +9,6 @@ const IntroductoryPage = () => {
         <HeaderBar />
         <div className="introductory-page__image-container">
           <div>
-            <Link to="/login">Login</Link>
-            <Link to="/sign-up">Signup</Link>
-          </div>
-          <div>
             <img src="images/NifflerBankLanding.jpg" width="100%"></img>
           </div>
         </div>

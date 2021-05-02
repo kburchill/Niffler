@@ -28,7 +28,6 @@ const LeftSideBar = () => {
           </div>
 
         <div className="left-sidebar__groups sidebar-link">
-          {/* { typeof userGroups} */}
           {userGroups &&
             Object.entries(userGroups).map(([group_id, group_name]) => (
               <NavLink
