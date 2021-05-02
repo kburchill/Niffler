@@ -34,6 +34,9 @@ const Dashboard = () => {
                 <div>total balance</div>
                 <div>{userData.total}</div>
               </div>
+              <div>
+                {/* <img src="../../../public/images/Wand.png"></img> */}
+              </div>
               <div className="dashboard__balance">
                 <div>you owe</div>
                 <div>{userData.owe}</div>
