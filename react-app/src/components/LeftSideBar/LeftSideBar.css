@@ -4,14 +4,40 @@
     width: 200px;
 }
 
+.left-sidebar__main > *, .left-sidebar__groups > * {
+    color: whitesmoke;
+    align-self: center;
+}
+
+.left-sidebar__groups > * {
+    padding: 10px;
+    font-size: 25px;
+}
 .left-sidebar__main {
     display: flex;
     flex-direction: column;
-    padding: 5px;   
+    padding: 5px;
+    font-size: 30px;
 }
 
 .left-sidebar__groups {
     display: flex;
     flex-direction: column;
     padding: 5px;
+}
+
+.sidebar-link {
+    color: white;
+    font-family: 'Harry Potter';
+    font-size: 1.5em;
+    letter-spacing: 1.4px;
+}
+.sidebar-link:visited {
+    color: white;
+    /* font-family: 'Harry Potter'; */
+}
+.sidebar-link:active {
+    color: white;
+    /* letter-spacing: 1.4px; */
+    /* font-family: 'Harry Potter'; */
 }

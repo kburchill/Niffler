@@ -1,21 +1,44 @@
 body {
-    /* background-color: whitesmoke; */
+    background: url("./components/images/background_niffler.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+@font-face {
+    font-family: 'Harry Potter';
+    src: url(http://fonts.cdnfonts.com/css/harry-potter?styles=41888);
 }
 
 /* Container div for elements underneath header bar. */
 .main-body {
-    margin-top: 30px;
+    /* margin-top: 50px; */
     border: 1px solid blue;
     display: flex;
     justify-content: center;
+    font-family: 'Lato', sans-serif;
+    height: 100vh;
+    width: 1024px;
+    margin: auto;
+    padding-top: 40px;
+    /* max-width: 1366px; */
+    position: relative;
+    /* text-align: center; */
+    
+}
+
+h1 {
+    font-family: 'Harry Potter', sans-serif;
 }
 
 /* Div for center column in main body. */
 .main-bar {
-    width: 500px;
-    padding: 10px;
+    width: 608px;
+    /* padding: 10px; */
     display: flex;
     flex-direction: column;
+    background-color: white;
 }
 
 #login-form {
@@ -24,5 +47,10 @@ body {
 
 /* Styling for active NavLinks. */
 .active {
-    color: green;
+    color: white;
+}
+
+a:visited { 
+ text-decoration: none; 
+ color: grey; 
 }

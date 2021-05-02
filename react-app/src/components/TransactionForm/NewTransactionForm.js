@@ -1,4 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+
+import { addGroupTransaction, groupData } from "../../store/groups"
+
+import "./TransactionForm.css"
 
 const NewTransactionForm = () => {
     const [errors, setErrors] = useState([]);
@@ -8,6 +13,16 @@ const NewTransactionForm = () => {
     const [payerId, setPayerId] = useState(1);
     const [amount, setAmount] = useState(0);
     const [date, setDate] = useState();
+
+    const dispatch = useDispatch();
+
+    const groupUsers = useSelector(state => state.groups.users);
+    const userGroups = useSelector(state => state.userData.groups);
+    const currentUser = useSelector(state => state.session);
+
+    useEffect(() => {
+        dispatch(groupData(groupId));
+    }, [groupId]);
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -24,8 +39,13 @@ const NewTransactionForm = () => {
                 description,
                 debtors,
                 amount,
+                groupUsers
             })
         });
+        if (response.ok) {
+            dispatch(addGroupTransaction(response));
+            window.location.reload()
+        }
     }
 
     const updateGroup = (e) => {
@@ -43,8 +63,9 @@ const NewTransactionForm = () => {
             if (options.item(i).selected) values.push(options.item(i).value);
         }
         setDebtors(values);
+        console.log(values, groupUsers, "DEBTOR INFO HERE")
     }
-    
+
     const updatePayerId = (e) => {
         setPayerId(parseInt(e.target.value));
     }
@@ -58,23 +79,24 @@ const NewTransactionForm = () => {
     }
 
     return (
+        <div className="black_as_night">
         <form onSubmit={onSubmit} id='new-transaction-form'>
+
             <div>
                 {errors.map((error) => (
                     <div>{error}</div>
                 ))}
             </div>
+            <div id="close-new-transaction-form">X</div>
             <div>
                 <label htmlFor="groups">Select a group.</label>
-                {/* These are temporary groups. Finished version will dynamically get current user's groups from store. */}
                 <select onChange={updateGroup} value={groupId}>
-                    <option value="1">Gryffindor</option>
-                    <option value="2">Ravenclaw</option>
-                    <option value="3">Hufflepuff</option>
-                    <option value="4">Slytherin</option>
+                    {userGroups && Object.entries(userGroups).map(([group_id, group_name]) => (
+                        <option key={group_id} value={group_id}>{group_name}</option>
+                    ))}
                 </select>
             </div>
-            <div>
+            <div className="new-description">
                 <label htmlFor="description">What is this for?</label>
                 <textarea
                     name="description"
@@ -84,12 +106,12 @@ const NewTransactionForm = () => {
             </div>
             <div>
                 <label htmlFor="payer">Which group member paid?</label>
-                {/* These are temporary users. Finished version will dynamically get users belonging to group from store. */}
                 <select onChange={updatePayerId} value={payerId}>
-                    <option value="1">Demolition</option>
-                    <option value="2">Harry</option>
-                    <option value="3">Hermione</option>
-                    <option value="4">Ronald</option>
+                    {groupUsers && Object.values(groupUsers).map(user => (
+                        <option key={user.user_id} value={user.user_id}>
+                            {user.first_name + " " + user.last_name}
+                        </option>
+                    ))}
                 </select>
             </div>
             <div>
@@ -101,14 +123,15 @@ const NewTransactionForm = () => {
                     onChange={updateAmount}
                 />
             </div>
-            <div>
+            <div className="new-debtors">
                 <label htmlFor="users">Which group members owe money?</label>
                 {/* These are temporary users. Finished version will dynamically get users belonging to group from store. */}
                 <select multiple={true} onChange={updateDebtors}>
-                    <option value="1">Demolition</option>
-                    <option value="2">Harry</option>
-                    <option value="3">Hermione</option>
-                    <option value="4">Ronald</option>
+                    {groupUsers && Object.values(groupUsers).map(user => (
+                        (user.user_id !== payerId) && <option key={user.user_id} value={user.user_id}>
+                            {user.first_name + " " + user.last_name}
+                        </option>
+                    ))}
                 </select>
             </div>
             <div>
@@ -120,8 +143,10 @@ const NewTransactionForm = () => {
                     onChange={updateDate}
                 />
             </div>
-            <button type="submit">Submit</button>
+            <button className="new-transaction-submit"type="submit">Submit</button>
+
         </form>
+        </div>
     );
 }
 export default NewTransactionForm;

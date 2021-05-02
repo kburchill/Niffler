@@ -15,6 +15,7 @@ def group_data(group_id):
     """
     Provides transactions for current group id
     """
+    # Check if user is logged in and user belongs to the group.
     if (current_user.is_authenticated):
         if any(group.id == int(group_id) for group in current_user.groups):
             # queries
@@ -22,30 +23,43 @@ def group_data(group_id):
                 Transaction.group_id == group_id).all()
             group_data = Group.query.get(int(group_id))
             # create variables to organize data
-            return_me_to_frontend = {}
+            all_transactions_for_group = {}
+            group_users = []
 
             # Create list of expenses associated with transaction
             for transaction in group_transactions:
                 current_user_lender = "You"
-
                 all_expenses = [*transaction.expenses]
-                Debtor_info = []
+                transaction_info = []
+                total_debt_owed = 0
+                # Go through each expense and organize database info
                 for expense in all_expenses:
                     a_user = next(
                         user for user in group_data.users if expense.borrower_id == user.id)
+                    # Get the name of person that paid
                     users = group_data.users
                     for user in users:
                         if (user.id == transaction.payer_id) and not (current_user.id == transaction.payer_id):
                             current_user_lender = user.first_name
+                        # Create list of users in the group not including the current user.
 
-                    Debtor_info.append({"payer_id": transaction.payer_id, "paid_amount": transaction.paid_amount, "expense_date": transaction.expense_date, "borrower_id": a_user.id,
-                                       "first_name": a_user.first_name, "amount": expense.amount, "description": transaction.description, "transaction_id": transaction.id, "current_user_lender": current_user_lender})
-                return_me_to_frontend[transaction.id] = Debtor_info
-            print("START HERE =======")
-            print(return_me_to_frontend, "END HERE =========")
-            return return_me_to_frontend
-        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+                    total_debt_owed += expense.amount
+
+                    # Append data onto transacition info
+                    transaction_info.append({"payer_id": transaction.payer_id, "paid_amount": transaction.paid_amount, "expense_date": transaction.expense_date, "borrower_id": a_user.id,
+                                             "first_name": a_user.first_name, "amount": expense.amount, "description": transaction.description, "transaction_id": transaction.id, "current_user_lender": current_user_lender, "total_debt_owed": total_debt_owed})
+                # Create dict entry in {transaction.id: info} form
+                all_transactions_for_group[transaction.id] = transaction_info
+
+            for user in group_data.users:
+                group_users.append({"user_id": user.id, "username": user.username,
+                                                "first_name": user.first_name, "last_name": user.last_name,
+                                                "profile_pic_url": user.profile_pic_url})
+            full_frontend_data = {"transaction_info": all_transactions_for_group, "users": group_users, "group_name": group_data.name}
+            return full_frontend_data
+        return {'errors': ['Unauthorized']}, 401
+    return {'errors': ['Unauthorized']}, 401
 
 
 # Create Group POST Route
@@ -63,6 +77,7 @@ def create_group():
         )
         db.session.add(group)
 
+        # get user id's to add, get user objects, and add user to group object.
         for user_id in form.data["users"]:
             user_in_group = User.query.get(user_id)
             group.users.append(user_in_group)
@@ -82,19 +97,17 @@ def update_group(group_id):
     form = GroupForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        # print('Check==============')
         name = form.data['name']
         group_to_update.name = name
-        # name = group_to_update.name
-        # group = Group(
-        # name=form.data[name],
-        # )
 
-    #     # print(form.data["users"], "here =========")
+        # reset group's users array.
+        group_users = []
+        for user_id in form.data["users"]:
+            user_in_group = User.query.get(user_id)
+            group_users.append(user_in_group)
 
-    #     for user_id in form.data["users"]:
-    #         user_in_group = User.query.get(user_id)
-    #         group.users.append(user_in_group)
+        group_to_update.users = group_users
+
         db.session.commit()
         return {'message': 'Group Updated!'}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400

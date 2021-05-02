@@ -3,13 +3,39 @@
     display: flex;
     position: fixed;
     top: 0;
-    left: 0;
-    right: 0;
-    height: 30px;
+    /* left: 0;
+    right: 0; */
+    height: 50px;
+    width: 1024px;
+    margin-left: 50%;
+    margin-right: 50%;
     border: 1px solid red;
-    justify-content: space-around;
+    justify-content: space-between;
+    background-image: url('../images/NavBarStars.jpg');
 }
 
+.niffler-logo{
+    background-image: url('../images/NIfflerLogo.png');
+    align-self: flex-end;
+    height: 50px;
+    width: 200px;
+    margin-left: 5%;
+}
+.header-bar-options{
+    width: 250px;
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+.header-bar-options > a {
+    font-size: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 #navbar__profile-button {
     /* border: none; */
     /* background: none; */
@@ -22,10 +48,10 @@
     position: fixed;
     background-color: white;
     border: 1px solid rgb(189, 189, 189);
-    padding: 10px 10px 10px 10px;
+    padding: 10px;
     font-family: 'Open Sans', sans-serif;
 }
 
 .profile-dropdown__item {
-    padding: 10px 10px 10px 10px;
+    padding: 10px;
 }
