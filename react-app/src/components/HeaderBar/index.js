@@ -20,15 +20,6 @@ const HeaderBar = () => {
                 <div class="niffler-logo"></div>
             </a>
             <div class="header-bar-options">
-                <a href="/sign-up">
-                    <div hidden={user}>Sign Up</div>
-                </a>
-                <a href="/login">
-                    <div hidden={user}>Login</div>
-                </a>
-                <a onClick={onLogout} href="/">
-                    <div hidden={!user}>Logout</div>
-                </a>
                 <a href="/">
                     <div>About</div>
                 </a>
