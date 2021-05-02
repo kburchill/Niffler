@@ -1,25 +1,38 @@
-.left-sidebar {
+.left-sidebar__container {
+    background-color: rgba(0, 0, 0, 0.774);
     border: 1px solid black;
+    /* min-width: 200px; */
     padding: 10px;
+    padding-top: 30px;
     width: 200px;
-    min-width: 200px;
+    
 }
 
 .left-sidebar__main > *, .left-sidebar__groups > * {
-    color: whitesmoke;
     align-self: center;
-}
-
-.left-sidebar__groups > * {
+    color: whitesmoke;
     padding: 10px;
-    font-size: 25px;
+    text-decoration: none;
 }
-.left-sidebar__main {
+/* 
+.left-sidebar__group-title {
+    color: white;
+    font-family: 'Harry Potter';
+    font-size: 1.5em;
+    letter-spacing: 1.4px;
+    align-self: center;
+    text-align: center;
+} */
+
+/* .left-sidebar__groups > * {
+    font-size: 25px;
+} */
+/* .left-sidebar__main {
     display: flex;
     flex-direction: column;
-    padding: 5px;
     font-size: 30px;
-}
+    padding: 5px;
+} */
 
 .left-sidebar__groups {
     display: flex;
@@ -27,11 +40,25 @@
     padding: 5px;
 }
 
-.sidebar-link {
-    color: white;
+.left-sidebar-titles {
+    color: grey;
     font-family: 'Harry Potter';
-    font-size: 1.5em;
+    font-size: 2em;
     letter-spacing: 1.4px;
+    font-family: 'Harry Potter';
+    text-align: center;
+}
+.sidebar-link-dashboard-title:active {
+    color: white;
+    /* font-size: 1.5em; */
+    /* letter-spacing: 1.4px; */
+    font-family: 'Harry Potter';
+    letter-spacing: 1.4px;
+}
+.sidebar-link {
+    color: grey;
+    /* font-family: 'Lato'; */
+    /* font-size: 1.5em; */
 }
 .sidebar-link:visited {
     color: white;
@@ -39,6 +66,6 @@
 }
 .sidebar-link:active {
     color: white;
-    /* letter-spacing: 1.4px; */
+    letter-spacing: 1.4px;
     /* font-family: 'Harry Potter'; */
 }
