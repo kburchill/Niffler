@@ -17,7 +17,7 @@ const NewTransactionButton = () => {
         };
 
 
-        // document.addEventListener('click', closeNewTransactionForm);
+        document.addEventListener('submit', closeNewTransactionForm);
         document.getElementById("close-new-transaction-form").addEventListener('click', closeNewTransactionForm);
 
         // return () => document.getElementById("close-new-transaction-form").addEventListener('click', closeNewTransactionForm);

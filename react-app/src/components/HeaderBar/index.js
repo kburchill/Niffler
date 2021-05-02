@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import UserButton from './UserButton';
-
 import './HeaderBar.css';
 
 const HeaderBar = () => {
@@ -14,7 +13,13 @@ const HeaderBar = () => {
             </a>
             <div class="header-bar-options">
             <a href="/sign-up">
-                <div>Sign Up</div>
+                <div hidden={user}>Sign Up</div>
+            </a>
+            <a href="/login">
+                <div hidden={user}>Login</div>
+            </a>
+            <a href="/logout">
+                <div hidden={!user}>Logout</div>
             </a>
             <a href="/">
                 <div>About</div>
