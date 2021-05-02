@@ -34,10 +34,11 @@ const LoginForm = () => {
 
   return (
     <>
-
-      <HeaderBar />
       <div className="login-form-div">
         <form onSubmit={onLogin} id='login-form'>
+        <div className="login-logo">
+                    <img src={'/images/LogIn.png'} alt="Sign Up"/>
+                </div>
           <div>
             {errors.map((error) => (
               <div>{error}</div>
@@ -63,7 +64,9 @@ const LoginForm = () => {
               onChange={updatePassword}
             />
           </div>
-            <button type="submit">Login</button>
+          <div className="buttonDiv">
+            <button className="login-button-submit" type="submit">Login</button>
+            </div>
         </form>
       </div>
     </>

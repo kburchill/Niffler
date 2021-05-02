@@ -22,7 +22,7 @@
   border-radius: 20.5px;
   padding: 10px;
   justify-self: center;
-  
+
 }
 
 .signup_form * > * > label{
@@ -64,6 +64,4 @@
   margin-left: 35%;
 }
 
-.form-input:focus {
 
-}
