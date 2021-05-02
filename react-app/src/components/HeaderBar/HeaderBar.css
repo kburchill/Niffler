@@ -3,9 +3,12 @@
     display: flex;
     position: fixed;
     top: 0;
-    left: 0;
-    right: 0;
+    /* left: 0;
+    right: 0; */
     height: 50px;
+    width: 1024px;
+    margin-left: 50%;
+    margin-right: 50%;
     border: 1px solid red;
     justify-content: space-between;
     background-image: url('../images/NavBarStars.jpg');

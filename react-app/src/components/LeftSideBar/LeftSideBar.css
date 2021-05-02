@@ -25,3 +25,19 @@
     flex-direction: column;
     padding: 5px;
 }
+
+.sidebar-link {
+    color: white;
+    font-family: 'Harry Potter';
+    font-size: 1.5em;
+    letter-spacing: 1.4px;
+}
+.sidebar-link:visited {
+    color: white;
+    /* font-family: 'Harry Potter'; */
+}
+.sidebar-link:active {
+    color: white;
+    /* letter-spacing: 1.4px; */
+    /* font-family: 'Harry Potter'; */
+}

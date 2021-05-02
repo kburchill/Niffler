@@ -22,57 +22,65 @@ const Dashboard = () => {
     }, [dispatch])
 
     return (
-        <div className='main-body'>
-            <HeaderBar />
-            <LeftSideBar />
-            <div className='main-bar'>
-                <div className='dashboard__header'>
-                    <div>Dashboard</div>
-                    <div className="dashboard__header-right">
-                        <NewTransactionButton />
-                        <button>Settle Up</button>
-                    </div>
-                </div>
-                <div className="dashboard__balances-bar">
-                    <div className="dashboard__balance">
-                        <div>total balance</div>
-                        <div>{userData.total}</div>
-                    </div>
-                    <div className="dashboard__balance">
-                        <div>you owe</div>
-                        <div>{userData.owe}</div>
-                    </div>
-                    <div className="dashboard__balance">
-                        <div>you are owed</div>
-                        <div>{userData.owed}</div>
-                    </div>
-                </div>
-                <div className="dashboard__users-header">
-                    <div>You owe</div>
-                    <div>You are owed</div>
-                </div>
-                <div className="dashboard__users-container">
-                    <div className="dashboard__users">
-                        {lenders && Object.values(lenders).map(lender => (
-                            <div className="dashboard__user-info">
-                                <div>{lender.username}</div>
-                                <div>{lender.amount}</div>
-                            </div>
-                        ))}
-                    </div>
-                    <div className="dashboard__users">
-                        {debtors && Object.values(debtors).map(debtor =>(
-                            <div className="dashboard__user-info">
-                                <div>{debtor.username}</div>
-                                <div>{debtor.amount}</div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+      <div className="main-body">
+        <HeaderBar />
+        <LeftSideBar />
+        <div className="main-bar">
+          <div className="dashboard__top-banner">
+            <div className="dashboard__name-title">XXXXX's Dashboard</div>
+
+            <div className="dashboard__balances-bar">
+              <div className="dashboard__balance">
+                <div>total balance</div>
+                <div>{userData.total}</div>
+              </div>
+              <div>
+                {/* <img src="../../../public/images/Wand.png"></img> */}
+              </div>
+              <div className="dashboard__balance">
+                <div>you owe</div>
+                <div>{userData.owe}</div>
+              </div>
+              <div className="dashboard__balance">
+                <div>you are owed</div>
+                <div>{userData.owed}</div>
+              </div>
             </div>
-            <DashboardRight />
+            <div className="dashbard__top-banner__button-container">
+              <NewTransactionButton />
+              <button className="dashboard__top-settle-button">
+                Settle Up
+              </button>
+            </div>
+          </div>
+          <div className="dashboard__users-header">
+            <div>You owe</div>
+            <div>You are owed</div>
+          </div>
+          <div className="dashboard__users-container">
+            <div className="dashboard__users">
+              {lenders &&
+                Object.values(lenders).map((lender) => (
+                  <div className="dashboard__user-info">
+                    <div>{lender.username}</div>
+                    <div>{lender.amount}</div>
+                  </div>
+                ))}
+            </div>
+            <div className="dashboard__users">
+              {debtors &&
+                Object.values(debtors).map((debtor) => (
+                  <div className="dashboard__user-info">
+                    <div>{debtor.username}</div>
+                    <div>{debtor.amount}</div>
+                  </div>
+                ))}
+            </div>
+          </div>
         </div>
-    )
+        <DashboardRight />
+      </div>
+    );
 }
 
 export default Dashboard;
