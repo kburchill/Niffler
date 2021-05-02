@@ -10,6 +10,7 @@ import NewTransactionButton from "../TransactionForm/NewTransactionButton"
 import './Dashboard.css'
 
 const Dashboard = () => {
+    const session = useSelector(state => state.session.user)
     const userData = useSelector(state => state.userData);
     const lenders = useSelector(state => state.userData["lenders"]);
     const debtors = useSelector(state => state.userData["debtors"]);
@@ -27,7 +28,7 @@ const Dashboard = () => {
         <LeftSideBar />
         <div className="main-bar">
           <div className="dashboard__top-banner">
-            <div className="dashboard__name-title">XXXXX's Dashboard</div>
+            <div className="dashboard__name-title">{session.first_name}'s Dashboard</div>
 
             <div className="dashboard__balances-bar">
               <div className="dashboard__balance">
@@ -62,7 +63,7 @@ const Dashboard = () => {
               {lenders &&
                 Object.values(lenders).map((lender) => (
                   <div className="dashboard__user-info">
-                    <div>{lender.username}</div>
+                    <div>{lender.first_name + " " + lender.last_name}</div>
                     <div>{lender.amount}</div>
                   </div>
                 ))}
@@ -71,7 +72,7 @@ const Dashboard = () => {
               {debtors &&
                 Object.values(debtors).map((debtor) => (
                   <div className="dashboard__user-info">
-                    <div>{debtor.username}</div>
+                    <div>{debtor.first_name + " " + debtor.last_name}</div>
                     <div>{debtor.amount}</div>
                   </div>
                 ))}

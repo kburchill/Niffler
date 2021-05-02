@@ -5,14 +5,10 @@
   padding: 10px;
 }
 
-.dashboard__header-right {
-}
-
 .dashboard__top-banner {
   align-items: center;
   background-image: url('../images/Dashboard/banner-bg.jpg');
   /* justify-content: ; */
-  border: 1px solid red;
   display: flex;
   flex-wrap: wrap;
   height: 314px;
@@ -21,10 +17,8 @@
   text-align: center;
   width: 608px;
 }
-.dashboard__name-title {
-  /* justify-content: space-between; */
-  border: 1px solid red;
 
+.dashboard__name-title {
   color: white;
   font-family: 'Harry Potter';
   font-size: 2em;
@@ -32,12 +26,15 @@
   padding: 10px;
   vertical-align: middle;
   width: 100%;
+  /* border: 10px solid white; */
 }
+
 .dashbard__top-banner__button-container {
   display: flex;
   justify-content: space-evenly;
   width: 608px;
 }
+
 .dashboard__top-banner__add-button {
   background: #6b63b5;
   border-radius: 6px;
@@ -67,12 +64,15 @@
   width: 30%;
 
 }
+
 .dashboard__balances-bar {
-  border: 1px solid red;
   display: flex;
   justify-content: space-between;
   padding: 10px;
   width: 100%;
+  color: white;
+  border-top: 1px solid whitesmoke;
+  border-bottom: 1px solid whitesmoke;
 }
 
 .dashboard__balance {
@@ -83,25 +83,35 @@
 }
 
 .dashboard__users-header {
-  border: 1px solid purple;
   display: flex;
   justify-content: space-between;
   padding: 10px;
+}
+
+.dashboard__users-header div {
+  padding: 10px;
+  font-size: 25px;
 }
 
 .dashboard__users-container {
-  border: 1px solid orange;
   display: flex;
   justify-content: space-between;
+  /* background: none; */
   padding: 10px;
+  /* border: 1px solid blue; */
 }
 
 .dashboard__users {
-  border: 1px solid magenta;
   display: flex;
   flex-direction: column;
+  /* border: 1px solid green; */
+  /* padding: 10px; */
+  width: 40%;
 }
 
 .dashboard__user-info {
   display: flex;
+  justify-content: space-between;
+  /* border: 1px solid red; */
+  padding: 10px;
 }

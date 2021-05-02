@@ -62,15 +62,15 @@ const renderGroupData = () => {
                             <button onClick={() => delete_transaction(transaction[0].transaction_id)}>Delete</button>
                             </div>
                         </div>
-                        {
-                            transaction.map(each_transaction => {
+                        <div className="detailed-info-container">
+                            {transaction.map(each_transaction => {
                                 return (
-                                    <li className="detailed-info">
+                                    <div className="detailed-info">
                                         {each_transaction.first_name} Owes {each_transaction.current_user_lender} {each_transaction.amount}
-                                    </li>
-                                )
-                            })
-                        }
+                                    </div>
+                                    )
+                            })}
+                        </div>
                     </div>)
             }
             else {
@@ -82,10 +82,12 @@ const renderGroupData = () => {
                                 <div class="description">{transaction[0].description}</div>
                                 <div class="paid">{transaction[0].current_user_lender} paid <div>{transaction[0].paid_amount}</div></div>
                                 <div class="lent">{transaction[0].current_user_lender} lent <div>{transaction[0].first_name}</div></div>
+                                <button onClick={() => delete_transaction(transaction[0].transaction_id)}>Delete</button>
                             </div>
-                            <button onClick={() => delete_transaction(transaction[0].transaction_id)}>Delete</button>
                         </div>
-                        <li className="detailed-info">{transaction[0].first_name} Owes me {transaction[0].amount}</li>
+                        <div className="detailed-info-container">
+                            <div className="detailed-info">{transaction[0].first_name} Owes me {transaction[0].amount}</div>
+                        </div>
                     </div>)
             }
         })
@@ -93,16 +95,20 @@ const renderGroupData = () => {
 
     return (
         <>
-            <HeaderBar />
             <div className="main-body">
+                <HeaderBar />
                 <LeftSideBar />
                 <div className="center-block-main">
                     <div className="group-header">
-                    <h1 className="group-name">{group_name}</h1>
-
+                        <h1 className="group-name">{group_name}</h1>
+                        <div className="group-buttons">
+                            <NewTransactionButton />
+                            <button className="dashboard__top-settle-button">
+                                Settle Up
+                            </button>
+                        </div>
                     </div>
                     <div className="current-group-transactions">
-                        <NewTransactionButton />
                         {renderGroupData()}
                     </div>
 

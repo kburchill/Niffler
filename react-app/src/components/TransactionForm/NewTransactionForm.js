@@ -81,32 +81,32 @@ const NewTransactionForm = () => {
     return (
         <div className="black_as_night">
         <form onSubmit={onSubmit} id='new-transaction-form'>
-
             <div>
                 {errors.map((error) => (
                     <div>{error}</div>
                 ))}
             </div>
             <div id="close-new-transaction-form">X</div>
-            <div>
-                <label htmlFor="groups">Select a group.</label>
-                <select onChange={updateGroup} value={groupId}>
+            <div className="form-field">
+                <label htmlFor="groups" className="form-label">Select a group.</label>
+                <select onChange={updateGroup} value={groupId} className="form-input">
                     {userGroups && Object.entries(userGroups).map(([group_id, group_name]) => (
                         <option key={group_id} value={group_id}>{group_name}</option>
                     ))}
                 </select>
             </div>
-            <div className="new-description">
-                <label htmlFor="description">What is this for?</label>
+            <div className="new-description" className="form-field">
+                <label htmlFor="description" className="form-label">What is this for?</label>
                 <textarea
                     name="description"
                     value={description}
                     onChange={updateDescription}
+                    className="form-input"
                 />
             </div>
-            <div>
-                <label htmlFor="payer">Which group member paid?</label>
-                <select onChange={updatePayerId} value={payerId}>
+            <div className="form-field">
+                <label htmlFor="payer" className="form-label">Which group member paid?</label>
+                <select onChange={updatePayerId} value={payerId} className="form-input">
                     {groupUsers && Object.values(groupUsers).map(user => (
                         <option key={user.user_id} value={user.user_id}>
                             {user.first_name + " " + user.last_name}
@@ -114,19 +114,20 @@ const NewTransactionForm = () => {
                     ))}
                 </select>
             </div>
-            <div>
-                <label htmlFor="amount">How much?</label>
+            <div className="form-field">
+                <label htmlFor="amount" className="form-label">How much?</label>
                 <input
                     name="amount"
                     type="number"
                     value={amount}
+                    className="form-input"
                     onChange={updateAmount}
                 />
             </div>
-            <div className="new-debtors">
-                <label htmlFor="users">Which group members owe money?</label>
+            <div className="new-debtors form-field">
+                <label htmlFor="users" className="form-label">Which group members owe money?</label>
                 {/* These are temporary users. Finished version will dynamically get users belonging to group from store. */}
-                <select multiple={true} onChange={updateDebtors}>
+                <select multiple={true} onChange={updateDebtors} className="form-input">
                     {groupUsers && Object.values(groupUsers).map(user => (
                         (user.user_id !== payerId) && <option key={user.user_id} value={user.user_id}>
                             {user.first_name + " " + user.last_name}
@@ -134,11 +135,12 @@ const NewTransactionForm = () => {
                     ))}
                 </select>
             </div>
-            <div>
-                <label htmlFor="date">When did this transaction occur?</label>
+            <div className="form-field">
+                <label htmlFor="date" className="form-label">When did this transaction occur?</label>
                 <input
                     name="date"
                     type="date"
+                    className="form-input"
                     value={date}
                     onChange={updateDate}
                 />

@@ -14,7 +14,7 @@ body {
 /* Container div for elements underneath header bar. */
 .main-body {
     /* margin-top: 50px; */
-    border: 1px solid blue;
+    border: 1px solid whitesmoke;
     display: flex;
     justify-content: center;
     font-family: 'Lato', sans-serif;
@@ -34,11 +34,13 @@ h1 {
 
 /* Div for center column in main body. */
 .main-bar {
-    width: 608px;
+    max-width: 608px;
+    min-width: 608px;
     /* padding: 10px; */
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: rgb(205, 205, 205);
+    border: 1px solid whitesmoke;
 }
 
 #login-form {

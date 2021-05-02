@@ -9,18 +9,29 @@
     width: 1024px;
     margin-left: 50%;
     margin-right: 50%;
-    border: 1px solid red;
     justify-content: space-between;
     background-image: url('../images/NavBarStars.jpg');
+    border-bottom: 1px solid whitesmoke;
 }
 
 .niffler-logo{
-    background-image: url('../images/NIfflerLogo.png');
-    align-self: flex-end;
+    /* background-image: url('../images/NIfflerLogo.png'); */
+    /* align-self: flex-end; */
     height: 50px;
     width: 200px;
     margin-left: 5%;
+    /* border: 1px solid red; */
+    /* margin: auto; */
 }
+
+.niffler-logo img {
+    height: 40px;
+    /* border: 1px solid green; */
+    padding: 5px;
+    /* margin: auto; */
+
+}
+
 .header-bar-options{
     width: 250px;
     display: flex;
@@ -35,6 +46,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-decoration: none;
 }
 #navbar__profile-button {
     /* border: none; */
@@ -42,10 +54,17 @@
     padding: 5px;
     /* font-size: 25px; */
     /* margin-left: 200px; */
+    color: black;
+    background-color: whitesmoke;
+    border: none;
+    height: 60%;
+    margin: auto;
+
 }
 
 .profile-dropdown {
     position: fixed;
+    top: 3%;
     background-color: white;
     border: 1px solid rgb(189, 189, 189);
     padding: 10px;
