@@ -75,6 +75,7 @@
   transition-duration: .2s;
 }
 
+
 .dashboard__top-settle-button:hover {
   background: #997a38;
   cursor: url("/images/WandCursorClick.png"), auto; 
