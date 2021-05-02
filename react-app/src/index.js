@@ -8,7 +8,9 @@ import configureStore from './store'
 const store = configureStore();
 
 ReactDOM.render(
+  // Strict mode makes error messages better
   <React.StrictMode>
+    {/* Provider is Redux. */}
     <Provider store={store}>
       <App />
     </Provider>
