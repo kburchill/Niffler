@@ -13,6 +13,7 @@
   flex-wrap: wrap;
   height: 314px;
   justify-content: center;
+  align-content: center;
   padding: 0px;
   text-align: center;
   width: 608px;
@@ -21,11 +22,12 @@
 .dashboard__name-title {
   color: white;
   font-family: 'Harry Potter';
-  font-size: 2em;
+  font-size: 2.5em;
   letter-spacing: 2px;
-  padding: 10px;
+  padding: 20px 10px 00px 10px;
   vertical-align: middle;
   width: 100%;
+  margin-bottom: 0px;
   /* border: 10px solid white; */
 }
 
@@ -33,12 +35,13 @@
   display: flex;
   justify-content: space-evenly;
   width: 608px;
+  padding-top: 20px;
 }
 
 .dashboard__top-banner__add-button {
   background: #6b63b5;
   border-radius: 6px;
-  font-family: Lato-Black;
+  font-family: 'Lato-Black';
   font-size: 15px;
   text-transform: uppercase;
   color: #ffffff;
@@ -48,10 +51,15 @@
   border: none;
   width: 30%;
   padding: 10px;
-
+  cursor: pointer;
+  transition-property: background ;
+  transition-duration: .2s;
+}
+.dashboard__top-banner__add-button:hover {
+  background: #383366;
 }
 .dashboard__top-settle-button {
-  background: #D0B16C;
+  background: #d0b16c;
   border-radius: 6px;
   font-family: Lato-Black;
   font-size: 15px;
@@ -62,17 +70,24 @@
   padding: 8px 14px;
   border: none;
   width: 30%;
+  cursor: pointer;
+  transition-property: background ;
+  transition-duration: .2s;
+}
 
+.dashboard__top-settle-button:hover {
+  background: #997a38;
 }
 
 .dashboard__balances-bar {
   display: flex;
   justify-content: space-between;
   padding: 10px;
+  padding-bottom: 0px;
   width: 100%;
   color: white;
-  border-top: 1px solid whitesmoke;
-  border-bottom: 1px solid whitesmoke;
+  /* border-top: 1px solid whitesmoke;
+  border-bottom: 1px solid whitesmoke; */
 }
 
 .dashboard__balance {
@@ -80,6 +95,13 @@
   flex-direction: column;
   padding: 10px;
   width: 100%;
+}
+.dashboard__balance__title-text {
+  font-family: 'HarryPotter';
+  font-size: 1.3em;
+  color: #d0b16c;
+  text-align: center;
+  letter-spacing: 1.2px;
 }
 
 .dashboard__users-header {

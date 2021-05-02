@@ -21,11 +21,12 @@ body {
     height: 100vh;
     width: 1024px;
     margin: auto;
-    padding-top: 40px;
+    padding-top: 38px;
     /* max-width: 1366px; */
     position: relative;
+    cursor: url("/images/BoltCursor.png"), auto;}
     /* text-align: center; */
-    
+  /* cursor: src="images/BoltCursor.svg", auto;   
 }
 
 h1 {
@@ -55,4 +56,8 @@ h1 {
 a:visited { 
  text-decoration: none; 
  color: grey; 
+}
+
+a{
+cursor: pointer;
 }
