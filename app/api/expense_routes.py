@@ -22,17 +22,21 @@ def create_expense():
             completed=False,
             updated_at=date.today()
         )
+
         db.session.add(new_transaction)
         db.session.commit()
         requestinfo = request.json
-
         # For each debtor, create a new transaction expense.
+        print("LOOK HERE ========", requestinfo)
         payed_amount = form.data["amount"]
         split_by = len(form.data["debtors"]) + 1
         remainder = payed_amount % split_by
         debtor_pays = (payed_amount - remainder) / split_by
         all_associated_transaction = []
+
         for debtor in form.data["debtors"]:
+            info = [new_transaction.id, form.data["payer_id"], debtor, debtor_pays, False, date.today()]
+            print(info, "LOOK ===== HERE -========")
             new_expense = TransactionExpense(
                 transaction_id=new_transaction.id,
                 lender_id=form.data["payer_id"],
@@ -47,12 +51,12 @@ def create_expense():
             if payer_id == current_user.id:
                 current_user_lender = 'You'
             else:
-                current_user_lender = users[payer_id].first_name
+                for user in users:
+                    if user['user_id'] == payer_id:
+                        current_user_lender = user['first_name']
             for user in users:
-                print(user, "here are our users")
                 if user['user_id'] == debtor:
                     debtor_firstname = user['first_name']
-
             all_associated_transaction.append({
                 'payer_id': payer_id,
                 'paid_amount': payed_amount,
