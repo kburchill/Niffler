@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LeftSideBar from "../LeftSideBar";
 import HeaderBar from "../HeaderBar";
 import GroupPageRight from "../RightSideBar/GroupPageRight";
-import { groupData } from "../../store/groups"
+import { groupData, group_transaction_delete } from "../../store/groups"
 import { getUserData } from "../../store/user"
 import EditTransactionButton from "../TransactionForm/EditTransactionButton"
 import NewTransactionButton from "../TransactionForm/NewTransactionButton"
@@ -15,19 +15,24 @@ const GroupPage = () => {
     const user = useSelector(state => state.user);
     const transaction_info = useSelector(state => state.groups.transaction_info);
     const group_name = useSelector(state => state.groups.group_name)
+
     const dispatch = useDispatch();
 
     const groupId = useParams();
 
     useEffect(() => {
-    //     dispatch(groupData(groupId.groupId));
-    // }, [groupId, dispatch]);
 
         dispatch(groupData(groupId.groupId))
         dispatch(getUserData())
     }, [dispatch, groupId])
 
-    const renderGroupData = () => {
+
+    const delete_transaction = (transaction) => {
+        dispatch(group_transaction_delete(transaction))
+        window.location.reload()
+    }
+
+const renderGroupData = () => {
         return transaction_info && Object.values(transaction_info).map(transaction => {
             // Map through each expense if multiple
             /*
@@ -54,8 +59,8 @@ const GroupPage = () => {
                                     <div>{transaction[0].current_user_lender} lent </div>
                                     <div>{transaction[transaction.length - 1].total_debt_owed}</div>
                                 </div>
+                            <button onClick={() => delete_transaction(transaction[0].transaction_id)}>Delete</button>
                             </div>
-                            
                         </div>
                         {
                             transaction.map(each_transaction => {
@@ -78,6 +83,7 @@ const GroupPage = () => {
                                 <div class="paid">{transaction[0].current_user_lender} paid <div>{transaction[0].paid_amount}</div></div>
                                 <div class="lent">{transaction[0].current_user_lender} lent <div>{transaction[0].first_name}</div></div>
                             </div>
+                            <button onClick={() => delete_transaction(transaction[0].transaction_id)}>Delete</button>
                         </div>
                         <li className="detailed-info">{transaction[0].first_name} Owes me {transaction[0].amount}</li>
                     </div>)
@@ -89,9 +95,7 @@ const GroupPage = () => {
         <>
             <HeaderBar />
             <div className="main-body">
-                <div>
                 <LeftSideBar />
-                </div>
                 <div className="center-block-main">
                     <div className="group-header">
                     <h1 className="group-name">{group_name}</h1>

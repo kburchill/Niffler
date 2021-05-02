@@ -1,6 +1,7 @@
 // constants
 const LOAD = "groups/LOAD";
 const ADD = "groups/ADD";
+const REMOVE = 'groups/REMOVE';
 
 const load = group => ({
     type: LOAD,
@@ -11,6 +12,24 @@ const add = transaction => ({
     type: ADD,
     payload: transaction
 })
+
+const unload = transaction => ({
+    type: REMOVE,
+    payload: transaction
+})
+
+export const group_transaction_delete = (transaction) => async (dispatch) => {
+    const response = await fetch(`/api/expenses/${transaction}`,
+    {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    if (response.ok) {
+        dispatch(unload(transaction))
+    }
+}
 
 export const groupData = (groupId) => async (dispatch) => {
     const response = await fetch(`/api/groups/${groupId}`, {
@@ -41,7 +60,9 @@ const groupReducer = (state = initialState, action) =>
             const key = Object.keys(dict)
             state['transaction_info'][key] = dict[key]
             return state
-
+        case REMOVE:
+            delete state['transaction_info'][action.payload]
+            return state
         default:
             return state;
     }

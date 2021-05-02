@@ -44,6 +44,7 @@ const NewTransactionForm = () => {
         });
         if (response.ok) {
             dispatch(addGroupTransaction(response));
+            window.location.reload()
         }
     }
 
@@ -78,7 +79,9 @@ const NewTransactionForm = () => {
     }
 
     return (
+        <div className="black_as_night">
         <form onSubmit={onSubmit} id='new-transaction-form'>
+
             <div>
                 {errors.map((error) => (
                     <div>{error}</div>
@@ -93,7 +96,7 @@ const NewTransactionForm = () => {
                     ))}
                 </select>
             </div>
-            <div>
+            <div className="new-description">
                 <label htmlFor="description">What is this for?</label>
                 <textarea
                     name="description"
@@ -120,7 +123,7 @@ const NewTransactionForm = () => {
                     onChange={updateAmount}
                 />
             </div>
-            <div>
+            <div className="new-debtors">
                 <label htmlFor="users">Which group members owe money?</label>
                 {/* These are temporary users. Finished version will dynamically get users belonging to group from store. */}
                 <select multiple={true} onChange={updateDebtors}>
@@ -140,8 +143,10 @@ const NewTransactionForm = () => {
                     onChange={updateDate}
                 />
             </div>
-            <button type="submit">Submit</button>
+            <button className="new-transaction-submit"type="submit">Submit</button>
+
         </form>
+        </div>
     );
 }
 export default NewTransactionForm;
