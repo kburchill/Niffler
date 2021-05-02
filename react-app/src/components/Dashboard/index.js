@@ -28,7 +28,9 @@ const Dashboard = () => {
         <LeftSideBar />
         <div className="main-bar">
           <div className="dashboard__top-banner">
-            <div className="dashboard__name-title">{session.first_name}'s Dashboard</div>
+            <div className="dashboard__name-title">
+              {session.first_name}'s Dashboard
+            </div>
 
             <div className="dashboard__balances-bar">
               <div className="dashboard__balance">
@@ -36,11 +38,14 @@ const Dashboard = () => {
                 <div>{userData.total}</div>
               </div>
               <div>
-                {/* <img src="../../../public/images/Wand.png"></img> */}
+                <img src="/images/wandDivider.svg"></img>
               </div>
               <div className="dashboard__balance">
                 <div>you owe</div>
                 <div>{userData.owe}</div>
+              </div>
+              <div>
+                <img src="/images/wandDivider.svg"></img>
               </div>
               <div className="dashboard__balance">
                 <div>you are owed</div>
@@ -63,7 +68,7 @@ const Dashboard = () => {
               {lenders &&
                 Object.values(lenders).map((lender) => (
                   <div className="dashboard__user-info">
-                    <div>{lender.first_name + " " + lender.last_name}</div>
+                    <div>{lender.first_name + ' ' + lender.last_name}</div>
                     <div>{lender.amount}</div>
                   </div>
                 ))}
@@ -72,7 +77,7 @@ const Dashboard = () => {
               {debtors &&
                 Object.values(debtors).map((debtor) => (
                   <div className="dashboard__user-info">
-                    <div>{debtor.first_name + " " + debtor.last_name}</div>
+                    <div>{debtor.first_name + ' ' + debtor.last_name}</div>
                     <div>{debtor.amount}</div>
                   </div>
                 ))}
