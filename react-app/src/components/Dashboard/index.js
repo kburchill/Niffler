@@ -27,9 +27,7 @@ const Dashboard = () => {
         <LeftSideBar />
         <div className="main-bar">
           <div className="dashboard__top-banner">
-            <div className="dashboard__name-title">
-              XXXXX's Dashboard
-              </div>
+            <div className="dashboard__name-title">XXXXX's Dashboard</div>
 
             <div className="dashboard__balances-bar">
               <div className="dashboard__balance">
@@ -45,9 +43,11 @@ const Dashboard = () => {
                 <div>{userData.owed}</div>
               </div>
             </div>
-            <div className="dashboard__header-right">
+            <div className="dashbard__top-banner__button-container">
               <NewTransactionButton />
-              <button>Settle Up</button>
+              <button className="dashboard__top-settle-button">
+                Settle Up
+              </button>
             </div>
           </div>
           <div className="dashboard__users-header">

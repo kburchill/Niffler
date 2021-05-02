@@ -25,7 +25,8 @@ const NewTransactionButton = () => {
 
     return (
         <>
-            <button className="newtransaction-button" onClick={openNewTransactionForm}>
+            <button className="dashboard__top-banner__add-button"
+                onClick={openNewTransactionForm}>
                 Add Expense
             </button>
             {showNewTransactionForm && <NewTransactionForm />}
