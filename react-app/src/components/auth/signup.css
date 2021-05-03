@@ -13,14 +13,25 @@
   display: flex;
   margin-left: 20%;
   margin-right: 20%;
-  margin-top: 10%;
+  padding-bottom: 20%;
+  /* margin-top: 10%; */
   justify-content: center;
+   animation-duration: 2s;
+   justify-content: center;
+  align-items: center;
   animation-name: fadein;
 }
 
+.signup-form-div__row {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+
+
 .signup_form > * > div {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding: 10px;
 }
 .signup_form > * > * > input:focus {
@@ -33,7 +44,12 @@
   border: 1px solid #514A92;
   border-radius: 20.5px;
   padding: 10px;
-  justify-self: center;
+  /* justify-self: center; */
+     justify-self: left;
+  margin: auto;
+  width: 20px;
+  letter-spacing: 1.4px;
+  margin-bottom: 10px;
 
 }
 
@@ -42,8 +58,13 @@
   color: white;
   font-size: 20px;
   padding: 5px;
-  min-width: 50%;
-  justify-self: flex-end;
+  /* min-width: 50%; */
+  /* justify-self: flex-end; */
+    width: 380px;
+  /* min-width: 50%; */
+  text-align: right;
+  padding-right: 20px;
+  letter-spacing: 1.6px;
 }
 .signup-button-submit {
   background: #d0b16c;
@@ -58,22 +79,44 @@
   padding: 8px 14px;
   border: none;
   width: 50%;
-  cursor: pointer;
+  /* cursor: pointer; */
   transition-property: background ;
   transition-duration: .2s;
   justify-content: center;
+  width: 150px;
+  cursor: url("/images/WandCursorClick.png"), auto;
+  
+}
+.signup-button-submit:hover {
+  background: #383366;
+  cursor: url("/images/WandCursorClick.png"), auto;
 }
 
 
 .sign-up-logo > * {
-  object-fit: cover;
+   object-fit: cover;
   width: 160px;
-  margin-left: 20%;
-  margin-bottom: 5%;
+  /* margin-left: 20%; */
+  margin-bottom: 0px;
 }
 
 .buttonDiv {
   margin: auto;
 }
 
+.error{
+  color: red;
+  font-family: 'Lato';
+  font-weight: 900;
+}
 
+.login-link {
+  color: grey;
+  margin: auto;
+  text-decoration: none;
+  text-align: center;
+}
+
+.login-link:hover {
+  color: white;
+}
