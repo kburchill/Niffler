@@ -107,3 +107,22 @@
   margin-top: 10px;
 
 }
+
+
+.delete_trans {
+  background: #b91616;
+  border-radius: 6px;
+  font-family: 'Lato';
+  font-weight: 900;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #ffffff;
+  letter-spacing: 1.6px;
+  text-align: center;
+  padding: 8px 14px;
+  border: none;
+  cursor: pointer;
+  transition-property: background ;
+  transition-duration: .2s;
+  justify-content: center;
+}
