@@ -72,7 +72,7 @@
   padding: 8px 14px;
   border: none;
   width: 30%;
-  cursor: pointer;
+  cursor: url("/images/WandCursorClick.png"), auto;
   transition-property: background ;
   transition-duration: .2s;
 }
@@ -113,7 +113,7 @@
   justify-content: space-between;
   padding: 10px;
   padding-right: 20px;
-  padding-left:
+  /* padding-left: */
 }
 
 .dashboard__users-container > * {

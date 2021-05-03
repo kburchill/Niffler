@@ -67,7 +67,7 @@ const LoginForm = () => {
                 placeholder="Password"
                 value={password}
                 onChange={updatePassword}
-              />
+              ></input>
             </div>
             <div className="buttonDiv">
               <button className="login-button-submit" type="submit">

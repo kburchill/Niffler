@@ -87,7 +87,7 @@
   border: none;
   width: 80%;
   align-self: center;
-  cursor: pointer;
+  cursor: url("/images/WandCursorClick.png"), auto;
   transition-property: background;
   transition-duration: 0.2s;
 }
