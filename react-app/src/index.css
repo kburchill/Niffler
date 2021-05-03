@@ -49,15 +49,32 @@ h1 {
 }
 
 /* Styling for active NavLinks. */
-.active {
-    /* color: white; */
-}
-
+/* .active {
+    color: white; */
+/* } */
 a:visited {
  text-decoration: none;
  /* color: grey;  */
+
+}
+a:active {
+ text-decoration: none;
+ color: grey; 
+
+}
+a:hover {
+ text-decoration: none;
+ color: grey; 
+
 }
 
 a{
 cursor: url("/images/WandCursorClick.png"), auto;
 }
+
+label{
+    cursor: url("/images/WandCursor.png"), auto;
+}
+/* label:hover{
+    cursor: url("/images/WandCursorClick.png"), auto;
+} */

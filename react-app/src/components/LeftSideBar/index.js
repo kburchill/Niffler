@@ -19,12 +19,15 @@ const LeftSideBar = () => {
           Dashboard
         </NavLink>
         {/* Groups Button Link to Groups  */}
+      </div>
+
+      <div className="left-sidebar__main left-sidebar-titles sidebar-link">
         <NavLink
           to="/groups"
           exact={true}
           activeClassName="sidebar-link-titles"
         >
-          Groups
+          groups
         </NavLink>
       </div>
       {/* I think we need to link to Groups here? */}

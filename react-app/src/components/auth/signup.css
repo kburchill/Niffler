@@ -1,9 +1,21 @@
+@keyframes fadein {
+  from {
+    opacity: 0%;
+    scale: 0;
+  }
+  to {
+    opacity: 100%;
+    scale: 1;
+  }
+}
+
 .signup_form {
   display: flex;
   margin-left: 20%;
   margin-right: 20%;
   margin-top: 10%;
   justify-content: center;
+  animation-name: fadein;
 }
 
 .signup_form > * > div {
@@ -61,7 +73,7 @@
 }
 
 .buttonDiv {
-  margin-left: 35%;
+  margin: auto;
 }
 
 
