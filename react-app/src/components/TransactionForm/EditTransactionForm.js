@@ -150,7 +150,7 @@ const EditTransactionForm = () => {
                     onChange={updateCompleted}
                 />
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit">SUBMIT</button>
         </form>
     );
 }

@@ -145,7 +145,7 @@ const NewTransactionForm = () => {
                     onChange={updateDate}
                 />
             </div>
-            <button className="new-transaction-submit"type="submit">Submit</button>
+            <button className="new-transaction-submit"type="submit">SUBMIT</button>
 
         </form>
         </div>

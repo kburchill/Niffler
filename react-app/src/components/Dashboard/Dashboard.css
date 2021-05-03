@@ -148,3 +148,17 @@
   color: red;
   margin-left: 10%;
 }
+
+.user-group-text {
+  font-family: 'Lato';
+  display: flex;
+  justify-content: space-evenly;
+  text-decoration: none;
+}
+.user-group-link-text {
+  font-family: 'Lato';
+  display: flex;
+  justify-content: space-evenly;
+  text-decoration: none;
+  color: black;
+}

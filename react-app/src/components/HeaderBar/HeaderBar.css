@@ -63,6 +63,7 @@
   flex-direction: column;
   justify-content: center;
   text-decoration: none;
+  cursor: url("/images/WandCursorClick.png"), auto;
 }
 #navbar__profile-button {
   font-family: 'Harry Potter';
@@ -72,6 +73,7 @@
   color: whitesmoke;
   border: none;
   margin: auto;
+  cursor: url("/images/WandCursorClick.png"), auto;
 }
 
 .profile-dropdown {
