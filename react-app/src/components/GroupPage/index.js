@@ -59,7 +59,7 @@ const renderGroupData = () => {
                                     <div>{transaction[0].current_user_lender} lent </div>
                                     <div>{transaction[transaction.length - 1].total_debt_owed}</div>
                                 </div>
-                            <button onClick={() => delete_transaction(transaction[0].transaction_id)}>Delete</button>
+                            <button className="delete_trans" onClick={() => delete_transaction(transaction[0].transaction_id)}>Avada Kedavra</button>
                             </div>
                         </div>
                         <div className="detailed-info-container">
@@ -104,7 +104,7 @@ const renderGroupData = () => {
                         <div className="group-buttons">
                             <NewTransactionButton />
                             <button className="dashboard__top-settle-button">
-                                Settle Up
+                                Settle Up*
                             </button>
                         </div>
                     </div>
