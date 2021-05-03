@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { getUserData } from '../../store/user';
+import HeaderBar from '../HeaderBar';
+import LeftSideBar from '../LeftSideBar';
+import DashboardRight from '../RightSideBar/DashboardRight';
 
 const RenderUserGroups = () => {
   // All of the groups associated with the logged in user
@@ -14,7 +17,9 @@ const RenderUserGroups = () => {
   }, [dispatch]);
     
   return (
-    <>
+      <>
+          <HeaderBar />
+          <LeftSideBar />
       <div>
         {' '}
         Potato
@@ -32,7 +37,8 @@ const RenderUserGroups = () => {
               </NavLink>
             ))}
         </div>
-      </div>
+          </div>
+          <DashboardRight />
     </>
   );
 };
