@@ -5,6 +5,7 @@ import { getUserData } from '../../store/user';
 import HeaderBar from '../HeaderBar';
 import LeftSideBar from '../LeftSideBar';
 import DashboardRight from '../RightSideBar/DashboardRight';
+import '../Dashboard/Dashboard.css';
 
 const RenderUserGroups = () => {
   // All of the groups associated with the logged in user
@@ -17,28 +18,34 @@ const RenderUserGroups = () => {
   }, [dispatch]);
     
   return (
-      <>
-          <HeaderBar />
-          <LeftSideBar />
-      <div>
-        {' '}
-        Potato
-        <div>
-          {/* Pull our data from the object that it's in */}
-          {userGroups &&
-            Object.entries(userGroups).map(([group_id, group_name]) => (
-              <NavLink
-                key={group_id}
-                to={`/groups/${group_id}`}
-                exact={true}
-                activeClassName="sidebar-link"
-              >
-                {group_name}
-              </NavLink>
-            ))}
-        </div>
+    <>
+      <div className="main-body">
+        <HeaderBar />
+        <LeftSideBar />
+        <div className="main-bar">
+          <div className="dashboard__top-banner">
+            <div className="dashboard__name-title">Groups List</div>
           </div>
-          <DashboardRight />
+          {/* {' '} */}
+          <div className="dashboard__users-header"></div>
+          <div className="user-group-text">
+            {/* Pull our data from the object that it's in */}
+            {userGroups &&
+              Object.entries(userGroups).map(([group_id, group_name]) => (
+                <NavLink
+                  key={group_id}
+                  to={`/groups/${group_id}`}
+                  exact={true}
+                  activeClassName="sidebar-link"
+                  className="user-group-link-text"
+                >
+                  {group_name}
+                </NavLink>
+              ))}
+          </div>
+        </div>
+        <DashboardRight />
+      </div>
     </>
   );
 };
