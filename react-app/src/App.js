@@ -14,6 +14,7 @@ import NewTransactionForm from "./components/TransactionForm/NewTransactionForm"
 import EditTransactionForm from "./components/TransactionForm/EditTransactionForm"
 import CreateGroupForm from "./components/GroupForm/CreateGroupForm"
 import EditGroupForm from "./components/GroupForm/EditGroupForm"
+import RenderUserGroups from './components/GroupPage/UserGroupList'
 // import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
 
@@ -47,14 +48,17 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path="/users" exact={true} >
-          <UsersList/>
+        <ProtectedRoute path="/users" exact={true}>
+          <UsersList />
         </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true} >
+        <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/dashboard" exact={true}>
           <Dashboard />
+        </ProtectedRoute>
+        <ProtectedRoute path="/groups" exact={true}>
+          <RenderUserGroups />
         </ProtectedRoute>
         <ProtectedRoute path="/groups/:groupId" exact={true}>
           <GroupPage />

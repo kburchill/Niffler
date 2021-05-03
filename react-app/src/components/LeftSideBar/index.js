@@ -18,9 +18,16 @@ const LeftSideBar = () => {
         >
           Dashboard
         </NavLink>
+        {/* Groups Button Link to Groups  */}
+        <NavLink
+          to="/groups"
+          exact={true}
+          activeClassName="sidebar-link-titles"
+        >
+          Groups
+        </NavLink>
       </div>
       {/* I think we need to link to Groups here? */}
-      <div className="left-sidebar-titles">groups</div>
       <button className="left-sidebar__top-group-button">+ ADD GROUP</button>
       <div className="left-sidebar__groups sidebar-link">
         {/* { typeof userGroups} */}
