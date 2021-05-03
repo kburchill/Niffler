@@ -81,12 +81,12 @@ const renderGroupData = () => {
                                 <div class="date">{transaction[0].expense_date}</div>
                                 <div class="description">{transaction[0].description}</div>
                                 <div class="paid">{transaction[0].current_user_lender} paid <div>{transaction[0].paid_amount}</div></div>
-                                <div class="lent">{transaction[0].current_user_lender} lent <div>{transaction[0].first_name}</div></div>
+                                <div class="lent">{transaction[0].current_user_lender} lent <div>{transaction[0].total_debt_owed}</div></div>
                                 <button onClick={() => delete_transaction(transaction[0].transaction_id)}>Delete</button>
                             </div>
                         </div>
                         <div className="detailed-info-container">
-                            <div className="detailed-info">{transaction[0].first_name} Owes me {transaction[0].amount}</div>
+                            <div className="detailed-info">{transaction[0].first_name} Owes {transaction[0].current_user_lender} {transaction[0].amount}</div>
                         </div>
                     </div>)
             }
