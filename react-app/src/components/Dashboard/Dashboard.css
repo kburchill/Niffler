@@ -118,7 +118,7 @@
 
 .dashboard__users-container > * {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   /* background: none; */
   padding: 10px;
   flex-direction: row;
