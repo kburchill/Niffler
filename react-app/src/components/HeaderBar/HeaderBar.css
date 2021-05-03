@@ -1,99 +1,117 @@
+@keyframes fadein {
+  from {
+    opacity: 0%;
+    scale: 0;
+  }
+  to {
+    opacity: 100%;
+    scale: 1;
+  }
+}
 /* Header bar. */
 #header-bar {
-    display: flex;
-    position: fixed;
-    top: 0;
-    /* left: 0;
+  display: flex;
+  position: fixed;
+  top: 0;
+  /* left: 0;
     right: 0; */
-    height: 50px;
-    width: 1024px;
-    margin-left: 50%;
-    margin-right: 50%;
-    justify-content: space-between;
-    background-image: url('../images/NavBarStars.jpg');
-    /* border-bottom: 1px solid whitesmoke; */
+  height: 50px;
+  width: 1024px;
+  margin-left: 50%;
+  margin-right: 50%;
+  justify-content: space-between;
+  background-image: url('../images/NavBarStars.jpg');
+  /* border-bottom: 1px solid whitesmoke; */
 }
 
-.niffler-logo{
-    /* background-image: url('../images/NifflerLogo.png'); */
-    /* align-self: flex-end; */
-    height: 50px;
-    width: 200px;
-    margin-left: 5%;
-    /* border: 1px solid red; */
-    /* margin: auto; */
+.niffler-logo {
+  /* background-image: url('../images/NifflerLogo.png'); */
+  /* align-self: flex-end; */
+  height: 50px;
+  width: 200px;
+  margin-left: 5%;
+  /* border: 1px solid red; */
+  /* margin: auto; */
 }
 
 .niffler-logo img {
-    height: 40px;
-    /* border: 1px solid green; */
-    padding: 5px;
-    /* margin: auto; */
-
+  height: 40px;
+  /* border: 1px solid green; */
+  padding: 5px;
+  /* margin: auto; */
 }
 
-.header-bar-options{
-    width: 250px;
-    display: flex;
-    align-content: center;
-    justify-content: space-around;
-    margin-right: 5%;
-    margin-left: 5%;
+.header-bar-options {
+  width: 250px;
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
+  margin-right: 5%;
+  margin-left: 5%;
 }
-.header-bar-options > * > *, .profile-dropdown > *{
-    font-family: "Harry Potter";
+.header-bar-options > * > *,
+.profile-dropdown > * {
+  font-family: 'Harry Potter';
 }
 
 #navbar__profile-button {
-
 }
 .header-bar-options > a {
-    font-size: 20px;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-decoration: none;
+  font-size: 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-decoration: none;
 }
 #navbar__profile-button {
-    font-family: "Harry Potter";
-    background: transparent;
-    font-size: 20px;
-    /* margin-left: 200px; */
-    color: whitesmoke;
-    border: none;
-    margin: auto;
-
+  font-family: 'Harry Potter';
+  background: transparent;
+  font-size: 20px;
+  /* margin-left: 200px; */
+  color: whitesmoke;
+  border: none;
+  margin: auto;
 }
 
 .profile-dropdown {
-    position: fixed;
-    top: 3%;
-    background-color: white;
-    border: 1px solid rgb(189, 189, 189);
-    padding: 10px;
-    font-family: 'Open Sans', sans-serif;
+  position: fixed;
+  top: 8%;
+  width: 150px;
+  background-color: rgba(255, 255, 255, 0.836);
+  border: 1px solid rgb(189, 189, 189);
+  padding: 10px;
+  font-family: 'Open Sans', sans-serif;
+  border-radius: 12px;
+  animation-duration: 1s;
+  animation-name: fadein;
 }
 
 .profile-dropdown__item {
-    padding: 10px;
+  padding: 10px;
 }
 
-.profile-dropdown__item > button{
-    background: #6b63b5;
-    border-radius: 6px;
-    font-family: 'Lato';
-    font-weight: 900;
-    font-size: 15px;
-    text-transform: uppercase;
-    color: #ffffff;
-    letter-spacing: 1.6px;
-    text-align: center;
-    padding: 8px 14px;
-    border: none;
-    width: 90%;
-    padding: 10px;
-    cursor: url(/images/WandCursorClick.png), auto;
-    transition-property: background;
-    transition-duration: .2s;
+.profile-dropdown__item > button {
+  background: #6b63b5;
+  border-radius: 6px;
+  font-family: 'Lato';
+  font-weight: 900;
+  font-size: 15px;
+  text-transform: uppercase;
+  color: #ffffff;
+  letter-spacing: 1.6px;
+  text-align: center;
+  padding: 8px 14px;
+  border: none;
+  width: 100%;
+  padding: 10px;
+  cursor: url(/images/WandCursorClick.png), auto;
+  transition-property: background;
+  transition-duration: 0.2s;
+  
+}
+
+.profile-dropdown__item > button:hover{
+    background: #d81212;
+  cursor: url("/images/WandCursorClick.png"), auto;
 }
