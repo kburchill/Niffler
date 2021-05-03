@@ -55,31 +55,35 @@ const Dashboard = () => {
           </div>
           <div className="dashbard__top-banner__button-container">
             <NewTransactionButton />
-            <button className="dashboard__top-settle-button">Settle Up</button>
+            <button className="dashboard__top-settle-button">Settle Up*</button>
           </div>
         </div>
-        
-          <div className="dashboard__users-header">
-            <div>You owe</div>
-            <div>You are owed</div>
-          </div>
-          <div className="dashboard__users-container"></div>
+
+        <div className="dashboard__users-header">
+          <div className="owe-div">You owe</div>
+          <img src="/images/wandDivider.svg"/>
+          <div className="owed-div">You are owed</div>
+        </div>
+        <div className="dashboard__users-container">
           <div className="dashboard__users">
-            {lenders &&
-              Object.values(lenders).map((lender) => (
-                <div className="dashboard__user-info">
-                  <div>{lender.first_name + ' ' + lender.last_name}</div>
-                  <div>{lender.amount}</div>
-                </div>
-              ))}
-          <div className="dashboard__users">
-            {debtors &&
-              Object.values(debtors).map((debtor) => (
-                <div className="dashboard__user-info">
-                  <div>{debtor.first_name + ' ' + debtor.last_name}</div>
-                  <div>{debtor.amount}</div>
-                </div>
-              ))}
+            <div className="lender-info">
+              {lenders &&
+                Object.values(lenders).map((lender) => (
+                  <div className="dashboard__user-info">
+                    <div>{lender.first_name + ' ' + lender.last_name} {lender.amount}</div>
+                  </div>
+                ))}
+            </div>
+            <div className="dashboard__users">
+              <div className="debtor-info">
+                {debtors &&
+                  Object.values(debtors).map((debtor) => (
+                    <div className="dashboard__user-info">
+                      <div>{debtor.first_name + ' ' + debtor.last_name} {debtor.amount}</div>
+                    </div>
+                  ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
