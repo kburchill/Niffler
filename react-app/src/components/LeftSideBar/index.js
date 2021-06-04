@@ -27,11 +27,11 @@ const LeftSideBar = () => {
           exact={true}
           activeClassName="sidebar-link-titles"
         >
-          groups
+          Groups
         </NavLink>
       </div>
       {/* I think we need to link to Groups here? */}
-      <button className="left-sidebar__top-group-button">+ ADD GROUP</button>
+      <button className="left-sidebar__top-group-button">+ ADD GROUP*</button>
       <div className="left-sidebar__groups sidebar-link">
         {/* { typeof userGroups} */}
         {userGroups &&

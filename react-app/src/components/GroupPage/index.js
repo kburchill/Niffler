@@ -50,15 +50,14 @@ const renderGroupData = () => {
                                 <div class="date">{transaction[0].expense_date}</div>
                                 <div class="description">{transaction[0].description}</div>
                                 <div class="paid">
-                                    <div>{transaction[0].current_user_lender} Paid:
-                                            <div>{transaction[0].paid_amount}</div>
-                                    </div>
+                                    <div>{transaction[0].current_user_lender} Paid:</div>
+                                    <div>{transaction[0].paid_amount}</div>
                                 </div>
                                 <div class="lent">
-                                    <div>{transaction[0].current_user_lender} lent </div>
+                                    <div>{transaction[0].current_user_lender} lent:</div>
                                     <div>{transaction[transaction.length - 1].total_debt_owed}</div>
                                 </div>
-                            <button className="delete_trans" onClick={() => delete_transaction(transaction[0].transaction_id)}>Avada Kedavra</button>
+                            <button className="delete-trans" onClick={() => delete_transaction(transaction[0].transaction_id)}>Avada Kedavra!</button>
                             </div>
                         </div>
                         <div className="detailed-info-container">
@@ -67,7 +66,7 @@ const renderGroupData = () => {
                                     <div className="detailed-info">
                                         {each_transaction.first_name} Owes {each_transaction.current_user_lender} {each_transaction.amount}
                                     </div>
-                                    )
+                                )
                             })}
                         </div>
                     </div>)
@@ -79,9 +78,15 @@ const renderGroupData = () => {
                             <div class="info-block">
                                 <div class="date">{transaction[0].expense_date}</div>
                                 <div class="description">{transaction[0].description}</div>
-                                <div class="paid">{transaction[0].current_user_lender} paid <div>{transaction[0].paid_amount}</div></div>
-                                <div class="lent">{transaction[0].current_user_lender} lent <div>{transaction[0].total_debt_owed}</div></div>
-                                <button onClick={() => delete_transaction(transaction[0].transaction_id)}>Delete</button>
+                                <div class="paid">
+                                    <div>{transaction[0].current_user_lender} paid:</div>
+                                    <div>{transaction[0].paid_amount}</div>
+                                </div>
+                                <div class="lent">
+                                    <div>{transaction[0].current_user_lender} lent:</div>
+                                    <div>{transaction[0].total_debt_owed}</div>
+                                </div>
+                                <button className="delete-trans" onClick={() => delete_transaction(transaction[0].transaction_id)}>Avada Kedavra</button>
                             </div>
                         </div>
                         <div className="detailed-info-container">

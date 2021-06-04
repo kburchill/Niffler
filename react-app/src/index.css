@@ -70,7 +70,7 @@ a:hover {
 }
 
 a{
-cursor: url("/images/WandCursorClick.png"), auto;
+    cursor: url("/images/WandCursorClick.png"), auto;
 }
 
 label{

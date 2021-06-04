@@ -1,5 +1,5 @@
 import React from "react";
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import HeaderBar from "../HeaderBar";
 
 import landing from "../images/NifflerBankLanding.jpg";
@@ -9,9 +9,10 @@ const IntroductoryPage = () => {
       <div className="main-body">
         <HeaderBar />
         <div className="introductory-page__image-container">
-          <div>
+          <Link to="/dashboard">
             <img src={landing} width="100%" alt="Welcome to Niffler!"></img>
-          </div>
+          </Link>
+          {/* <button>Get Started!</button> */}
         </div>
       </div>
     );
