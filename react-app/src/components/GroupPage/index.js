@@ -50,7 +50,7 @@ const renderGroupData = () => {
                                 <div class="date">{transaction[0].expense_date}</div>
                                 <div class="description">{transaction[0].description}</div>
                                 <div class="paid">
-                                    <div>{transaction[0].current_user_lender} Paid:</div>
+                                    <div>{transaction[0].current_user_lender} paid:</div>
                                     <div>{transaction[0].paid_amount}</div>
                                 </div>
                                 <div class="lent">
@@ -64,7 +64,7 @@ const renderGroupData = () => {
                             {transaction.map(each_transaction => {
                                 return (
                                     <div className="detailed-info">
-                                        {each_transaction.first_name} Owes {each_transaction.current_user_lender} {each_transaction.amount}
+                                        {each_transaction.first_name} owes {each_transaction.current_user_lender} {each_transaction.amount}
                                     </div>
                                 )
                             })}
@@ -90,7 +90,7 @@ const renderGroupData = () => {
                             </div>
                         </div>
                         <div className="detailed-info-container">
-                            <div className="detailed-info">{transaction[0].first_name} Owes {transaction[0].current_user_lender} {transaction[0].amount}</div>
+                            <div className="detailed-info">{transaction[0].first_name} owes {transaction[0].current_user_lender} {transaction[0].amount}</div>
                         </div>
                     </div>)
             }

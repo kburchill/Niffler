@@ -7,14 +7,14 @@ import SignUpForm from "./components/auth/SignUpForm";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
-import Dashboard from "./components/Dashboard"
-import IntroductoryPage from "./components/IntroductoryPage"
-import GroupPage from "./components/GroupPage"
-import NewTransactionForm from "./components/TransactionForm/NewTransactionForm"
-import EditTransactionForm from "./components/TransactionForm/EditTransactionForm"
-import CreateGroupForm from "./components/GroupForm/CreateGroupForm"
-import EditGroupForm from "./components/GroupForm/EditGroupForm"
-import RenderUserGroups from './components/GroupPage/UserGroupList'
+import Dashboard from "./components/Dashboard";
+import IntroductoryPage from "./components/IntroductoryPage";
+import GroupPage from "./components/GroupPage";
+import NewTransactionForm from "./components/TransactionForm/NewTransactionForm";
+import EditTransactionForm from "./components/TransactionForm/EditTransactionForm";
+import CreateGroupForm from "./components/GroupForm/CreateGroupForm";
+import EditGroupForm from "./components/GroupForm/EditGroupForm";
+import RenderUserGroups from './components/GroupPage/UserGroupList';
 // import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
 
@@ -60,6 +60,9 @@ function App() {
         <ProtectedRoute path="/groups" exact={true}>
           <RenderUserGroups />
         </ProtectedRoute>
+        <ProtectedRoute path="/new-group" exact={true}>
+          <CreateGroupForm />
+        </ProtectedRoute>
         <ProtectedRoute path="/groups/:groupId" exact={true}>
           <GroupPage />
         </ProtectedRoute>
@@ -68,9 +71,6 @@ function App() {
         </Route>
         <Route path="/test-edit-transaction/:transactionId" exact={true}>
           <EditTransactionForm />
-        </Route>
-        <Route path="/test-new-group" exact={true}>
-          <CreateGroupForm />
         </Route>
         <Route path="/test-edit-group/:groupId" exact={true}>
           <EditGroupForm />

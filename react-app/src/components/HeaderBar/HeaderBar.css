@@ -20,12 +20,12 @@
   margin-left: 50%;
   margin-right: 50%;
   justify-content: space-between;
-  background-image: url('../images/NavBarStars.jpg');
+  background-image: url('../../images/NavBarStars.jpg');
   /* border-bottom: 1px solid whitesmoke; */
 }
 
 .niffler-logo {
-  /* background-image: url('../images/NifflerLogo.png'); */
+  /* background-image: url('../../images/NifflerLogo.png'); */
   /* align-self: flex-end; */
   height: 50px;
   width: 200px;
@@ -63,7 +63,7 @@
   flex-direction: column;
   justify-content: center;
   text-decoration: none;
-  cursor: url("/images/WandCursorClick.png"), auto;
+  cursor: url("../../images/WandCursorClick.png"), auto;
 }
 #navbar__profile-button {
   font-family: 'Harry Potter';
@@ -73,7 +73,7 @@
   color: whitesmoke;
   border: none;
   margin: auto;
-  cursor: url("/images/WandCursorClick.png"), auto;
+  cursor: url("../../images/WandCursorClick.png"), auto;
 }
 
 .profile-dropdown {
@@ -107,7 +107,7 @@
   border: none;
   width: 100%;
   padding: 10px;
-  cursor: url(/images/WandCursorClick.png), auto;
+  cursor: url("../../images/WandCursorClick.png"), auto;
   transition-property: background;
   transition-duration: 0.2s;
   
@@ -115,5 +115,5 @@
 
 .profile-dropdown__item > button:hover{
     background: #d81212;
-  cursor: url("/images/WandCursorClick.png"), auto;
+  cursor: url("../../images/WandCursorClick.png"), auto;
 }

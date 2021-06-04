@@ -4,10 +4,12 @@
   flex-direction: column;
   align-items: center;
   width: 608px;
+  /* border: 1px solid red; */
+  background-color: white;
 }
 
 .group-header {
-  background-image: url('../images/HeaderBackground.png');
+  background-image: url('../../images/HeaderBackground.png');
   width: 100%;
   height: 250px;
 }
@@ -23,7 +25,7 @@
   width: 100%;
   overflow-y: scroll;
 
-  border: 1px solid green;
+  /* border: 1px solid green; */
 }
 
 .transaction-div {
@@ -152,7 +154,7 @@
   border: none;
   max-width: 80px;
 
-  cursor: url("/images/WandCursorClick.png"), auto;
+  cursor: url("../../images/WandCursorClick.png"), auto;
 
   transition-property: background ;
   transition-duration: .2s;

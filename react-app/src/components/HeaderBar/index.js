@@ -5,7 +5,7 @@ import UserButton from './UserButton';
 import './HeaderBar.css';
 // import { logout } from "../../store/session";
 
-import logo from "../images/NifflerLogo.png"
+import logo from "../../images/NifflerLogo.png"
 
 const HeaderBar = () => {
     const user = useSelector(state => state.session.user);

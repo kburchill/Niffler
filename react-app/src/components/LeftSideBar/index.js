@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 // import NewTransactionButton from '../TransactionForm/NewTransactionButton';
 
@@ -31,7 +31,8 @@ const LeftSideBar = () => {
         </NavLink>
       </div>
       {/* I think we need to link to Groups here? */}
-      <button className="left-sidebar__top-group-button">+ ADD GROUP*</button>
+      <Link className="left-sidebar__top-group-button">+ ADD GROUP*</Link>
+      {/* <Link to="/new-group" className="left-sidebar__top-group-button">+ ADD GROUP*</Link> */}
       <div className="left-sidebar__groups sidebar-link">
         {/* { typeof userGroups} */}
         {userGroups &&
@@ -40,7 +41,7 @@ const LeftSideBar = () => {
               key={group_id}
               to={`/groups/${group_id}`}
               exact={true}
-              activeClassName="sidebar-link"
+              activeClassName="active-group"
             >
               {group_name}
             </NavLink>

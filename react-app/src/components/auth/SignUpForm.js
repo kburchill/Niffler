@@ -5,7 +5,7 @@ import { signUp } from '../../store/session';
 
 import HeaderBar from '../HeaderBar';
 
-import signupText from "../images/SignUp.png";
+import signupText from "../../images/SignUp.png";
 
 import './signup.css';
 

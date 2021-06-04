@@ -3,11 +3,14 @@ import React, { useState } from 'react';
 // import { Redirect } from 'react-router-dom';
 // import { signUp } from '../../store/session';
 
+import HeaderBar from "../HeaderBar";
+import LeftSideBar from "../LeftSideBar";
+import GroupPageRight from "../RightSideBar/GroupPageRight";
+
 const CreateGroupForm = () => {
     // const dispatch = useDispatch();
-  // Do we need what's below?
     // const group = useSelector((state) => state.session.user);
-  // const [username, setUsername] = useState("");
+    // const [username, setUsername] = useState("");
     const [groupName, setGroupName] = useState('');
     const [groupUsers, setGroupUsers] = useState([]);
 
@@ -49,29 +52,38 @@ const CreateGroupForm = () => {
 
 
     return (
-        <form onSubmit={onGroupSubmit}>
-            <div>
-                <label>Group Name</label>
-                <input
-                    type="text"
-                    name="group-name"
-                    onChange={updateGroupName}
-                    value={groupName}
-                ></input>
+        <div className="main-body">
+            <HeaderBar />
+            <LeftSideBar />
+            <div className="center-block-main">
+                <form onSubmit={onGroupSubmit}>
+                    <div>
+                        <label>Group Name</label>
+                        <input
+                            type="text"
+                            name="group-name"
+                            onChange={updateGroupName}
+                            value={groupName}
+                        ></input>
+                    </div>
+                    <div>
+                        <label htmlFor="users">Add users to group:</label>
+                        {/* These are temporary users. Finished version will dynamically get all users from store. */}
+                        <select multiple={true} onChange={updateGroupUsers}>
+                            <option value="1">Demolition</option>
+                            <option value="2">Harry</option>
+                            <option value="3">Hermione</option>
+                            <option value="4">Ronald</option>
+                        </select>
+                    </div>
+                    <button type="submit">Create Group</button>
+                </form>
             </div>
             <div>
-                <label htmlFor="users">Add users to group:</label>
-                {/* These are temporary users. Finished version will dynamically get all users from store. */}
-                <select multiple={true} onChange={updateGroupUsers}>
-                    <option value="1">Demolition</option>
-                    <option value="2">Harry</option>
-                    <option value="3">Hermione</option>
-                    <option value="4">Ronald</option>
-                </select>
+                <GroupPageRight />
             </div>
-            <button type="submit">Create Group</button>
-        </form>
-        );
-    };
+        </div>
+    );
+};
 
 export default CreateGroupForm;

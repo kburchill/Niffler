@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 import HeaderBar from '../HeaderBar';
 
-import loginText from "../images/LogIn.png"
+import loginText from "../../images/LogIn.png"
 
 import './login.css';
 

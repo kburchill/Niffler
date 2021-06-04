@@ -7,7 +7,7 @@ import DashboardRight from '../RightSideBar/DashboardRight';
 import { getUserData } from '../../store/user';
 import NewTransactionButton from '../TransactionForm/NewTransactionButton';
 
-import wandDivider from "../images/wandDivider.svg"
+import wandDivider from "../../images/wandDivider.svg"
 
 import './Dashboard.css';
 

@@ -1,5 +1,5 @@
 body {
-    background: url("./components/images/background_niffler.png") no-repeat center center fixed;
+    background: url("./images/background_niffler.png") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -9,7 +9,7 @@ body {
 @font-face {
     font-family: 'Harry Potter';
     src: local('Harry Potter'),
-        url(./fonts/harry-potter.woff) format('woff');
+        url("./fonts/harry-potter.woff") format('woff');
 }
 
 /* Container div for elements underneath header bar. */
@@ -25,7 +25,7 @@ body {
     padding-top: 38px;
     /* max-width: 1366px; */
     position: relative;
-    cursor: url("/images/WandCursor.png"), auto;}
+    cursor: url("./images/WandCursor.png"), auto;}
     /* text-align: center; */
   /* cursor: src="images/BoltCursor.svg", auto;
 }
@@ -70,11 +70,11 @@ a:hover {
 }
 
 a{
-    cursor: url("/images/WandCursorClick.png"), auto;
+    cursor: url("./images/WandCursorClick.png"), auto;
 }
 
 label{
-    cursor: url("/images/WandCursor.png"), auto;
+    cursor: url("./images/WandCursor.png"), auto;
 }
 /* label:hover{
     cursor: url("/images/WandCursorClick.png"), auto;
