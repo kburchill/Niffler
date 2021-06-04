@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 // import HeaderBar from '../HeaderBar';
+
+import loginText from "../images/LogIn.png"
+
 import './login.css';
 
 const LoginForm = () => {
@@ -42,7 +45,7 @@ const LoginForm = () => {
           <form onSubmit={onLogin} id="login-form">
             {/* Logo */}
             <div className="login-logo">
-              <img src={'/images/LogIn.png'} alt="Log In" />
+              <img src={loginText} alt="Log In" />
             </div>
             {/* Email Description */}
             <div className="login-form-div__row">
