@@ -1,26 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from "react-redux";
+// import { Link } from 'react-router-dom';
+import { useSelector } from "react-redux"; //useDispatch
 import UserButton from './UserButton';
 import './HeaderBar.css';
-import { logout } from "../../store/session";
+// import { logout } from "../../store/session";
 
 import logo from "../images/NifflerLogo.png"
 
 const HeaderBar = () => {
     const user = useSelector(state => state.session.user);
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
-    const onLogout = async (e) => {
-        await dispatch(logout());
-    };
+    // const onLogout = async (e) => {
+    //     await dispatch(logout());
+    // };
 
     return (
         <div id='header-bar'>
             <a href="/dashboard">
                 <div class="niffler-logo">
-                    <img src={logo}></img>
+                    <img src={logo} alt='Niffler Logo'></img>
                 </div>
             </a>
             <div class="header-bar-options">

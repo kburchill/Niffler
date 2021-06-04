@@ -8,7 +8,8 @@ body {
 
 @font-face {
     font-family: 'Harry Potter';
-    src: url(http://fonts.cdnfonts.com/css/harry-potter?styles=41888);
+    src: local('Harry Potter'),
+        url(./fonts/harry-potter.woff) format('woff');
 }
 
 /* Container div for elements underneath header bar. */

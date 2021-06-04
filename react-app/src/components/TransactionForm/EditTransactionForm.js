@@ -28,7 +28,7 @@ const EditTransactionForm = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
         // Temporary fetch - use session thunk in finished version.
-        const response = await fetch(`/api/expenses/${transactionId}`, {
+        await fetch(`/api/expenses/${transactionId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'

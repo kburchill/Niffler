@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LeftSideBar from "../LeftSideBar";
 import HeaderBar from "../HeaderBar";
 import GroupPageRight from "../RightSideBar/GroupPageRight";
 import { groupData, group_transaction_delete } from "../../store/groups"
 import { getUserData } from "../../store/user"
-import EditTransactionButton from "../TransactionForm/EditTransactionButton"
+// import EditTransactionButton from "../TransactionForm/EditTransactionButton"
 import NewTransactionButton from "../TransactionForm/NewTransactionButton"
 import './GroupPage.css';
 
 import { useParams } from "react-router-dom";
 
 const GroupPage = () => {
-    const user = useSelector(state => state.user);
+    // const user = useSelector(state => state.user);
     const transaction_info = useSelector(state => state.groups.transaction_info);
     const group_name = useSelector(state => state.groups.group_name)
 
@@ -21,7 +21,6 @@ const GroupPage = () => {
     const groupId = useParams();
 
     useEffect(() => {
-
         dispatch(groupData(groupId.groupId))
         dispatch(getUserData())
     }, [dispatch, groupId])

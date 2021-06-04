@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import NewTransactionButton from '../TransactionForm/NewTransactionButton';
+// import NewTransactionButton from '../TransactionForm/NewTransactionButton';
 
 import './LeftSideBar.css';
 

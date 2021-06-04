@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
-import HeaderBar from '../HeaderBar';
+// import HeaderBar from '../HeaderBar';
 import './login.css';
 
 const LoginForm = () => {

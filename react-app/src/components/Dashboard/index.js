@@ -7,6 +7,8 @@ import DashboardRight from '../RightSideBar/DashboardRight';
 import { getUserData } from '../../store/user';
 import NewTransactionButton from '../TransactionForm/NewTransactionButton';
 
+import wandDivider from "../images/wandDivider.svg"
+
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -39,14 +41,14 @@ const Dashboard = () => {
               <div>{userData.total}</div>
             </div>
             <div>
-              <img src="/images/wandDivider.svg"></img>
+              <img src={wandDivider} alt="Wand Divider."></img>
             </div>
             <div className="dashboard__balance">
               <div className="dashboard__balance__title-text">You Owe</div>
               <div>{userData.owe}</div>
             </div>
             <div>
-              <img src="/images/wandDivider.svg"></img>
+              <img src={wandDivider} alt="Wand Divider."></img>
             </div>
             <div className="dashboard__balance">
               <div className="dashboard__balance__title-text">You Are Owed</div>
@@ -61,7 +63,7 @@ const Dashboard = () => {
 
         <div className="dashboard__users-header">
           <div className="owe-div">You owe</div>
-          <img src="/images/wandDivider.svg"/>
+          <img src={wandDivider} alt="Wand Divider"/>
           <div className="owed-div">You are owed</div>
         </div>
         <div className="dashboard__users-container">
