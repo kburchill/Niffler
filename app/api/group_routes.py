@@ -9,7 +9,7 @@ from app.api.auth_routes import validation_errors_to_error_messages
 
 group_routes = Blueprint("groups", __name__)
 
-
+#Get all associated group data
 @group_routes.route("/<group_id>")
 def group_data(group_id):
     """
@@ -43,11 +43,7 @@ def group_data(group_id):
                             current_user_lender = user.first_name
                         # Create list of users in the group not including the current user.
 
-
                     total_debt_owed += expense.amount
-
-                    print("here =>>>>>>>>>>>>>>>>>>>>>>>>>>>", type(transaction.expense_date))
-
                     # Append data onto transacition info
                     transaction_info.append({"payer_id": transaction.payer_id, "paid_amount": transaction.paid_amount, "expense_date": transaction.expense_date.strftime("%m/%d/%Y"), "borrower_id": a_user.id,
                                              "first_name": a_user.first_name, "amount": expense.amount, "description": transaction.description, "transaction_id": transaction.id, "current_user_lender": current_user_lender, "total_debt_owed": total_debt_owed})

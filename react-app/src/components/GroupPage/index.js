@@ -82,7 +82,7 @@ const renderGroupData = () => {
                                 <div class="description">{transaction[0].description}</div>
                                 <div class="paid">{transaction[0].current_user_lender} paid <div>{transaction[0].paid_amount}</div></div>
                                 <div class="lent">{transaction[0].current_user_lender} lent <div>{transaction[0].total_debt_owed}</div></div>
-                                <button onClick={() => delete_transaction(transaction[0].transaction_id)}>Delete</button>
+                                <button className="delete_trans" onClick={() => delete_transaction(transaction[0].transaction_id)}>Avada Kedavra</button>
                             </div>
                         </div>
                         <div className="detailed-info-container">
