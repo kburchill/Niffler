@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 // import { Redirect } from 'react-router-dom';
 // import { signUp } from '../../store/session';
 
 const GroupForm = () => {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
   // Do we need what's below?
-    const group = useSelector((state) => state.session.user);
+    // const group = useSelector((state) => state.session.user);
   // const [username, setUsername] = useState("");
     const [groupName, setGroupName] = useState('');
     const [groupUsers, setGroupUsers] = useState([]);
@@ -28,7 +28,7 @@ const GroupForm = () => {
     const onGroupSubmit = async (e) => {
         e.preventDefault();
         // Temporary fetch - use session thunk in finished version.
-        const response = await fetch(`/api/groups/${groupId}`, {
+        await fetch(`/api/groups/${groupId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

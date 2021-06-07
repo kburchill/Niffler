@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+
+import HeaderBar from '../HeaderBar';
+
+import signupText from "../../images/SignUp.png";
+
 import './signup.css';
 
 const SignUpForm = () => {
@@ -49,10 +54,11 @@ const SignUpForm = () => {
 
     return (
       <div className="main-body">
+        <HeaderBar />
         <div className="signup_form">
           <form onSubmit={onSignUp}>
             <div className="sign-up-logo">
-              <img src={'/images/SignUp.png'} alt="Sign Up" />
+              <img src={signupText} alt="Sign Up" />
             </div>
             <div className="signup-form-div__row">
               <label>User Name</label>

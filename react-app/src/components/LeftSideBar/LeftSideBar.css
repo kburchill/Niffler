@@ -1,9 +1,10 @@
 .left-sidebar__container {
+  display: flex;
+  flex-direction: column;
+
   background-color: rgba(0, 0, 0, 0.774);
-  /* border: 1px solid black; */
-  /* min-width: 200px; */
   padding: 10px;
-  padding-top: 30px;
+  margin-top: 20px;
   width: 200px;
   text-align: center;
 }
@@ -42,6 +43,8 @@
 }
 
 .left-sidebar-titles {
+  margin-top: 10px;
+
   color: grey;
   font-family: 'Harry Potter';
   font-size: 2em;
@@ -57,7 +60,7 @@
   letter-spacing: 1.4px;
 }
 .sidebar-link {
-  color: grey;
+  color: rgb(128, 128, 128);
   /* font-family: 'Lato'; */
   /* font-size: 1.5em; */
 }
@@ -71,23 +74,32 @@
   /* font-family: 'Harry Potter'; */
 }
 
+.active-group {
+  color: #d0b16c;
+}
+
 .left-sidebar__top-group-button {
   margin-top: 20px;
+  margin-bottom: 20px;
   background: #4b4b4b;
   justify-content: center;
   border-radius: 6px;
+  
   font-family: 'Lato';
   font-weight: 900;
   font-size: 12px;
   text-transform: uppercase;
+  text-decoration: none;
   color: #ffffff;
   letter-spacing: 1.6px;
   text-align: center;
+
   padding: 8px 14px;
-  border: none;
+  /* border: 1px solid greenyellow; */
   width: 80%;
   align-self: center;
-  cursor: url("/images/WandCursorClick.png"), auto;
+
+  cursor: url("../../images/WandCursorClick.png"), auto;
   transition-property: background;
   transition-duration: 0.2s;
 }

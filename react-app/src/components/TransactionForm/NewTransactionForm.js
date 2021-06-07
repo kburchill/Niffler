@@ -18,7 +18,7 @@ const NewTransactionForm = () => {
 
     const groupUsers = useSelector(state => state.groups.users);
     const userGroups = useSelector(state => state.userData.groups);
-    const currentUser = useSelector(state => state.session);
+    // const currentUser = useSelector(state => state.session);
 
     useEffect(() => {
         dispatch(groupData(groupId));
@@ -95,7 +95,7 @@ const NewTransactionForm = () => {
                     ))}
                 </select>
             </div>
-            <div className="new-description" className="form-field">
+            <div className="new-description form-field">
                 <label htmlFor="description" className="form-label">What is this for?</label>
                 <textarea
                     name="description"
@@ -126,7 +126,6 @@ const NewTransactionForm = () => {
             </div>
             <div className="new-debtors form-field">
                 <label htmlFor="users" className="form-label">Which group members owe money?</label>
-                {/* These are temporary users. Finished version will dynamically get users belonging to group from store. */}
                 <select multiple={true} onChange={updateDebtors} className="form-input">
                     {groupUsers && Object.values(groupUsers).map(user => (
                         (user.user_id !== payerId) && <option key={user.user_id} value={user.user_id}>

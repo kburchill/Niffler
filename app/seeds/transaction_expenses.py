@@ -5,9 +5,9 @@ def seed_transaction_expenses():
 
     demo1 = TransactionExpense(
         transaction_id=1,
-        borrower_id=3,
+        borrower_id=2,
         lender_id=1,
-        amount=13,
+        amount=33,
         completed=False,
         updated_at="2020-09-05 09:45:28",
     )
@@ -16,9 +16,9 @@ def seed_transaction_expenses():
 
     demo2 = TransactionExpense(
         transaction_id=1,
-        borrower_id=2,
+        borrower_id=4,
         lender_id=1,
-        amount=12,
+        amount=33,
         completed=False,
         updated_at="2020-09-05 09:45:28",
     )
@@ -27,9 +27,9 @@ def seed_transaction_expenses():
 
     demo3 = TransactionExpense(
         transaction_id=2,
-        borrower_id=1,
-        lender_id=2,
-        amount=21,
+        borrower_id=11,
+        lender_id=10,
+        amount=16,
         completed=False,
         updated_at="2020-09-05 09:45:28",
     )
@@ -38,20 +38,20 @@ def seed_transaction_expenses():
 
     demo4 = TransactionExpense(
         transaction_id=2,
-        borrower_id=3,
-        lender_id=2,
-        amount=23,
+        borrower_id=12,
+        lender_id=10,
+        amount=16,
         completed=False,
         updated_at="2020-09-05 09:45:28",
-        )
+    )
 
     db.session.add(demo4)
 
     demo5 = TransactionExpense(
         transaction_id=3,
-        borrower_id=1,
-        lender_id=3,
-        amount=31,
+        borrower_id=6,
+        lender_id=5,
+        amount=100,
         completed=False,
         updated_at="2020-09-05 09:45:28",
         )
@@ -60,9 +60,9 @@ def seed_transaction_expenses():
 
     demo6 = TransactionExpense(
         transaction_id=3,
-        borrower_id=2,
-        lender_id=3,
-        amount=32,
+        borrower_id=8,
+        lender_id=5,
+        amount=100,
         completed=False,
         updated_at="2020-09-05 09:45:28",
         )
@@ -70,9 +70,9 @@ def seed_transaction_expenses():
 
     demo7 = TransactionExpense(
         transaction_id=4,
-        borrower_id=2,
-        lender_id=1,
-        amount=42,
+        borrower_id=13,
+        lender_id=3,
+        amount=133,
         completed=False,
         updated_at="2020-09-05 09:45:28",
         )
@@ -81,9 +81,9 @@ def seed_transaction_expenses():
 
     demo8 = TransactionExpense(
         transaction_id=4,
-        borrower_id=3,
-        lender_id=1,
-        amount=43,
+        borrower_id=14,
+        lender_id=3,
+        amount=133,
         completed=False,
         updated_at="2020-09-05 09:45:28",
         )

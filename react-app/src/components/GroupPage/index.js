@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LeftSideBar from "../LeftSideBar";
 import HeaderBar from "../HeaderBar";
 import GroupPageRight from "../RightSideBar/GroupPageRight";
 import { groupData, group_transaction_delete } from "../../store/groups"
 import { getUserData } from "../../store/user"
-import EditTransactionButton from "../TransactionForm/EditTransactionButton"
+// import EditTransactionButton from "../TransactionForm/EditTransactionButton"
 import NewTransactionButton from "../TransactionForm/NewTransactionButton"
 import './GroupPage.css';
 
 import { useParams } from "react-router-dom";
 
 const GroupPage = () => {
-    const user = useSelector(state => state.user);
+    // const user = useSelector(state => state.user);
     const transaction_info = useSelector(state => state.groups.transaction_info);
     const group_name = useSelector(state => state.groups.group_name)
 
@@ -21,7 +21,6 @@ const GroupPage = () => {
     const groupId = useParams();
 
     useEffect(() => {
-
         dispatch(groupData(groupId.groupId))
         dispatch(getUserData())
     }, [dispatch, groupId])
@@ -51,24 +50,23 @@ const renderGroupData = () => {
                                 <div class="date">{transaction[0].expense_date}</div>
                                 <div class="description">{transaction[0].description}</div>
                                 <div class="paid">
-                                    <div>{transaction[0].current_user_lender} Paid:
-                                            <div>{transaction[0].paid_amount}</div>
-                                    </div>
+                                    <div>{transaction[0].current_user_lender} paid:</div>
+                                    <div>{transaction[0].paid_amount}</div>
                                 </div>
                                 <div class="lent">
-                                    <div>{transaction[0].current_user_lender} lent </div>
+                                    <div>{transaction[0].current_user_lender} lent:</div>
                                     <div>{transaction[transaction.length - 1].total_debt_owed}</div>
                                 </div>
-                            <button className="delete_trans" onClick={() => delete_transaction(transaction[0].transaction_id)}>Avada Kedavra</button>
+                            <button className="delete-trans" onClick={() => delete_transaction(transaction[0].transaction_id)}>Avada Kedavra!</button>
                             </div>
                         </div>
                         <div className="detailed-info-container">
                             {transaction.map(each_transaction => {
                                 return (
                                     <div className="detailed-info">
-                                        {each_transaction.first_name} Owes {each_transaction.current_user_lender} {each_transaction.amount}
+                                        {each_transaction.first_name} owes {each_transaction.current_user_lender} {each_transaction.amount}
                                     </div>
-                                    )
+                                )
                             })}
                         </div>
                     </div>)
@@ -80,13 +78,20 @@ const renderGroupData = () => {
                             <div class="info-block">
                                 <div class="date">{transaction[0].expense_date}</div>
                                 <div class="description">{transaction[0].description}</div>
-                                <div class="paid">{transaction[0].current_user_lender} paid <div>{transaction[0].paid_amount}</div></div>
-                                <div class="lent">{transaction[0].current_user_lender} lent <div>{transaction[0].total_debt_owed}</div></div>
-                                <button className="delete_trans" onClick={() => delete_transaction(transaction[0].transaction_id)}>Avada Kedavra</button>
+
+                                <div class="paid">
+                                    <div>{transaction[0].current_user_lender} paid:</div>
+                                    <div>{transaction[0].paid_amount}</div>
+                                </div>
+                                <div class="lent">
+                                    <div>{transaction[0].current_user_lender} lent:</div>
+                                    <div>{transaction[0].total_debt_owed}</div>
+                                </div>
+                                <button className="delete-trans" onClick={() => delete_transaction(transaction[0].transaction_id)}>Avada Kedavra</button>
                             </div>
                         </div>
                         <div className="detailed-info-container">
-                            <div className="detailed-info">{transaction[0].first_name} Owes {transaction[0].current_user_lender} {transaction[0].amount}</div>
+                            <div className="detailed-info">{transaction[0].first_name} owes {transaction[0].current_user_lender} {transaction[0].amount}</div>
                         </div>
                     </div>)
             }

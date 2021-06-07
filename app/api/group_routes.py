@@ -6,6 +6,8 @@ import os
 from app.forms import GroupForm
 from app.api.auth_routes import validation_errors_to_error_messages
 
+import pdb
+
 
 group_routes = Blueprint("groups", __name__)
 
@@ -30,12 +32,14 @@ def group_data(group_id):
             for transaction in group_transactions:
                 current_user_lender = "You"
                 all_expenses = [*transaction.expenses]
+                # pdb.set_trace()
                 transaction_info = []
                 total_debt_owed = 0
                 # Go through each expense and organize database info
                 for expense in all_expenses:
-                    a_user = next(
-                        user for user in group_data.users if expense.borrower_id == user.id)
+                    # Get person who borrowed.
+                    match = [user for user in group_data.users if expense.borrower_id == user.id]
+                    a_user = match[0]
                     # Get the name of person that paid
                     users = group_data.users
                     for user in users:
@@ -44,12 +48,14 @@ def group_data(group_id):
                         # Create list of users in the group not including the current user.
 
                     total_debt_owed += expense.amount
+
                     # Append data onto transacition info
                     transaction_info.append({"payer_id": transaction.payer_id, "paid_amount": transaction.paid_amount, "expense_date": transaction.expense_date.strftime("%m/%d/%Y"), "borrower_id": a_user.id,
                                              "first_name": a_user.first_name, "amount": expense.amount, "description": transaction.description, "transaction_id": transaction.id, "current_user_lender": current_user_lender, "total_debt_owed": total_debt_owed})
                 # Create dict entry in {transaction.id: info} form
                 all_transactions_for_group[transaction.id] = transaction_info
 
+            # pdb.set_trace()
             for user in group_data.users:
                 group_users.append({"user_id": user.id, "username": user.username,
                                                 "first_name": user.first_name, "last_name": user.last_name,
