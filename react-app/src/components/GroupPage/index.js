@@ -78,6 +78,7 @@ const renderGroupData = () => {
                             <div class="info-block">
                                 <div class="date">{transaction[0].expense_date}</div>
                                 <div class="description">{transaction[0].description}</div>
+
                                 <div class="paid">
                                     <div>{transaction[0].current_user_lender} paid:</div>
                                     <div>{transaction[0].paid_amount}</div>

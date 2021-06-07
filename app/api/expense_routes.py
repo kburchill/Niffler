@@ -27,7 +27,6 @@ def create_expense():
         db.session.commit()
         requestinfo = request.json
         # For each debtor, create a new transaction expense.
-        print("LOOK HERE ========", requestinfo)
         payed_amount = form.data["amount"]
         split_by = len(form.data["debtors"]) + 1
         remainder = payed_amount % split_by
@@ -36,7 +35,6 @@ def create_expense():
 
         for debtor in form.data["debtors"]:
             info = [new_transaction.id, form.data["payer_id"], debtor, debtor_pays, False, date.today()]
-            print(info, "LOOK ===== HERE -========")
             new_expense = TransactionExpense(
                 transaction_id=new_transaction.id,
                 lender_id=form.data["payer_id"],

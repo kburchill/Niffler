@@ -11,7 +11,7 @@ import pdb
 
 group_routes = Blueprint("groups", __name__)
 
-
+#Get all associated group data
 @group_routes.route("/<group_id>")
 def group_data(group_id):
     """
