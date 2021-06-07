@@ -23,6 +23,12 @@ const Dashboard = () => {
     dispatch(getUserData());
   }, [dispatch]);
 
+  const handleSettle = () => {
+    //Will this open a popup or just clear balances?
+    //Update state
+    //
+  }
+
   return (
     <div className="main-body">
       <HeaderBar />
@@ -57,7 +63,7 @@ const Dashboard = () => {
           </div>
           <div className="dashbard__top-banner__button-container">
             <NewTransactionButton />
-            <button className="dashboard__top-settle-button">Settle Up*</button>
+            <button onClick={()=> handleSettle() }className="dashboard__top-settle-button">Settle Up</button>
           </div>
         </div>
 
