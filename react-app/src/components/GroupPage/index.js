@@ -32,6 +32,7 @@ const GroupPage = () => {
     }
 
 const renderGroupData = () => {
+    console.log(transaction_info, "LOOK HERE")
         return transaction_info && Object.values(transaction_info).map(transaction => {
             // Map through each expense if multiple
             /*
@@ -71,7 +72,7 @@ const renderGroupData = () => {
                         </div>
                     </div>)
             }
-            else {
+            else if (transaction[0] != undefined) {
                 return (
                     <div className="transaction-div">
                         <div className="summary">
@@ -114,7 +115,7 @@ const renderGroupData = () => {
                         </div>
                     </div>
                     <div className="current-group-transactions">
-                        {renderGroupData()}
+                        {transaction_info && renderGroupData()}
                     </div>
 
                 </div>
