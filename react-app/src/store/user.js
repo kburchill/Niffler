@@ -19,6 +19,10 @@ export const getUserData = () => async (dispatch) => {
     return dispatch(setUserData(data));
 }
 
+export const settleTransactions = (user) => async (dispatch) => {
+    const response = await fetch(`/api/`)
+}
+
 const initialState = {};
 export default function userReducer(state = initialState, action) {
     switch (action.type) {

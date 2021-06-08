@@ -1,8 +1,9 @@
 from flask import Blueprint, request
 from flask_login import current_user
 from app.forms import ExpenseForm
-from app.models import Transaction, TransactionExpense, db
+from app.models import Transaction, User, TransactionExpense, db
 from datetime import date
+from sqlalchemy import or_
 from app.api.auth_routes import validation_errors_to_error_messages
 
 expense_routes = Blueprint("expenses", __name__)
@@ -132,3 +133,15 @@ def delete_group(transaction_id):
     db.session.delete(transaction_to_delete)
     db.session.commit()
     return {'message': 'Expense Deleted.'}
+
+@expense_routes.route("/settle/<int:user_id>", methods=["DELETE"])
+def settle_up(user_id):
+    my_transactions_expenses = TransactionExpense.query.filter(or_(TransactionExpense.lender_id == current_user.id, TransactionExpense.borrower_id == current_user.id)).all()
+    my_transactions = Transaction.query.filter(Transaction.payer_id == current_user.id).all()
+    for transaction in my_transactions_expenses:
+        db.session.delete(transaction)
+        db.session.commit()
+    for transaction in my_transactions:
+        db.session.delete(transaction)
+        db.session.commit()
+    return {'message': 'Settled up!'}
