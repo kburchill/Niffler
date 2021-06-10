@@ -32,7 +32,6 @@ const GroupPage = () => {
     }
 
 const renderGroupData = () => {
-    console.log(transaction_info, "LOOK HERE")
         return transaction_info && Object.values(transaction_info).map(transaction => {
             // Map through each expense if multiple
             /*
