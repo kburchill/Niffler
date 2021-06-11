@@ -39,6 +39,7 @@ const CreateGroupForm = () => {
                 "users": groupUsers
             })
         });
+        window.location.href = ("/dashboard")
     }
 
     const updateGroupUsers = (e) => {

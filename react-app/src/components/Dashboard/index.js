@@ -23,6 +23,19 @@ const Dashboard = () => {
     dispatch(getUserData());
   }, [dispatch]);
 
+  const handleSettle = async () => {
+        // Temporary fetch - use session thunk in finished version.
+        const response = await fetch(`/api/expenses/settle/${session.id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        if (response.ok) {
+            window.location.reload()
+        }
+    }
+
   return (
     <div className="main-body">
       <HeaderBar />
@@ -57,7 +70,7 @@ const Dashboard = () => {
           </div>
           <div className="dashbard__top-banner__button-container">
             <NewTransactionButton />
-            <button className="dashboard__top-settle-button">Settle Up*</button>
+            <button onClick={()=> handleSettle()} className="dashboard__top-settle-button">Settle Up</button>
           </div>
         </div>
 

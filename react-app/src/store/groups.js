@@ -52,6 +52,8 @@ export const addGroupTransaction = (response) => async (dispatch) => {
 }
 const initialState = {}
 
+
+
 const groupReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD:

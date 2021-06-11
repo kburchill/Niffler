@@ -74,7 +74,7 @@ def create_group():
     """
     form = GroupForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
+    print("Monkey toes")
     if form.validate_on_submit():
         group = Group(
             name=form.data['name'],
