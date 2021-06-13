@@ -21,4 +21,4 @@ Welcome to Niffler, a Money Management Application.
 5. Allow users to create groups
 
 ## How did it turn out?
-![Alt text](https://aa-niffler.herokuapp.com/)
+https://aa-niffler.herokuapp.com/
